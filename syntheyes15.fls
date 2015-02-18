@@ -1,0 +1,165 @@
+PWD C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15
+INPUT C:/Users/Erroll/AppData/Local/MiKTeX/2.9/miktex/data/le/pdftex/pdflatex.fmt
+INPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/syntheyes15.tex
+OUTPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/syntheyes15.log
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/base/article.cls
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/base/article.cls
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/base/size10.clo
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/base/size10.clo
+INPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/iccv.sty
+INPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/iccv.sty
+INPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/eso-pic.sty
+INPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/eso-pic.sty
+INPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/iccv_eso.sty
+INPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/iccv_eso.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/graphics/keyval.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/graphics/keyval.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/tools/xspace.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/tools/xspace.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/helvetic/phvb.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/times/ptmb.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/psnfss/times.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/psnfss/times.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/graphics/epsfig.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/graphics/epsfig.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/graphics/graphicx.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/graphics/graphicx.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/graphics/graphics.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/graphics/graphics.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/graphics/trig.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/graphics/trig.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/00miktex/graphics.cfg
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/00miktex/graphics.cfg
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/pdftex-def/pdftex.def
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/pdftex-def/pdftex.def
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/generic/oberdiek/infwarerr.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/generic/oberdiek/infwarerr.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/generic/oberdiek/ltxcmds.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/generic/oberdiek/ltxcmds.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsmath/amsmath.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsmath/amsmath.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsmath/amstext.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsmath/amstext.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsmath/amsgen.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsmath/amsgen.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsmath/amsbsy.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsmath/amsbsy.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsmath/amsopn.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsmath/amsopn.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsfonts/amssymb.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsfonts/amssymb.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsfonts/amsfonts.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsfonts/amsfonts.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/hyperref/hyperref.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/hyperref/hyperref.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/generic/oberdiek/hobsub-hyperref.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/generic/oberdiek/hobsub-hyperref.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/generic/oberdiek/hobsub-hyperref.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/generic/oberdiek/hobsub-generic.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/generic/oberdiek/hobsub-generic.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/generic/ifxetex/ifxetex.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/generic/ifxetex/ifxetex.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/oberdiek/auxhook.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/oberdiek/auxhook.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/oberdiek/kvoptions.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/oberdiek/kvoptions.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/hyperref/pd1enc.def
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/hyperref/pd1enc.def
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/00miktex/hyperref.cfg
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/00miktex/hyperref.cfg
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/hyperref/backref.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/hyperref/backref.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/oberdiek/rerunfilecheck.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/oberdiek/rerunfilecheck.sty
+INPUT C:/Users/Erroll/AppData/Roaming/MiKTeX/2.9/tex/latex/url/url.sty
+INPUT C:/Users/Erroll/AppData/Roaming/MiKTeX/2.9/tex/latex/url/url.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/hyperref/hpdftex.def
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/hyperref/hpdftex.def
+INPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/syntheyes15.aux
+INPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/syntheyes15.aux
+OUTPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/syntheyes15.aux
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/psnfss/ot1ptm.fd
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/psnfss/ot1ptm.fd
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/times/ptmr7t.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/graphics/color.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/graphics/color.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/graphics/color.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/00miktex/color.cfg
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/00miktex/color.cfg
+INPUT C:/Users/Erroll/AppData/Roaming/MiKTeX/2.9/tex/context/base/supp-pdf.mkii
+INPUT C:/Users/Erroll/AppData/Roaming/MiKTeX/2.9/tex/context/base/supp-pdf.mkii
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/hyperref/nameref.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/hyperref/nameref.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/generic/oberdiek/gettitlestring.sty
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/generic/oberdiek/gettitlestring.sty
+OUTPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/syntheyes15.pdf
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/times/ptmr7t.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/times/ptmb7t.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/times/ptmr7t.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/cm/cmr12.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/cm/cmr8.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/cm/cmr6.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/cm/cmmi12.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/cm/cmmi8.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/cm/cmmi6.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/cm/cmsy10.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/cm/cmsy8.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/cm/cmsy6.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/cm/cmex10.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsfonts/umsa.fd
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsfonts/umsa.fd
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/amsfonts/symbols/msam7.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsfonts/umsb.fd
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/amsfonts/umsb.fd
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/times/ptmb7t.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/times/ptmri7t.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/times/ptmr7t.tfm
+INPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/syntheyes15.bbl
+INPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/syntheyes15.bbl
+INPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/syntheyes15.brf
+INPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/syntheyes15.brf
+OUTPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/syntheyes15.brf
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/times/ptmb7t.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/psnfss/ot1phv.fd
+INPUT C:/Program Files (x86)/MiKTeX 2.9/tex/latex/psnfss/ot1phv.fd
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/helvetic/phvr7t.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/helvetic/phvr7t.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/amsfonts/symbols/msam7.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/amsfonts/symbols/msam5.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/vf/adobe/helvetic/phvb.vf
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/helvetic/phvb8r.tfm
+INPUT C:/Users/Erroll/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/vf/adobe/helvetic/phvr7t.vf
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/helvetic/phvr8r.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/vf/adobe/helvetic/phvr7t.vf
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/helvetic/phvr8r.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/vf/adobe/times/ptmb7t.vf
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/times/ptmb8r.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/vf/adobe/times/ptmr7t.vf
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/times/ptmr8r.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/vf/adobe/times/ptmb7t.vf
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/times/ptmb8r.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/vf/adobe/times/ptmri7t.vf
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/times/ptmri8r.tfm
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/vf/adobe/times/ptmr7t.vf
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/tfm/adobe/times/ptmr8r.tfm
+INPUT C:/Users/Erroll/Documents/GitHub/SynthEyesICCV15/syntheyes15.aux
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb
+INPUT C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb
