@@ -169,3 +169,6 @@ sympy-plots-for-*.tex/
 *.bak
 *.sav
 *.fls
+
+# Unversion .pdf
+*.pdf
