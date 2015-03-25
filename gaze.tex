@@ -1,19 +1,12 @@
+%!TEX root = syntheyes15.tex
 
-\section{Gaze estimation}
+\section{Experiments}
 
-\subsection{use cases}
+evaluate eye/gaze/eyelid shapes (fully synthetic) separately from full face appearance (which is a mixture of real and synthetic data)
 
-eyelid detection
+does photorealistic data really help/is it necessary? either reduce quality and see how it affects performance, or compare model with and without shape variations
 
-eye corner detection
-
-eye bounding box detection
-
-gaze estimation
-
-eye position detection?
-
-\subsection{evaluations}
+show that we only need data from few(er) people and show competitive performance
 
 train on synthesised images and show competitive performance on MPIIgaze with real images
 
@@ -22,3 +15,21 @@ show that we can synthesise specific datasets for specific settings (specific he
 person-adaptation, use pre-trained model from synthesised data, then personalise with small amount of user-specific data
 
 show better performance than UT dataset
+
+
+\subsection{use cases}
+
+eyelid detection
+
+\begin{itemize}
+    \item Evaluate eyelid landmark accuracy on LFW and M-PIE data, compare against several state-of-the-art CLM methods
+    \item Evaluate eyelid and iris landmarks on annotated MPII data, compare against baseline method: majority vote for iris position
+\end{itemize}
+
+eye corner detection
+
+eye bounding box detection
+
+gaze estimation
+
+eye position detection?

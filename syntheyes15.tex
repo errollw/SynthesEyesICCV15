@@ -6,6 +6,9 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage[activate]{pdfcprot}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[color]{changebar}
 
 % Include other packages here, before hyperref.
 
@@ -18,6 +21,13 @@
 
 \def\iccvPaperID{****} % *** Enter the ICCV Paper ID here
 \def\httilde{\mbox{\tt\raisebox{-.5ex}{\symbol{126}}}}
+
+\cbcolor{Red}
+\newcommand{\todo}[1]{\cbstart \textsf{\textbf{\textcolor{Red}{[#1]}}} \cbend{}}
+\newcommand{\commentE}[1]{\textsf{\textbf{\textcolor{Green}{Erroll: #1}}}}
+\newcommand{\commentA}[1]{\textsf{\textbf{\textcolor{Orange}{Andreas: #1}}}}
+\newcommand{\commentT}[1]{\textsf{\textbf{\textcolor{Blue}{Tadas: #1}}}}
+\newcommand{\commentY}[1]{\textsf{\textbf{\textcolor{}{Yusuke: #1}}}}
 
 % Pages are numbered in submission mode, and unnumbered in camera-ready
 \ificcvfinal\pagestyle{empty}\fi
@@ -61,7 +71,7 @@ First line of institution2 address\\
 \input{introduction}
 \input{related_work}
 \input{method}
-\input{clm}
+%\input{clm}
 \input{gaze}
 \input{conclusion}
 
