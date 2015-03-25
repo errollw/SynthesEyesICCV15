@@ -2,34 +2,35 @@
 
 \section{Experiments}
 
-evaluate eye/gaze/eyelid shapes (fully synthetic) separately from full face appearance (which is a mixture of real and synthetic data)
-
-does photorealistic data really help/is it necessary? either reduce quality and see how it affects performance, or compare model with and without shape variations
-
-show that we only need data from few(er) people and show competitive performance
-
-train on synthesised images and show competitive performance on MPIIgaze with real images
-
-show that we can synthesise specific datasets for specific settings (specific head and gaze ranges, illumination conditions), show that we can competitive performance
-
-person-adaptation, use pre-trained model from synthesised data, then personalise with small amount of user-specific data
-
-show better performance than UT dataset
-
-
-\subsection{use cases}
-
-eyelid detection
+\subsection{Deformable model}
 
 \begin{itemize}
-    \item Evaluate eyelid landmark accuracy on LFW and M-PIE data, compare against several state-of-the-art CLM methods
-    \item Evaluate eyelid and iris landmarks on annotated MPII data, compare against baseline method: majority vote for iris position
+    \item Evaluate eyelid landmark accuracy on LFW and M-PIE data, compare against several state-of-the-art CLM methods.
+    \item Evaluate eyelid and iris landmarks on hand-annotated MPII data, compare against a baseline method: majority vote for iris position.
 \end{itemize}
 
-eye corner detection
+% show that we only need data from few(er) people and show competitive performance
+(Maybe) Plot landmark accuracy on LFW against number of training participants. Show that even with just a few participants (e.g. 4) we get good results for eyelid positions compared to state-of-the-art face trackers.
 
-eye bounding box detection
+% eye corner detection
+% eye bounding box detection
+% eye position detection?
+% ^ I think all of these come with what the deformable model gives us
 
-gaze estimation
+\subsection{Gaze estimation}
 
-eye position detection?
+% evaluate eye/gaze/eyelid shapes (fully synthetic) separately from full face appearance (which is a mixture of real and synthetic data)
+
+% person-adaptation, use pre-trained model from synthesised data, then personalise with small amount of user-specific data
+% ^ let's leave this as future work! Can put it in the discussion 
+
+% show that we can synthesise specific datasets for specific settings (specific head and gaze ranges, illumination conditions), show that we can competitive performance
+We render a targeted dataset that matches MPII's gaze and pose distribution, with added 3D laptop screen emitting light. This shows how we can target specific scenarios like laptop-based gaze estimation, and render a suitable dataset within a day rather than take 3 months of data collection.
+
+% train on synthesised images and show competitive performance on MPIIgaze with real images
+% show better performance than UT dataset
+Using Xucong's CNN sytem, we train on targeted version of \dataset, test on MPII. Show results are better than training on UT and testing on MPII. This shows that the range of lighting in \dataset is important for better results.
+
+% does photorealistic data really help/is it necessary? either reduce quality and see how it affects performance, or compare model with and without shape variations
+% ^ I am not really sure how to do this well... Because we'd also have to have a measure of "how photorealistic" something is. Swapping the eyeball for a simpler model, e.g. sphere might not really have that much of an effect on "photorealism" for many eye-poses. Changing the shaders, e.g. pretending the skin is Lambertian (diffuse) might?
+
