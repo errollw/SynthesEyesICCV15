@@ -3,7 +3,7 @@
 \usepackage{iccv}
 \usepackage{times}
 \usepackage{epsfig}
-\usepackage{graphicx}
+% \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[activate]{pdfcprot}
@@ -11,6 +11,11 @@
 \usepackage[color]{changebar}
 
 % Include other packages here, before hyperref.
+
+% for figures and captions
+\usepackage{graphicx}
+\usepackage{subcaption}
+\graphicspath{{figs/}}
 
 % If you comment hyperref and then uncomment it, you should delete
 % egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
@@ -29,12 +34,16 @@
 \newcommand{\commentT}[1]{\textsf{\textbf{\textcolor{Blue}{Tadas: #1}}}}
 \newcommand{\commentY}[1]{\textsf{\textbf{\textcolor{Blue}{Yusuke: #1}}}}
 
+% create a command to set dataset name
+\usepackage{xspace}
+\newcommand{\dataset}{SynthesEyes\xspace}
+
 % Pages are numbered in submission mode, and unnumbered in camera-ready
 \ificcvfinal\pagestyle{empty}\fi
 \begin{document}
 
 %%%%%%%%% TITLE
-\title{SynthEyes}
+\title{Rendering Photorealistic Training Images for Eye Tracking}
 
 \author{First Author\\
 Institution1\\

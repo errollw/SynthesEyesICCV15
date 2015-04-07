@@ -173,5 +173,7 @@ sympy-plots-for-*.tex/
 # Unversion .pdf
 *.pdf
 
-# not sure where this file came from
+# not sure where this files came from
 *.brf
+*.cb
+*.cb2
