@@ -53,7 +53,30 @@ We vary the appearance of the eye by compositing textures in three separate laye
     \label{fig:model_suite}
 \end{figure*}
 
-Start with 3D head scan data -- a dense textured.
+\begin{figure}
+    \centering
+    \begin{subfigure}[t]{0.325\columnwidth}
+        \includegraphics[width=\textwidth]{process_f02_01}
+        \caption{3D head scan data: 1.7 million polys}
+        \label{fig:3d_eye_model}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}[t]{0.325\columnwidth}
+        \includegraphics[width=\textwidth]{process_f02_02}
+        \caption{After retopology: 9 thousand polys}
+        \label{fig:3d_eye_model}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}[t]{0.325\columnwidth}
+        \includegraphics[width=\textwidth]{process_f02_03}
+        \caption{Detail is stored in a displacement map}
+        \label{fig:3d_eye_model}
+    \end{subfigure}%
+    \caption{Model preparation process}
+    \label{fig:process}
+\end{figure}
+
+Start with 3D head scan data -- a dense mesh.
 
 Remove scanned eye.
 
