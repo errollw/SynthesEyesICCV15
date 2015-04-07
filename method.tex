@@ -2,23 +2,9 @@
 
 \section{Synthetic data generation}
 
-\cite{MIL-STD-1472G} -- cite for range of eye rotation.
+In this section we first present our anatomically inspired CG eyeball model, and then explain our novel procedure for preparing a suite of 3D head scans for dynamic photorealistic labelled data generation. We then briefly describe how we use image-based lighting \cite{debevec2002image} to model a wide range of realistic lighting conditions, and finally discuss the details of our rendering setup.
 
-\begin{figure}
-    \includegraphics[width=\columnwidth]{participants_f} \par \smallskip
-    \includegraphics[width=\columnwidth]{participants_m}
-    \caption{Our suite of female and male head models for rendering.}
-    \label{fig:participants}
-\end{figure}
-
-\begin{figure}
-    \includegraphics[width=0.24\columnwidth]{fig_env_1} \hfill
-    \includegraphics[width=0.24\columnwidth]{fig_env_2} \hfill
-    \includegraphics[width=0.24\columnwidth]{fig_env_3} \hfill
-    \includegraphics[width=0.24\columnwidth]{fig_env_4}
-    \caption{Appearance variation from lighting is modelled with poseable high-dynamic-range environment maps \cite{debevec2002image}.}
-    \label{fig:participants}
-\end{figure}
+% \cite{MIL-STD-1472G} -- cite for range of eye rotation.
 
 \subsection{Eye model}
 
@@ -48,20 +34,39 @@ The outer part (red wireframe) approximates the eye's overall shape with two sph
 %
 The inner part (blue wireframe) is a flattened sphere with Lambertian material. The planar end represents the iris and pupil, and the rest represents the sclera -- the white of the eye.
 %
-There is a $0.5\textrm{mm}$ gap between the outer and inner parts which accounts for the thickness of the cornea.
+There is a $0.5\textrm{mm}$ gap between the outer and inner parts which accounts for the thickness of the cornea. \commentE{compare with recent Disney work}
 
-Eyes exhibit variations in both shape (pupillary dilation) and texture (iris color and scleral veins). To model shape variation we use \emph{shape keys} -- 
+Eyes exhibit variations in both shape (pupillary dilation) and texture (iris color and scleral veins). To model shape variation we use \emph{shape keys} -- a CG animation technique where different versions of a mesh are stored, modified, and interpolated between. We have shape keys for dilated and constricted pupils, as well as large and small irises to account for a small amount ($10\%$) of iris size variation.
 
-To model how iris color varies between people, we 
+We vary the appearance of the eye by compositing textures in three separate layers:
+\begin{inparaenum}[\itshape i\upshape)]
+\item a \emph{sclera} layer representing the tint of the sclera (white, pink, or yellow);
+\item an \emph{iris} layer with four photo-textures of different colored irises (amber, blue, brown, grey); and
+\item a \emph{veins} layer which varies between blood-shot and clear
+\end{inparaenum}. We matched the sclera tint to each separate face model, but uniformably randomly varied iris color. Previous research on iris-synthesis \commentE{cite} would have allowed continually different iris textures, but we decided this added complexity would not make a worthwhile improvement in overall appearance variation, especially when rendered at lower resolutions.
 
-Iris color varies between people, and it is important for us to model this.
+\subsection{Preparing a suite of 3D eye-region models}
 
-Previous research on iris-synthesis 
+\begin{figure}
+    \includegraphics[width=\columnwidth]{participants_f} \par \smallskip
+    \includegraphics[width=\columnwidth]{participants_m}
+    \caption{Our suite of female and male head models for rendering.}
+    \label{fig:participants}
+\end{figure}
 
-Photo-textures were used for the irises
+Remove scanned eye. 
 
-\subsection{Eye-region model suite}
-
-\subsection{Eyelid motion}
+\subsubsection{Eyelid motion}
 
 Vertical saccades are always accompanied by eyelid motion \cite{liversedge2011oxford}.
+
+\subsection{Lighting}
+
+\begin{figure}
+    \includegraphics[width=0.24\columnwidth]{fig_env_1} \hfill
+    \includegraphics[width=0.24\columnwidth]{fig_env_2} \hfill
+    \includegraphics[width=0.24\columnwidth]{fig_env_3} \hfill
+    \includegraphics[width=0.24\columnwidth]{fig_env_4}
+    \caption{Appearance variation from lighting is modelled with poseable high-dynamic-range environment maps \cite{debevec2002image}.}
+    \label{fig:participants}
+\end{figure}
