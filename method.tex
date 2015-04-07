@@ -47,14 +47,25 @@ We vary the appearance of the eye by compositing textures in three separate laye
 
 \subsection{Preparing a suite of 3D eye-region models}
 
-\begin{figure}
-    \includegraphics[width=\columnwidth]{participants_f} \par \smallskip
-    \includegraphics[width=\columnwidth]{participants_m}
+\begin{figure*}
+    \includegraphics[width=\textwidth]{model_suite}
     \caption{Our suite of female and male head models for rendering.}
-    \label{fig:participants}
-\end{figure}
+    \label{fig:model_suite}
+\end{figure*}
 
-Remove scanned eye. 
+Start with 3D head scan data -- a dense textured.
+
+Remove scanned eye.
+
+We want to be able to animate the model, so retopologize. This also reduces render time and file sizes.
+
+Insert eye-model.
+
+Add eye lashes.
+
+Add landmarks mesh.
+
+Create face, eyelash, and landmark blend shapes for eyelids looking up and down.
 
 \subsubsection{Eyelid motion}
 
