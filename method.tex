@@ -53,32 +53,45 @@ We vary the appearance of the eye by compositing textures in three separate laye
     \label{fig:model_suite}
 \end{figure*}
 
-\begin{figure}
+\begin{figure*}
     \centering
-    \begin{subfigure}[t]{0.325\columnwidth}
+    \begin{subfigure}[t]{0.195\textwidth}
         \includegraphics[width=\textwidth]{process_f02_01}
-        \caption{3D head scan data: 1.7 million polys}
-        \label{fig:3d_eye_model}
-    \end{subfigure}%
+        \caption{Original 3D head scan data: 1.4 million polys}
+        \label{fig:process_original_scan}
+    \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.325\columnwidth}
+    \begin{subfigure}[t]{0.195\textwidth}
         \includegraphics[width=\textwidth]{process_f02_02}
-        \caption{After retopology: 9 thousand polys}
-        \label{fig:3d_eye_model}
-    \end{subfigure}%
+        \caption{Retopologized head model: 9 thousand polys}
+        \label{fig:process_retopo}
+    \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.325\columnwidth}
+    \begin{subfigure}[t]{0.195\textwidth}
         \includegraphics[width=\textwidth]{process_f02_03}
-        \caption{Detail is stored in a displacement map}
-        \label{fig:3d_eye_model}
-    \end{subfigure}%
+        \caption{Surface detail is stored in displacement maps}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.195\textwidth}
+        \includegraphics[width=\textwidth]{process_f02_04}
+        \caption{3D iris and eyelid landmarks are annotated}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.195\textwidth}
+        \includegraphics[width=\textwidth]{process_f02_05}
+        \caption{The final render}
+    \end{subfigure}
     \caption{Model preparation process}
     \label{fig:process}
-\end{figure}
+\end{figure*}
 
 Start with 3D head scan data -- a dense mesh.
 
-Remove scanned eye.
+% Replace eyes
+As can be seen in \autoref{fig:process_original_scan}, the cornea has been incorrectly reconstructed in the head scan. This is because transparent surfaces are not directly visible, so cannot be reconstructed in the same way as diffuse surfaces like skin. Recent work uses a hybrid reconstruction method to reconstruct the corneal surface seprately, but requires additional hardware \cite{berard2014highquality} -- this level of detail was deemed unneccesary for our purposes. As we need full control of where the eye looks, we remove the original scanned eyeball from the mesh using boolean operations and place our own eyeball approximation in its place.
+
+% retopo
+
 
 We want to be able to animate the model, so retopologize. This also reduces render time and file sizes.
 
@@ -91,6 +104,11 @@ Add landmarks mesh.
 Create face, eyelash, and landmark blend shapes for eyelids looking up and down.
 
 \subsubsection{Eyelid motion}
+
+\begin{figure}
+    \includegraphics[width=\columnwidth]{eyelid_motion.png}
+    \caption{Eyelids.}
+\end{figure}
 
 Vertical saccades are always accompanied by eyelid motion \cite{liversedge2011oxford}.
 
