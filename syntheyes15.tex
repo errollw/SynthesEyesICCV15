@@ -20,12 +20,17 @@
 % in-paragraph enumerate
 \usepackage{paralist}
 
+% better citing
+\usepackage[numbers,square]{natbib}
+
 % If you comment hyperref and then uncomment it, you should delete
 % egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
 % run, let it finish, and you should be clear).
-\usepackage[pagebackref=true,breaklinks=true,letterpaper=true,colorlinks,bookmarks=false]{hyperref}
+\usepackage[pagebackref=true,breaklinks=true,colorlinks,bookmarks=false]{hyperref}
 
-% \iccvfinalcopy % *** Uncomment this line for the final submission
+% temporarily uncommented as reverse-search wasn't working for me
+% it looks like the hacked-together iccv.sty broke something with the synctex
+\iccvfinalcopy % *** Uncomment this line for the final submission
 
 \def\iccvPaperID{****} % *** Enter the ICCV Paper ID here
 \def\httilde{\mbox{\tt\raisebox{-.5ex}{\symbol{126}}}}
@@ -38,7 +43,6 @@
 \newcommand{\commentY}[1]{\textsf{\textbf{\textcolor{}{Yusuke: #1}}}}
 
 % create a command to set dataset name
-\usepackage{xspace}
 \newcommand{\dataset}{SynthesEyes\xspace}
 
 % Pages are numbered in submission mode, and unnumbered in camera-ready
@@ -82,14 +86,13 @@ First line of institution2 address\\
 
 \input{introduction}
 \input{related_work}
-\input{method}
-%\input{clm}
+\input{model}
+\input{rendering}
 \input{gaze}
 \input{conclusion}
 
-
 {\small
-\bibliographystyle{ieee}
+\bibliographystyle{IEEEtranN}
 \bibliography{bib}
 }
 
