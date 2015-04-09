@@ -170,9 +170,6 @@ sympy-plots-for-*.tex/
 *.sav
 *.fls
 
-# Unversion .pdf
-*.pdf
-
 # not sure where this files came from
 *.brf
 *.cb
