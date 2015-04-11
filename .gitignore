@@ -58,6 +58,7 @@ Temporary Items
 # *.ps
 # *.eps
 # *.pdf
+syntheyes15.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
