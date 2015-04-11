@@ -5,9 +5,19 @@
 We briefly describe how we use image-based lighting \cite{debevec2002image} to model a wide range of realistic lighting conditions, and finally discuss the details of our rendering setup.
 
 \begin{figure}
-    \includegraphics[width=0.4\columnwidth]{camera_position} \hfill
-    \caption{How we position the camera.}
-    \label{fig:participants}
+    \centering
+    \begin{subfigure}[t]{0.48\columnwidth}
+        \includegraphics[width=\textwidth]{camera_position}
+        \caption{The camera is positioned using spherical coordinates}
+        \label{fig:cam_pos_spher_coords}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\columnwidth}
+        \includegraphics[width=\textwidth]{camera_pos_sample_renders_7x7}
+        \caption{Example renderings from one camera position}
+        \label{fig:cam_pos_example_renders}
+    \end{subfigure}
+    \caption{\ref{fig:cam_pos_spher_coords} shows how we position the camera to simulate changes in head pose. At each camera position, we render many eye images (\ref{fig:cam_pos_example_renders}) by posing the eyeball model.}
 \end{figure}
 
 \subsection{Lighting}
