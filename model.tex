@@ -52,17 +52,9 @@ We vary the appearance of the eye by compositing textures in three separate laye
 
 \input{figs/fig_process.tex}
 
-To render photorealistic images of eyes, we need a realstic model of the face-region near the eye. While previous approaches have used lifelike artist-created models \cite{swirski2014rendering}, we rely instead on head-scan data  captured by a professional photogrammetry studio. With their 
-
- at a resolution of 0.1mm.
-
-Nowadays, it is possible to cheaply purchase a collection of head scans
-
-Photogrammetric 
-
-Photogrammetry is becoming a popular ...
-
-We start with high quality production-level scans purchased from a photogrammetry studio's online store.
+To render photorealistic images of eyes, we need a realstic model of the face-region near the eye. While previous approaches have used lifelike artist-created models \cite{swirski2014rendering}, we rely instead on high quality head-scan data captured by a professional photogrammetry studio (10k diffuse color textures, 0.1mm resolution geometry). Nowadays it is possible to cheaply purchase head scan models online (~£10/scan), or use free or commercial photogrammetry software to build facial geometry models in-house.
+%
+A good set of trianing images for eye-tracking should exhibit the same types of appearance variability seen in real life, therefore our collection of head-models (\autoref{fig:participants}) covers both genders with a variety of ethnicity and age.
 
 \subsection{Eye-region geometry preparation}
 
@@ -74,15 +66,15 @@ We therefore \emph{retopologize} the face geometry into a more optimal form usin
 
 Although they are two seperate organs, there is normally no visible gap between eyeball and skin. However, as a consequence of removing the eyeball from the original scan, the retopologized mesh will not necessarily meet the geometry of our eyeball model (\autoref{fig:process_retopo}). To compensate, the face mesh's eyelid vertices are displaced along their normals to their respective closest positions on the eyeball geometry (\autoref{fig:process_displaced_subdiv}). This automatic operation ensures the models are joined, even after changes in pose \cite{Shrinkwrap}.
 
-\subsection{Eyelashes}
-
-Eyelashes are short curved hairs that grow from the outer edges of the eyelids. These can occlude parts of the eye and affect eye-tracking algorithms, so should be simulated. We follow the approach of \citet{swirski2014rendering}, and model them using directed hair particle effects. The hair particles are generated from a smoothed control surface below the eyelid edges and directed away from the face. To make them curl, the eyelash particles experience a slight amount of gravity during growth (negative gravity for the upper eyelash).
-
 \subsection{Eyelid motion}
 
-Create face, eyelash, and landmark blend shapes for eyelids looking up and down.
+We model eyelid movements using two blend shapes ...
 
 \begin{figure}
     \includegraphics[width=\columnwidth]{eyelid_motion.png}
     \caption{Eyelids are posed using blend shapes linked to the gaze vector. Note how we use wrinkle-maps to simulate the folding of the skin above and below the eye.}
 \end{figure}
+
+\subsection{Eyelashes}
+
+Eyelashes are short curved hairs that grow from the outer edges of the eyelids. These can occlude parts of the eye and affect eye-tracking algorithms, so should be simulated. We follow the approach of \citet{swirski2014rendering}, and model them using directed hair particle effects. The hair particles are generated from a smoothed control surface manually placed below the eyelids. To make them curl, the eyelash particles experience a slight amount of gravity during growth (negative gravity for the upper eyelash).
