@@ -43,15 +43,16 @@ There is a $0.5\textrm{mm}$ gap between the outer and inner parts which accounts
 \commentE{compare with recent Disney work}
 
 Eyes exhibit variation in both shape (pupillary dilation) and texture (iris color and scleral veins).
-To model shape variation we use \emph{blend shapes} -- an animation technique where different versions of a mesh are stored, modified, and interpolated between \cite{orvalho2012facial}.
-To model shape variation we use \emph{blend shapes} -- an animation technique where several different poses are created for the same topological mesh, and then interpolated between.
-We created blend shapes representing dilated and constricted pupils, as well as large and small irises to account for a small amount ($10\%$) of variation in iris size. These blend shapes are localized so can be mixed, so we can easily model an eye with a small pupil, and a large iris.
+To model shape variation we use \emph{blend shapes} -- an animation technique where several different poses are created for the same topological mesh, and then interpolated between\cite{orvalho2012facial}. 
+We created blend shapes representing dilated and constricted pupils, as well as large and small irises to account for a small amount ($10\%$) of variation in iris size.
+% Maybe try to explain blend shapes better
+Blend shapes are localized so can be mixed, so we can easily model an eye with a small pupil, and a large iris.
 We vary the texture of the eye by compositing images in three separate layers:
 \begin{inparaenum}[\itshape i\upshape)]
 \item a \emph{sclera} layer representing the tint of the sclera (white, pink, or yellow);
 \item an \emph{iris} layer with four photo-textures of different colored irises (amber, blue, brown, grey); and
-\item a \emph{veins} layer which varies between blood-shot and clear
-\end{inparaenum}.
+\item a \emph{veins} layer which varies between blood-shot and clear.
+\end{inparaenum}
 We matched the sclera tint to each separate face model but uniformably randomly varied iris color.
 % Maybe move to related work?
 % Previous research on iris-synthesis \commentE{cite} would have allowed continually different iris textures, but we decided this added complexity would not make a worthwhile improvement in overall appearance variation, especially when rendered at lower resolutions.
@@ -90,12 +91,13 @@ As can be seen in \autoref{fig:process_displaced_subdiv}, skin surface detail li
 Although they are two separate organs, there is normally no visible gap between eyeball and skin.
 However, as a consequence of removing the eyeball from the original scan, the retopologized mesh will not necessarily meet the geometry of our eyeball model (see \autoref{fig:process_retopo}).
 To compensate for this, the face mesh's eyelid vertices are displaced along their normals to their respective closest positions on the eyeball geometry (see \autoref{fig:process_displaced_subdiv}).
-This automatic operation ensures the models are joined, even after changes in pose \cite{Shrinkwrap}.
+This automatic operation prevents unwanted gaps between the models, even after changes in pose \cite{Shrinkwrap}.
 
 \subsection{Modelling Eyelid Motion}
 
 When someone looks up or down, their eyelids move accordingly \cite{liversedge2011oxford}.
-To simulate this we manually created separate shape keys for upwards-pointing and downwards-pointing eyelids, and interpolate between them based on the global pitch of the eyeball model.
+To simulate this we manually created separate blend shapes for upwards-pointing and downwards-pointing eyelids, and interpolate between them based on the global pitch of the eyeball model.
+Manually defining blend shapes through vertex manipulation can be a difficult, repetitive, and time-consuming task. Fortunately, only two are required, and they are localized to the eye-region.
 
 \begin{figure}
     \includegraphics[width=\columnwidth]{eyelid_motion.png}
