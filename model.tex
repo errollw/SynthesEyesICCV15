@@ -6,7 +6,7 @@
 
 \input{figs/fig_model_suite.tex}
 
-In this section we first present our anatomically inspired computer graphics eyeball model, and then explain our novel procedure for preparing a suite of 3D head scans for dynamic photorealistic labelled training data generation.
+In this section we first present our anatomically inspired computer graphics eyeball model, and then explain our novel procedure for preparing a collection of 3D head scans for dynamic photorealistic labelled training data generation.
 
 \subsection{Simplified Eyeball Model}
 \label{subsec:eyeball_model}
@@ -60,34 +60,32 @@ Previous research on iris-synthesis \commentE{cite} would have allowed continual
 
 \input{figs/fig_process.tex}
 
-To render photorealistic images of eyes, we need a realistic model of the face-region near the eye.
-While previous approaches used lifelike artist-created models, for example~\cite{swirski2014rendering}, we instead rely on high quality head-scan data captured by a professional photogrammetry studio (10K diffuse color textures, 0.1mm resolution geometry).
-\commentA{link or even better reference if available}
-Nowadays it is possible to cheaply purchase head scan models online ($\sim\!\$15$/scan), or use free or commercial photogrammetry software to generate facial geometry models in-house.
-A good set of trianing images for eye tracking should exhibit the same types of appearance variability seen in real life, therefore our collection of head-models (\autoref{fig:participants}) covers both genders with a variety of ethnicities and ages.
+For an eye-region rendering to be realistic, it must also feature realstic nearby face detail. While previous approaches used lifelike artist-created models, for example~\cite{swirski2014rendering}, we instead rely on high quality head scan data captured by a professional photogrammetry studio (10K diffuse color textures, 0.1mm resolution geometry) \cite{Ten24ScanStore}.
+%\commentA{link or even better reference if available}
+Nowadays it is possible to cheaply purchase such head scans online\footnote{Ten24 3D Scan Store -- \url{http://www.3dscanstore.com/}} (from $\sim\!\$15$/scan), or use free or commercial photogrammetry software to generate facial geometry models in-house.
+A good set of trianing images should exhibit the types of appearance variability seen in real life, therefore our collection of head-models (\autoref{fig:model_suite}) covers both genders with a variety of ethnicities and ages.
 
 \subsection{Eye-Region Geometry Preparation}
 
-As can be seen in \autoref{fig:process_original_scan}, the cornea is only incorrectly reconstructed in the head scans.
+As can be seen in \autoref{fig:process_original_scan}, the cornea has been incorrectly reconstructed by the optical scanning process.
 This is because transparent surfaces are not directly visible, so cannot be reconstructed in the same way as diffuse surfaces, such as skin.
 Recent work used a hybrid reconstruction method to reconstruct the corneal surface separately, but requires additional hardware \cite{berard2014highquality} -- this level of detail was deemed unnecessary for our purposes.
 We wanted to render eye-region images representing a wide range of eye-gaze directions, so we needed to be able to pose the eyeball separately from the face geometry.
-We therefore removed the scanned eyeball from the mesh using boolean operations, and placed our own eyeball approximation
-%(\autoref{subsec:eyeball_model})
-in its place.
+We therefore removed the scanned eyeball from the mesh using boolean operations, and placed our own eyeball approximation in its place.
 
 While the original head scan geometry is suitable for being rendered as a static model, its topology cannot easily represent dynamic changes in eye-region shape.
 Vertical saccades are always accompanied by eyelid motion \cite{liversedge2011oxford}, so we needed to be able to pose the eyelids according to the gaze vector.
 When preparing a mesh for facial animation, edge loops should flow along and around the natural contours of facial muscles.
-This leads to a more efficient (lower-resolution) geometric representation of the face, and more realistic animation as mesh deformation mathes that of actual muscles.
+This leads to a more efficient geometric representation of the face, and more realistic animation as mesh deformation matches that of actual muscles.
 
 % Maybe: \commentE{Reference some other options, e.g automatic methods in research}
 
 We therefore \emph{retopologized} the face geometry into a more optimal form using a commercial semi-automatic system \cite{ZRemesher}.
-As can be seen in \autoref{fig:process_retopo}, this way edge loops followed the \emph{Orbicularis Oculi} muscle, allowing for realistic eye-region deformations.
+% Erroll: changed just the sentence below to present tense. As the model still exists, perhaps the tense should be present? Not sure.
+As can be seen in \autoref{fig:process_retopo}, edge loops now follow the \emph{Orbicularis Oculi} muscle, allowing for realistic eye-region deformations.
 This retopologized low-poly mesh lacks the detail of the original scan (e.g. the crease above the eye), and has visible sharp edges.
 We therefore used it as the control mesh for a displaced subdivision surface \cite{lee2000displaced}, with displacement map computed from the scanned geometry.
-As can be seen in \autoref{fig:process_displaced_subdiv}, skin surface detail like wrinkles and creases is  restored.
+As can be seen in \autoref{fig:process_displaced_subdiv}, skin surface detail like wrinkles and creases is restored.
 Although they are two separate organs, there is normally no visible gap between eyeball and skin.
 However, as a consequence of removing the eyeball from the original scan, the retopologized mesh will not necessarily meet the geometry of our eyeball model (see \autoref{fig:process_retopo}).
 To compensate for this, the face mesh's eyelid vertices are displaced along their normals to their respective closest positions on the eyeball geometry (see \autoref{fig:process_displaced_subdiv}).
