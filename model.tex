@@ -1,10 +1,10 @@
 %!TEX root = syntheyes15.tex
 
+\input{figs/fig_model_suite.tex}
+
 \section{Our Dynamic Eye-Region Model}
 
 \todo{past tense}
-
-\input{figs/fig_model_suite.tex}
 
 In this section we first present our anatomically inspired computer graphics eyeball model, and then explain our novel procedure for preparing a collection of 3D head scans for dynamic photorealistic labelled training data generation.
 
@@ -96,12 +96,18 @@ This automatic operation prevents unwanted gaps between the models, even after c
 \subsection{Modelling Eyelid Motion}
 
 When someone looks up or down, their eyelids move accordingly \cite{liversedge2011oxford}.
-To simulate this we manually created separate blend shapes for upwards-pointing and downwards-pointing eyelids, and interpolate between them based on the global pitch of the eyeball model.
+To simulate this we created blend shapes for upwards-looking and downwards-looking eyelids, and interpolate between them based on the global pitch of the eyeball model.
 Manually defining blend shapes through vertex manipulation can be a difficult, repetitive, and time-consuming task. Fortunately, only two are required, and they are localized to the eye-region.
+As the tissue around the eye is compressed or stretched, skin details like wrinkles and folds are either attenuated or exaggerated (\autoref{fig:eyelids}).
+% As shown in \autoref{fig:eyelids}, downwards-looking eyelids appear smooth compared with the folds in an upwards-looking eyelid.
+We modeled this by using smoother color and displacement textures for downwards-looking eyelids, removing any wrinkles.
+The blend shape and texture modifications were carried out using photos of the same heads looking up and down as references.
+However, an alternative would be to purchase the appropriate corresponding head scans and match the blend shape to that geometry.
 
 \begin{figure}
     \includegraphics[width=\columnwidth]{eyelid_motion.png}
-    \caption{Eyelids are posed using blend shapes linked to the gaze vector. Note how we use wrinkle-maps to simulate the folding of the skin above and below the eye.}
+    \caption{Eyelids are posed using blend shapes linked to the gaze vector. Note how we simulate the folding of the skin above and below the eye.}
+    \label{fig:eyelids}
 \end{figure}
 
 \subsection{Modelling of Eyelashes}
