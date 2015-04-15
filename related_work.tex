@@ -2,9 +2,7 @@
 
 \section{Related work}
 
-\subsection{Synthetic data}
-
-\cite{swirski2014rendering} -- uses rendered videos of eyes to evaluate eye tracking algorithms.
+\subsection{Learning with synthetic data}
 
 \cite{stratou2011effect} -- relit 3d face scans to study the effect of illumination on automatic expression recognition.
 
@@ -12,19 +10,23 @@
 
 \cite{fanelli2011real} -- train head pose estimator on only synthetic depth data.
 
-\subsection{Deformable eye model}
+\subsection{Computer Generated Eyes}
 
 The eyeballs are complex organs comprised of multiple layers of tissue, each with different reflectance properties and levels of transparency.
-Fortunately, given that rendering realistic eyes is important for many areas in computer graphics, there is already a large body of previous work on modelling and rendering eyes \cite{ruhland2014look}.
+Fortunately, given that rendering realistic eyes is important for many areas in computer graphics (CG), there is already a large body of previous work on modelling and rendering eyes \cite{ruhland2014look}.
 
-\cite{alabort2014statistically} -- trained a detailed deformable eye region model on in-the-wild images.
+\cite{berard2014highquality} -- state of the art Disney approach
+
+% \cite{alabort2014statistically} -- trained a detailed deformable eye region model on in-the-wild images.
 
 \cite{priamikov14_openeyesim} -- 3D biomechanical model of the human extra-ocular eye muscles
 
-\subsection{Gaze estimation}
+\cite{swirski2014rendering} -- uses rendered videos of eyes to evaluate eye tracking algorithms.
 
-\cite{xiong2014gaze} -- regression with features of 3d pupil centers and eye-contours (the eyelids) for gaze estimation.  Use multiple cameras and IR lights.
+% \subsection{Gaze estimation}
 
-\cite{zhang15_cvpr} -- multimodal CNNs for appearance-based gaze estimation in the wild
+% \cite{xiong2014gaze} -- regression with features of 3d pupil centers and eye-contours (the eyelids) for gaze estimation.  Use multiple cameras and IR lights.
+
+% \cite{zhang15_cvpr} -- multimodal CNNs for appearance-based gaze estimation in the wild
 
 % eyediap
