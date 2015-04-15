@@ -31,12 +31,9 @@ In this section we first present our anatomically inspired computer graphics eye
 
 As shown in \autoref{fig:3d_eye_model}, our eye model consists of two parts.
 The outer part (red wireframe) approximates the eye's overall shape with two spheres ($r_1\!=\!12\textrm{mm}, r_2\!=\!8\textrm{mm}$ \cite{ruhland2014look}), the latter representing the corneal bulge.
-To avoid a discontinuous seam between spheres, the meshes were joined and then smoothed.
-\commentA{how joined and smoothed?}
-It is transparent, refractive ($n\!=\!1.376$), and partially reflective.
-\commentA{what is transparent?}
-The eye's bumpy surface variations are modelled using a displacement map generated with noise functions.
-\commentA{more details on displacement map and noise functions}
+This outer part is transparent, refractive ($n\!=\!1.376$), and partially reflective.
+% \commentA{what is transparent?}
+% \commentA{more details on displacement map and noise functions} [Done]
 The inner part (blue wireframe) is a flattened sphere with Lambertian material.
 The planar end represents the iris and pupil, and the rest represents the sclera -- the white of the eye.
 There is a $0.5\textrm{mm}$ gap between the outer and inner parts which accounts for the thickness of the cornea.
