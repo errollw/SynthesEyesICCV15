@@ -1,15 +1,23 @@
 %!TEX root = syntheyes15.tex
 
-\section{Rendering photo-realistic images}
+\section{Rendering Photo-Realistic Images}
+
+\commentA{past tense}
 
 % define each rendered image by c, g, L
-Once our eye-region model is prepared, we render it from a wide range of camera positions and lighting conditions.
+We then use our eye-region model to render a wide range of camera positions and lighting conditions.
+We first briefly describe how we use image-based lighting \cite{debevec2002image} to model a wide range of realistic lighting conditions, and then discuss the details of our rendering pipeline.
 
-We briefly describe how we use image-based lighting \cite{debevec2002image} to model a wide range of realistic lighting conditions, and finally discuss the details of our rendering setup.
-
-For a chosen eye-region model configuration, each rendered image is determined by parameters $(\mathbf{c}, \mathbf{g}, L)$: 3D camera position $\mathbf{c}$; 3D gaze vector $\mathbf{g}$; and lighting environment $L$. As shown in \autoref{fig:cam_pos}, $\mathbf{c}$ is chosen by iterating over spherical coordinates $(r, \theta, \phi)$, centered around the eyeball center. Images are rendered with an orthgraphic camera, as this simulates an eye region-of-interest being cropped from a wide-angle camera image, so we set $r\!=\!1$ for convenience. At each camera position $\mathbf{c}$, we render multiple images with different gaze vectors to simulate the eye looking in different directions. Examples with fixed $L$ are shown in \autoref{fig:cam_pos_example_renders}. Gaze vectors $\mathbf{g}$ are chosen by first pointing the eye directly at the camera (simulating eye-contact), and then modifying the eyeball's pitch ($\alpha$) and yaw ($\beta$) angles over a chosen range.
+For a chosen eye-region model configuration, each rendered image is determined by parameters $(\mathbf{c}, \mathbf{g}, L)$: 3D camera position $\mathbf{c}$; 3D gaze vector $\mathbf{g}$; and lighting environment $L$.
+As shown in \autoref{fig:cam_pos}, $\mathbf{c}$ were chosen by iterating over spherical coordinates $(r, \theta, \phi)$, centered around the eyeball center.
+Images were rendered with an orthgraphic camera, as this simulates an eye region-of-interest being cropped from a wide-angle camera image, so we set $r\!=\!1$ for convenience.
+At each camera position $\mathbf{c}$, we rendered multiple images with different gaze vectors to simulate the eye looking in different directions.
+Examples with fixed $L$ are shown in \autoref{fig:cam_pos_example_renders}.
+Gaze vectors $\mathbf{g}$ were chosen by first pointing the eye directly at the camera (simulating eye-contact), and then modifying the eyeball's pitch ($\alpha$) and yaw ($\beta$) angles over a chosen range.
 %
-A consequence of this approach is the possibility of rendering ``unhelpful'' images that either simulate impossible scenarios or are not useful for training. To avoid violating anatomical constraints, we only render images for valid eyeball rotations $|\alpha|\!\leq\!25^{\circ}$ and $|\beta|\!\leq\!35^{\circ}$ \cite{MIL-STD-1472G}. Before rendering, we also verify that the projected 2D pupil center in the image will be within the 2D polygon of the eyelid landmarks -- this prevents us rendering images where too little of the iris is visible.
+A consequence of this approach is the possibility of rendering ``unhelpful'' images that either simulate impossible scenarios or are not useful for training.
+To avoid violating anatomical constraints, we only rendered images for valid eyeball rotations $|\alpha|\!\leq\!25^{\circ}$ and $|\beta|\!\leq\!35^{\circ}$ \cite{MIL-STD-1472G}.
+Before rendering, we also verified that the projected 2D pupil center in the image was within the 2D polygon of the eyelid landmarks -- this prevented us from rendering images where too little of the iris was visible.
 
 \begin{figure}
     \centering
@@ -28,13 +36,14 @@ A consequence of this approach is the possibility of rendering ``unhelpful'' ima
     \label{fig:cam_pos}
 \end{figure}
 
-\subsection{Lighting our model}
+\subsection{Lighting the Model}
 
 One of the main challenges in eye tracking is illumination invariance -- a good system should be able to track gaze under a range of real-life lighting conditions.
-%
-We realistically illuminate our eye-model using \emph{image-based lighting}, a technique where high dynamic range (HDR) panoramic images are used to provide light in a scene \cite{debevec2002image}. This works by photographically capturing omni-directional light information and storing it in a texture, which is projected onto a sphere around the object. When a ray hits that texture during rendering, it takes that texture's pixel value as light intensity.
-%
-At render time we randomly choose one of four freely available HDR environment images to simulate a range of different lighting conditions (\autoref{fig:environment_maps}) \cite{AdaptiveSamplesHDR}. Each environment image is then randomly rotated to simulate a continuous range of head-pose within each environment.
+We realistically illuminate our eye-model using \emph{image-based lighting}, a technique where high dynamic range (HDR) panoramic images are used to provide light in a scene \cite{debevec2002image}.
+This works by photographically capturing omni-directional light information and storing it in a texture, which is projected onto a sphere around the object.
+When a ray hits that texture during rendering, it takes that texture's pixel value as light intensity.
+At render time we randomly chose one of four freely available HDR environment images to simulate a range of different lighting conditions (see \autoref{fig:environment_maps}) \cite{AdaptiveSamplesHDR}.
+Each environment image is then randomly rotated to simulate a continuous range of head-pose within each environment.
 
 \begin{figure}
 
@@ -59,6 +68,6 @@ At render time we randomly choose one of four freely available HDR environment i
     \label{fig:environment_maps}
 \end{figure}
 
-\subsection{Computational setup}
+\subsection{Computational Setup}
 
 We can rapidly generate diverse datasets much faster than manual collection and annotation.
