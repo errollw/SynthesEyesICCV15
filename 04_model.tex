@@ -21,13 +21,18 @@ In this section we first present our anatomically inspired computer graphics eye
 \begin{figure}
     \centering
     \begin{subfigure}[t]{0.33\columnwidth}
-        \includegraphics[width=\textwidth]{eye_model}
-        \caption{}
+        \stackinset{l}{0pt}{b}{0pt}{\small(a)}{
+            \includegraphics[width=\textwidth]{eye_model}
+        }
+        % \caption{}
         \label{fig:3d_eye_model}
     \end{subfigure}%
     \hfill
     \begin{subfigure}[t]{0.65\columnwidth}
-        \includegraphics[width=\textwidth]{eye_examples}
+        \setlength{\fboxsep}{2pt}
+        \stackinset{l}{0pt}{b}{-2pt}{\colorbox{white}{\small(b)}}{
+            \includegraphics[width=\textwidth]{eye_examples}
+        }
         \caption{}
     \end{subfigure}
     \caption{Our eye model includes the sclera, pupil, iris, and cornea (a) and exhibits realistic variation in both shape (pupillary dilation) and texture (iris color, scleral veins) (b).}
