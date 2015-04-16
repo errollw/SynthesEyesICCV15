@@ -4,7 +4,11 @@
 
 \section{Our Dynamic Eye-Region Model}
 
+\input{figs/fig_process.tex}
+
 \todo{past tense}
+\commentA{we have to explain what makes the model dynamic}
+\commentA{could be nice to show existing renderings and ours side by side, e.g. Leszeks and others (if any)}
 
 In this section we first present our anatomically inspired computer graphics eyeball model, and then explain our novel procedure for preparing a collection of 3D head scans for dynamic photorealistic labelled training data generation.
 
@@ -60,12 +64,10 @@ We matched the sclera tint to each separate face model but uniformably randomly 
 \subsection{3D Head Scan Acquisition}
 \label{sec:eye_region_geom_prep}
 
-\input{figs/fig_process.tex}
-
 For an eye-region rendering to be realistic, it must also feature realstic nearby face detail. While previous approaches used lifelike artist-created models, for example~\cite{swirski2014rendering}, we instead rely on high quality head scan data captured by a professional photogrammetry studio (10K diffuse color textures, 0.1mm resolution geometry) \cite{Ten24}.
 %\commentA{link or even better reference if available}
 Nowadays it is possible to cheaply purchase such head scans online\footnote{Ten24 3D Scan Store -- \url{http://www.3dscanstore.com/}} (from $\sim\!\$15$/scan), or use free or commercial photogrammetry software to generate facial geometry models in-house.
-A good set of trianing images should exhibit the types of appearance variability seen in real life, therefore our collection of head-models (\autoref{fig:model_suite}) covers both genders with a variety of ethnicities and ages.
+A good set of trianing images should exhibit the types of appearance variability seen in real life, therefore our collection of head-models (see \autoref{fig:model_suite}) covers both genders with a variety of ethnicities and ages.
 
 \subsection{Eye-Region Geometry Preparation}
 
@@ -98,7 +100,7 @@ This automatic operation prevents unwanted gaps between the models, even after c
 When someone looks up or down, their eyelids move accordingly \cite{liversedge2011oxford}.
 To simulate this we created blend shapes for upwards-looking and downwards-looking eyelids, and interpolate between them based on the global pitch of the eyeball model.
 Manually defining blend shapes through vertex manipulation can be a difficult, repetitive, and time-consuming task. Fortunately, only two are required, and they are localized to the eye-region.
-As the tissue around the eye is compressed or stretched, skin details like wrinkles and folds are either attenuated or exaggerated (\autoref{fig:eyelids}).
+As the tissue around the eye is compressed or stretched, skin details like wrinkles and folds are either attenuated or exaggerated (see \autoref{fig:eyelids}).
 % As shown in \autoref{fig:eyelids}, downwards-looking eyelids appear smooth compared with the folds in an upwards-looking eyelid.
 We modeled this by using smoother color and displacement textures for downwards-looking eyelids, removing any wrinkles.
 The blend shape and texture modifications were carried out using photos of the same heads looking up and down as references.
