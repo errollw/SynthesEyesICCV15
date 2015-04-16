@@ -20,6 +20,10 @@
 
 % for putting subcaption labels inside figure to save space
 \usepackage{stackengine}
+\setlength{\fboxsep}{2pt} 
+\newcommand{\inlinelabel}[2]{
+    \stackinset{l}{-2pt}{b}{-2pt}{\colorbox{white}{\small(#1)}}{#2}
+}
 
 % in-paragraph enumerate
 \usepackage{paralist}
