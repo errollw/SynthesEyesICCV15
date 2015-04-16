@@ -57,7 +57,7 @@ Temporary Items
 # these rules might exclude image files for figures etc.
 # *.ps
 # *.eps
-syntheyes15.pdf
+00_main.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
