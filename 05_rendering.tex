@@ -37,22 +37,6 @@ Before rendering, we also verified that the projected 2D pupil center in the ima
     \label{fig:cam_pos}
 \end{figure}
 
-% needs rewording
-In this section we first describe how we rendered our eye-region models, then we briefly describe how we use image-based lighting \cite{debevec2002image} to model a wide range of realistic lighting conditions, and then finally discuss the details of our rendering setup.
-
-% not sure if its worthwhile trying to formally parameterize the rendering model in the paper
-% might be simpler to just use words?
-For a chosen eye-region model configuration, each rendered image is determined by parameters $(\mathbf{c}, \mathbf{g}, L)$: 3D camera position $\mathbf{c}$; 3D gaze vector $\mathbf{g}$; and lighting environment $L$.
-As shown in \autoref{fig:cam_pos}, camera positions $\mathbf{c}$ were chosen by iterating over spherical coordinates $(r, \theta, \phi)$, centered around the eyeball center.
-We used an orthographic camera, as this simulates an eye region-of-interest being cropped from a wide-angle camera image, so we set $r\!=\!1$ for convenience.
-At each camera position $\mathbf{c}$, we rendered multiple images with different gaze vectors to simulate the eye looking in different directions.
-Examples with fixed $L$ are shown in \autoref{fig:cam_pos_example_renders}.
-Gaze vectors $\mathbf{g}$ were chosen by first pointing the eye directly at the camera (simulating eye-contact), and then modifying the eyeball's pitch ($\alpha$) and yaw ($\beta$) angles over a chosen range.
-%
-A consequence of this approach is the possibility of rendering ``unhelpful'' images that either simulate impossible scenarios or are not useful for training.
-To avoid violating anatomical constraints, we only rendered images for valid eyeball rotations $|\alpha|\!\leq\!25^{\circ}$ and $|\beta|\!\leq\!35^{\circ}$ \cite{MIL-STD-1472G}.
-Before rendering, we also verified that the projected 2D pupil center in the image was within the 2D polygon of the eyelid landmarks -- this prevented us from rendering images where too little of the iris was visible.
-
 \subsection{Lighting the Model}
 
 One of the main challenges in computer vision is illumination invariance -- a good system should work under a range of real-life lighting conditions, even though appearance varies dramatically.
@@ -60,7 +44,8 @@ We realistically illuminate our eye-model using \emph{image-based lighting}, a t
 This works by photographically capturing omni-directional light information, storing it in a texture, and then projecting it onto a sphere around the object.
 When a ray hits that texture during rendering, it takes that texture's pixel value as light intensity.
 At render time we randomly chose one of four freely available HDR environment images to simulate a range of different lighting conditions (see \autoref{fig:environment_maps}) \cite{AdaptiveSamplesHDR}.
-Each environment image is then randomly rotated to simulate a continuous range of head-pose within each environment. As shown in \autoref{fig:env_map_imgs_examples}, we can generate a wide range of different appearances with only a single HDR environment.
+The environment is then randomly rotated to simulate a continuous range of head-pose, and randomly scaled in intensity to simulate changes in ambient light.
+As shown in \autoref{fig:env_map_imgs_examples}, a combination of hard shadows and soft light can generate a range of appearances from only a single HDR environment.
 
 \begin{figure}
 
@@ -86,12 +71,11 @@ Each environment image is then randomly rotated to simulate a continuous range o
     \label{fig:environment_maps}
 \end{figure}
 
-\subsection{Computational Setup}
+\subsection{Rendering details}
 
-% this whole section will be reworded
-
-We can rapidly generate diverse datasets much faster than manual collection and annotation.
-
-We use Blender's inbuilt Cycles path-tracing engine for rendering \commentE{CITE}. This physically correct Monte Carlo method integrates over light rays that hit a surface, and stochastically calculates how much of it reaches a pixel in the camera. Though it requires a large number of rays, a GPU solution ...
-
-When rendering a $120\!\times\!80$ eye-region image, it took 5 seconds on average using a commodity GPU (Nvidia GTX660). A dataset for a single eye-region model can be rendered in several hours, so it can take several days to render the entire dataset of ten models. This is much faster than the months taken for traditional data collection approaches \cite{zhang15_cvpr}.
+We use Blender's inbuilt Cycles path-tracing engine for rendering \commentE{CITE}.
+This Monte Carlo method traces the paths of many light rays per pixel, scattering light stochastically off physically-based materials in the scene until they reach illuminants.
+A GPU implementation is available for processing large numbers of rays simultaneously ($150/\textrm{px}$) to achieve noise-free and photorealistic images.
+Each $120\!\times\!80\textrm{px}$ eye-region image rendering took $5.26\textrm{s}$ on average across all head models using a commodity GPU (Nvidia GTX660).
+Our generic head-pose and gaze-direction dataset of 11,000 images can be rendered in under a day on a single machine, though in practice we rendered using multiple machines simultaneously.
+As a result we can quickly generate a large, representitive, high-quality dataset with clean labels in a fraction of the time taken by traditional data collection procedures \cite{zhang15_cvpr}.

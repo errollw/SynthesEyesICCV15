@@ -19,29 +19,34 @@ In this section we first present our anatomically inspired computer graphics eye
 \label{subsec:eyeball_model}
 
 \begin{figure}
-    \centering
-    \inlinelabel{a}{\includegraphics[width=0.32\columnwidth]{eye_model}}
+    \captionsetup[subfigure]{labelformat=empty} % stop subcaption writing "(a)""
+    \captionsetup{subrefformat=parens} % add parentheses to \subref
+    \begin{subfigure}[t]{0.33\columnwidth}
+        \inlinelabel{a}{\includegraphics[width=\textwidth]{eye_model}}
+        \caption{}\label{fig:eye_model_parts}
+    \end{subfigure}
     \hfill
-    \inlinelabel{b}{\includegraphics[width=0.64\columnwidth]{eye_examples}}
-    \par\vspace{-2pt}
-    \caption{Our eye model includes the sclera, pupil, iris, and cornea (a) and exhibits realistic variation in both shape (pupillary dilation) and texture (iris color, scleral veins) (b).}
+    \begin{subfigure}[t]{0.65\columnwidth}
+        \inlinelabel{b}{\includegraphics[width=\textwidth]{eye_examples}}
+        \caption{}\label{fig:eye_model_images}
+    \end{subfigure}
+    \par\vspace{-28pt}
+    \caption{Our eye model includes the sclera, pupil, iris, and cornea \subref{fig:eye_model_parts} and can exhibit realistic variation in both shape (pupillary dilation) and texture (iris color, scleral veins) \subref{fig:eye_model_images}.}
     \label{fig:eye_model}
 \end{figure}
 
 % It is important to accurately model reflections and refractions in the eye as they can lead to specular highlights -- these common eye-region image features are often used by eye-tracking algorithms, or can confound approaches that are not robust.
 
-As shown in \autoref{fig:3d_eye_model}, our eye model consists of two parts.
+As shown in \autoref{fig:eye_model_parts}, our eye model consists of two parts.
 The outer part (red wireframe) approximates the eye's overall shape with two spheres ($r_1\!=\!12\textrm{mm}, r_2\!=\!8\textrm{mm}$ \cite{ruhland2014look}), the latter representing the corneal bulge.
 To avoid a discontinuous seam between spheres, their meshes were joined, and the vertices along the seam where smoothed to minimize differences in face-angle.
 % \commentA{how joined and smoothed?} Erroll - Maybe needs rewording. Perhaps i'll just put a citation for the smoothing operation? I don't particularly want to describe it
 This outer part is transparent, refractive ($n\!=\!1.376$), and partially reflective.
-% \commentA{what is transparent?}
 The sclera's bumpy surface variations are modelled with smoothed solid noise functions, and applied using a \emph{displacement map} -- a 2D scalar function that shifts a surface in the direction of its normal \cite{lee2000displaced}.
-% \commentA{more details on displacement map and noise functions} [Done]
 The inner part (blue wireframe) is a flattened sphere with Lambertian material.
 The planar end represents the iris and pupil, and the rest represents the sclera -- the white of the eye.
 There is a $0.5\textrm{mm}$ gap between the outer and inner parts which accounts for the thickness of the cornea.
-\commentE{compare with recent Disney work}
+% \commentE{compare with recent Disney work}
 
 Eyes exhibit variation in both shape (pupillary dilation) and texture (iris color and scleral veins).
 To model shape variation we use \emph{blend shapes} -- an animation technique where several different poses are created for the same topological mesh, and then interpolated between\cite{orvalho2012facial}. 
@@ -61,7 +66,8 @@ We matched the sclera tint to each separate face model but uniformably randomly 
 \subsection{3D Head Scan Acquisition}
 \label{sec:eye_region_geom_prep}
 
-For an eye-region rendering to be realistic, it must also feature realstic nearby face detail. While previous approaches used lifelike artist-created models, for example~\cite{swirski2014rendering}, we instead rely on high quality head scan data captured by a professional photogrammetry studio (10K diffuse color textures, 0.1mm resolution geometry) \cite{Ten24}.
+For an eye-region rendering to be realistic, it must also feature realstic nearby face detail.
+While previous approaches used lifelike artist-created models, for example~\cite{swirski2014rendering}, we instead rely on high quality head scan data captured by a professional photogrammetry studio (10K diffuse color textures, 0.1mm resolution geometry) \cite{Ten24}.
 %\commentA{link or even better reference if available}
 Nowadays it is possible to cheaply purchase such head scans online\footnote{Ten24 3D Scan Store -- \url{http://www.3dscanstore.com/}} (from $\sim\!\$15$/scan), or use free or commercial photogrammetry software to generate facial geometry models in-house.
 A good set of trianing images should exhibit the types of appearance variability seen in real life, therefore our collection of head-models (see \autoref{fig:model_suite}) covers both genders with a variety of ethnicities and ages.
@@ -91,6 +97,8 @@ Although they are two separate organs, there is normally no visible gap between 
 However, as a consequence of removing the eyeball from the original scan, the retopologized mesh will not necessarily meet the geometry of our eyeball model (see \autoref{fig:process_retopo}).
 To compensate for this, the face mesh's eyelid vertices are displaced along their normals to their respective closest positions on the eyeball geometry (see \autoref{fig:process_displaced_subdiv}).
 This automatic operation prevents unwanted gaps between the models, even after changes in pose \cite{Shrinkwrap}.
+The face geometry is then assigned a mixture of physically based materials, including subsurface scattering to approximate the penetrative light transfer properties of skin, and a glossy component to simulate an oily surface layer.
+
 
 \subsection{Modelling Eyelid Motion}
 
@@ -99,8 +107,8 @@ To simulate this we created blend shapes for upwards-looking and downwards-looki
 Manually defining blend shapes through vertex manipulation can be a difficult, repetitive, and time-consuming task. Fortunately, only two are required, and they are localized to the eye-region.
 As the tissue around the eye is compressed or stretched, skin details like wrinkles and folds are either attenuated or exaggerated (see \autoref{fig:eyelids}).
 % As shown in \autoref{fig:eyelids}, downwards-looking eyelids appear smooth compared with the folds in an upwards-looking eyelid.
-We modeled this by using smoother color and displacement textures for downwards-looking eyelids, removing any wrinkles.
-The blend shape and texture modifications were carried out using photos of the same heads looking up and down as references.
+We modeled this by using smoothed color and displacement textures for downwards-looking eyelids, removing any wrinkles.
+These blend shape and texture modifications were carried out using photos of the same heads looking up and down as references.
 However, an alternative would be to purchase the appropriate corresponding head scans and match the blend shape to that geometry.
 
 \begin{figure}
