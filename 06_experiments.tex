@@ -15,14 +15,26 @@ We evaluated the usefulness of our synthetic data generation method on two sampl
 \end{itemize}
 
 \begin{figure}
-    
-    \includegraphics[width=\columnwidth]{CLNF_MPII_experiment}
+    \centering
+    \begin{subfigure}[t]{0.48\columnwidth}
+        \includegraphics[width=\textwidth]{CLNF_MPII_experiment_lids}
+        \caption{Eyelids results}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}[t]{0.48\columnwidth}
+        \includegraphics[width=\textwidth]{CLNF_MPII_experiment_iris}
+        \caption{Iris results}
+    \end{subfigure}
     \caption{Results of annotated MPII experiment}
-    \label{fig:eye_model}
+    \label{fig:clnf_results}
 \end{figure}
 
+
 % Erroll: note, we will label more MPIIGaze images for smoother ROC-style curves
-While the LFW images represent challenging conditions, they are not representitive of webcam-style images and do not feature labels for iris landmarks. We therefore annotated eyelids and iris boundaries onto a subset (100 images) of MPIIGaze, a dataset collected during natural everday laptop use over several months \cite{zhang15_cvpr}. We compared our eye-region CLNF with EyeTab \cite{wood2014eyetab}, a state-of-the-art shape-based approach that robustly fits ellipses to the limbus using image-aware RANSAC \cite{swirski2012robust}. We used the author's implementation, with their suggested modifications to improve performance: improved eyelid localization with a state-of-the-art facial landmark detector \cite{baltrusaitis2013constrained}. As a baseline, we used the mean position of the 28 eye-landmarks following initialization.
+While the in-the-wild images represent challenging conditions for eyelid registration, they are not representitive of typical webcam-style images and do not feature labels for the iris. We therefore annotated detailed eyelid and iris boundaries onto a subset of MPIIGaze ($n\!=\!100$), a dataset collected during natural everday laptop use over several months \cite{zhang15_cvpr}. We compared our eye-region CLNF with EyeTab \cite{wood2014eyetab}, a state-of-the-art shape-based approach that robustly fits ellipses to the limbus using image-aware RANSAC \cite{swirski2012robust}. We used the author's implementation, with their suggested modifications to improve performance: improved eyelid localization with a state-of-the-art facial landmark detector \cite{baltrusaitis2013constrained}. As a baseline, we used the mean position of all 28 eye-landmarks following model initialization. Eyelid errors were calculated as mean distances from the 12 eye corner and eyelid landmarks to ground truth eyelid boudnary. Iris errors were calculated by least-squares fitting an ellipse to the 8 iris landmarks, and then calculating mean distance between estimated and ground truth iris ellipses. The iris error distances were only calculated between the boundaries of the ground truth eyelids.
+
+
+As shown in \autoref{fig:clnf_results}, our approach performs comparably with state-of-the-art specialist algorithms for fitting ellipses to irises.
 
 % show that we only need data from few(er) people and show competitive performance
 % Maybe) Plot landmark accuracy on LFW against number of training participants. Show that even with just a few participants (e.g. 4) we get good results for eyelid positions compared to state-of-the-art face trackers.
