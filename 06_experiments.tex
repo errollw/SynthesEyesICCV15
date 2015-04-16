@@ -6,7 +6,7 @@ We evaluated the usefulness of our synthetic data generation method on two sampl
 
 \commentA{briefly say something about significance/importance of both problems, more in corresponding subsections}
 
-\subsection{Eye Registration}
+\subsection{Eye-Region Registration}
 
 \commentA{results look pretty good already, I suggest put them in asap so that we can completely draft this subsection. If results improve we can always update later but this way we have something to produce text and refine the story}
 
@@ -16,23 +16,34 @@ We evaluated the usefulness of our synthetic data generation method on two sampl
 
 \begin{figure}
     \centering
-    \begin{subfigure}[t]{0.48\columnwidth}
-        \includegraphics[width=\textwidth]{CLNF_MPII_experiment_lids}
-        \caption{Eyelids results}
-    \end{subfigure}%
-    \hfill
-    \begin{subfigure}[t]{0.48\columnwidth}
-        \includegraphics[width=\textwidth]{CLNF_MPII_experiment_iris}
-        \caption{Iris results}
-    \end{subfigure}
+    \includegraphics[width=\columnwidth]{CLNF_MPII_experiment}
     \caption{Results of annotated MPII experiment}
+    \label{fig:eye_model}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_7.pdf}\hfill
+    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_32.pdf}\hfill
+    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_19.pdf}\hfill
+    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_92.pdf}
+    \par \vspace{0.1em}
+    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_14.pdf}\hfill
+    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_24.pdf}\hfill
+    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_45.pdf}\hfill
+    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_75.pdf}
+    \par \vspace{0.1em}
+    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_84.pdf}\hfill
+    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_89.pdf}\hfill
+    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_26.pdf}\hfill
+    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_81.pdf}
+    %
+    \caption{The top two rows illustrate successful eye-region model registration on MPIIGaze. The bottom row illustrates failure cases, being the two worst fit eyelids and irises respectively.}
     \label{fig:clnf_results}
 \end{figure}
 
-
 % Erroll: note, we will label more MPIIGaze images for smoother ROC-style curves
-While the in-the-wild images represent challenging conditions for eyelid registration, they are not representitive of typical webcam-style images and do not feature labels for the iris. We therefore annotated detailed eyelid and iris boundaries onto a subset of MPIIGaze ($n\!=\!100$), a dataset collected during natural everday laptop use over several months \cite{zhang15_cvpr}. We compared our eye-region CLNF with EyeTab \cite{wood2014eyetab}, a state-of-the-art shape-based approach that robustly fits ellipses to the limbus using image-aware RANSAC \cite{swirski2012robust}. We used the author's implementation, with their suggested modifications to improve performance: improved eyelid localization with a state-of-the-art facial landmark detector \cite{baltrusaitis2013constrained}. As a baseline, we used the mean position of all 28 eye-landmarks following model initialization. Eyelid errors were calculated as mean distances from the 12 eye corner and eyelid landmarks to ground truth eyelid boudnary. Iris errors were calculated by least-squares fitting an ellipse to the 8 iris landmarks, and then calculating mean distance between estimated and ground truth iris ellipses. The iris error distances were only calculated between the boundaries of the ground truth eyelids.
-
+While the in-the-wild images represent challenging conditions for eyelid registration, they are not representitive of typical webcam-style images and do not feature labels for the iris. We therefore annotated detailed eyelid and iris boundaries onto a subset of MPIIGaze ($n\!=\!100$), a dataset collected during natural everday laptop use over several months \cite{zhang15_cvpr}. We compared our eye-region CLNF with EyeTab \cite{wood2014eyetab}, a state-of-the-art shape-based approach that robustly fits ellipses to the limbus using image-aware RANSAC \cite{swirski2012robust}. We used the author's implementation, with their suggested modifications to improve performance: improved eyelid localization with a state-of-the-art facial landmark detector \cite{baltrusaitis2013constrained}. As a baseline, we used the mean position of all 28 eye-landmarks following model initialization. Eyelid errors were calculated as RMS distances from the 12 eye corner and eyelid landmarks to ground truth eyelid boudnary. Iris errors were calculated by least-squares fitting an ellipse to the 8 iris landmarks, and then calculating RMS distance between estimated and ground truth iris ellipses. The iris error distances were only calculated between the boundaries of the ground truth eyelids.
 
 As shown in \autoref{fig:clnf_results}, our approach performs comparably with state-of-the-art specialist algorithms for fitting ellipses to irises.
 
