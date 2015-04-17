@@ -45,10 +45,10 @@ We evaluated the usefulness of our synthetic data generation method on two sampl
 % Erroll: note, we will label more MPIIGaze images for smoother ROC-style curves
 While the in-the-wild images represent challenging conditions for eyelid registration, they are not representitive of typical webcam-style images and do not feature labels for the iris.
 We therefore annotated detailed eyelid and iris boundaries onto a subset of MPIIGaze ($n\!=\!100$), a dataset collected during natural everday laptop use over several months \cite{zhang15_cvpr}.
-Pupil accuracy was not evaluated as we found it impossible to discern in in most images.
+Pupil accuracy was not evaluated as we found it was impossible to discern in in most images.
 We compared our eye-region CLNF with EyeTab \cite{wood2014eyetab}, a state-of-the-art shape-based approach that robustly fits ellipses to the limbus using image-aware RANSAC \cite{swirski2012robust}.
 We used the author's implementation, with their suggested modifications to improve performance: improved eyelid localization with a state-of-the-art facial landmark detector \cite{baltrusaitis2013constrained}.
-As a baseline, we used the mean position of all 28 eye-landmarks following model initialization.
+As a baseline, we used the mean position of all eye-region landmarks following model initialization.
 Eyelid errors were calculated as RMS distances from the 12 eye corner and eyelid landmarks to ground truth eyelid boudnary.
 Iris errors were calculated by least-squares fitting an ellipse to the 8 iris landmarks, and then calculating RMS distance between estimated and ground truth iris ellipses.
 The iris error distances were only calculated between the boundaries of the ground truth eyelids.
