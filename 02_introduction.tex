@@ -21,9 +21,11 @@ To address these problems, researchers have employed \emph{learning-by-synthesis
 The advantages of this approach are that both data collection and annotation require little human labour and image synthesis can be geared to specific application scenarios.
 Perhaps the best known example is by \citet{shotton2013real}, who synthesized a large and varied depth-image dataset for training a real-time pose-estimator.
 
-One part of the human body largely neglected in the context of image synthesis so far is the face and particularly the eyes.
-This is despite the fact that the eyes are important for a range of applications in different areas including gaze-based human-computer interaction, \todo{add more and refs}.
+Eyes and their movements are important for a range of applications including gaze-based human-computer interaction, visual behaviour monitoring, and deception analysis. \todo{cites} Recent work by \citet{sugano2014learning} demonstrated the benefits of learning-by-synthesis for gaze estimation, but employed only fundemental computer graphics techniques for synthesis.
+% One part of the human body largely neglected in the context of image synthesis so far is the face and particularly the eyes.
+% This is despite the fact that the eyes are important for a range of applications in different areas including gaze-based human-computer interaction, \todo{add more and refs}.
 % probably don't want to stress the number of possible deformations, we only model natural eyelid movement, not eye-scrunching etc.
+% maybe split up the sentence below
 The eye-region is particularly difficult to model accurately given the dynamic shape changes it undergoes with facial motion and eyeball rotation, the complex material structure of the eyeball itself, and the significant variation in facial shape and texture across different people.
 
 \todo{final sentence on limitations of existing models in this area}
