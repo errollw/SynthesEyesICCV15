@@ -10,16 +10,22 @@ We evaluated the usefulness of our synthetic data generation method on two sampl
 
 \subsection{Eye-shape Registration}
 
+% Erroll to Tadas: need to make sure these facts are straight...
+We performed an experiment to see how our eye-CLNF generalises on unseen and unconstrained images from the 300 Faces In-the-Wild (300-W) \cite{sagonas2013300} datasets.
+We used a generic \dataset dataset for training with 11,382 images rendered with $40^{\circ}$ head pose variation and $90^{\circ}$ gaze variation.
+The 1660 test images feature 6 eye-region landmarks from the Multi-PIE \cite{gross2010multi} mark-up corresponding to the eyelid boundary. Errors were recorded as the RMS point-to-boundary distance from tracked eyelid landmarks to ground truth eyelid boundary, and were normalized by inter-ocular distance.
+To initialize model fitting we first used a tree-based face detector \todo{cite} followed by the face-CLNF \cite{baltrusaitis2013constrained}. 
+
+The results of the experiment can be seen in \autoref{fig:clnf_results_wild}.
+
 \begin{figure}
     \centering
     \includegraphics[width=0.7\columnwidth]{figs/CLNF_300W_experiment.pdf}
     \caption{Results of 300-W experiment}
-    \label{fig:clnf_results}
+    \label{fig:clnf_results_wild}
 \end{figure}
 
 \input{figs/fig_example_fits_wild.tex}
-
-We evaluated our eye-CLNF model on the 300 Faces In-the-Wild (300-W) datasets \cite{sagonas2013300}. The test images feature 6 eye-region landmarks from the Multi-PIE \cite{gross2010multi} mark-up corresponding to the eyelid boundary. Accuracy was calculated as normalized RMS distance from estimated landmark position to ...
 
 \begin{itemize}
     \item Evaluate eyelid landmark accuracy on LFW and M-PIE data, compare against several state-of-the-art CLM methods.
@@ -29,7 +35,7 @@ We evaluated our eye-CLNF model on the 300 Faces In-the-Wild (300-W) datasets \c
     \centering
     \includegraphics[width=\columnwidth]{CLNF_MPII_experiment}
     \caption{Results of annotated MPII experiment}
-    \label{fig:clnf_results}
+    \label{fig:clnf_results_MPII}
 \end{figure}
 
 \input{figs/fig_example_fits_MPII.tex}
