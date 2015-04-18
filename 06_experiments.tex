@@ -8,18 +8,18 @@ We evaluated the usefulness of our synthetic data generation method on two sampl
 
 \commentA{briefly say something about significance/importance of both problems, more in corresponding subsections}
 
-\subsection{Eye-Region Registration}
-
-\input{figs/fig_example_fits_wild.tex}
-
-\commentA{results look pretty good already, I suggest put them in asap so that we can completely draft this subsection. If results improve we can always update later but this way we have something to produce text and refine the story}
+\subsection{Eye-shape Registration}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.6\columnwidth]{figs/CLNF_300W_experiment.pdf}
+    \includegraphics[width=0.7\columnwidth]{figs/CLNF_300W_experiment.pdf}
     \caption{Results of 300-W experiment}
     \label{fig:clnf_results}
 \end{figure}
+
+\input{figs/fig_example_fits_wild.tex}
+
+We evaluated our eye-CLNF model on the 300 Faces In-the-Wild (300-W) datasets \cite{sagonas2013300}. The test images feature 6 eye-region landmarks from the Multi-PIE \cite{gross2010multi} mark-up corresponding to the eyelid boundary. Accuracy was calculated as normalized RMS distance from estimated landmark position to ...
 
 \begin{itemize}
     \item Evaluate eyelid landmark accuracy on LFW and M-PIE data, compare against several state-of-the-art CLM methods.
@@ -34,14 +34,14 @@ We evaluated the usefulness of our synthetic data generation method on two sampl
 
 \input{figs/fig_example_fits_MPII.tex}
 
-While the in-the-wild images represent challenging conditions for eyelid registration, they are not representitive of typical webcam-style images and do not feature labels for the iris.
-We therefore annotated sub-pixel eyelid and iris boundaries onto a subset of MPIIGaze ($n\!=\!188$), a dataset collected during natural everday laptop use over several months \cite{zhang15_cvpr}.
-Pupil accuracy was not evaluated as we found it was impossible to discern in in most images.
+While the 300-W images represent challenging conditions for eyelid registration, they are not representitive of typical webcam-style images and do not feature iris labels.
+We therefore annotated sub-pixel eyelid and iris boundaries onto a subset of MPIIGaze ($n\!=\!188$), a dataset collected during everday laptop use over several months \cite{zhang15_cvpr}.
+Pupil accuracy was not evaluated as it was impossible to discern in in most images.
 We compared our eye-CLNF with EyeTab \cite{wood2014eyetab}, a state-of-the-art shape-based approach that robustly fits ellipses to the limbus using image-aware RANSAC \cite{swirski2012robust}.
-We used the author's implementation, with their suggested modifications to improve performance: improved eyelid localization with a state-of-the-art CLNF facial landmark detector \cite{baltrusaitis2013constrained}.
-As a baseline, we used the mean position of all eye-region landmarks following model initialization.
-Eyelid errors were calculated as RMS distances from the eye corner and eyelid landmarks to ground truth eyelid boudnary.
-Iris errors were calculated by first least-squares fitting an ellipse to the tracked iris landmarks, discretizing it at a high resolution, removing points outside ground truth and tracked eyelid boundaries, and then calculating RMS distances to the ground truth iris ellipse.
+We used the author's implementation, with their suggested modifications: improved eyelid localization with a CLNF facial landmark detector \cite{baltrusaitis2013constrained}.
+As a baseline, we used the mean position of all eye-landmarks following model initialization.
+Eyelid errors were calculated as RMS distances from eyelid landmarks to the ground truth eyelid boudnary.
+Iris errors were calculated by first least-squares fitting an ellipse to the tracked iris landmarks, discretizing it, removing points outside ground truth and tracked eyelid boundaries, and then measuring RMS distances to the ground truth iris.
 This avoided calculating errors for parts of the iris which were occluded by the eyelid.
 Errors were normalized by the eye-width, and are reported using average eye-width ($44.4\!\pm\!8.85\textrm{px}$) as reference.
 
