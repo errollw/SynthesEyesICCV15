@@ -2,13 +2,24 @@
 
 \section{Experiments}
 
+% \input{figs/fig_example_fits_wild.tex}
+
 We evaluated the usefulness of our synthetic data generation method on two sample problems, eye registration and gaze estimation.
 
 \commentA{briefly say something about significance/importance of both problems, more in corresponding subsections}
 
 \subsection{Eye-Region Registration}
 
+\input{figs/fig_example_fits_wild.tex}
+
 \commentA{results look pretty good already, I suggest put them in asap so that we can completely draft this subsection. If results improve we can always update later but this way we have something to produce text and refine the story}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\columnwidth]{figs/CLNF_300W_experiment.pdf}
+    \caption{Results of 300-W experiment}
+    \label{fig:clnf_results}
+\end{figure}
 
 \begin{itemize}
     \item Evaluate eyelid landmark accuracy on LFW and M-PIE data, compare against several state-of-the-art CLM methods.
@@ -21,32 +32,13 @@ We evaluated the usefulness of our synthetic data generation method on two sampl
     \label{fig:clnf_results}
 \end{figure}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_7.pdf}\hfill
-    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_32.pdf}\hfill
-    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_19.pdf}\hfill
-    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_92.pdf}
-    \par \vspace{0.1em}
-    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_14.pdf}\hfill
-    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_24.pdf}\hfill
-    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_45.pdf}\hfill
-    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_75.pdf}
-    \par \vspace{0.1em}
-    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_4.pdf}\hfill
-    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_26.pdf}\hfill
-    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_134.pdf}\hfill
-    \includegraphics[width=0.244\columnwidth]{figs/ldmks_examples/idx_83.pdf}
-    %
-    \caption{The top two rows illustrate successful eye-region model registration on MPIIGaze. The bottom row illustrates failure cases.}
-    \label{fig:clnf_examples}
-\end{figure}
+\input{figs/fig_example_fits_MPII.tex}
 
 While the in-the-wild images represent challenging conditions for eyelid registration, they are not representitive of typical webcam-style images and do not feature labels for the iris.
 We therefore annotated sub-pixel eyelid and iris boundaries onto a subset of MPIIGaze ($n\!=\!188$), a dataset collected during natural everday laptop use over several months \cite{zhang15_cvpr}.
 Pupil accuracy was not evaluated as we found it was impossible to discern in in most images.
-We compared our eye-region CLNF with EyeTab \cite{wood2014eyetab}, a state-of-the-art shape-based approach that robustly fits ellipses to the limbus using image-aware RANSAC \cite{swirski2012robust}.
-We used the author's implementation, with their suggested modifications to improve performance: improved eyelid localization with a state-of-the-art facial landmark detector \cite{baltrusaitis2013constrained}.
+We compared our eye-CLNF with EyeTab \cite{wood2014eyetab}, a state-of-the-art shape-based approach that robustly fits ellipses to the limbus using image-aware RANSAC \cite{swirski2012robust}.
+We used the author's implementation, with their suggested modifications to improve performance: improved eyelid localization with a state-of-the-art CLNF facial landmark detector \cite{baltrusaitis2013constrained}.
 As a baseline, we used the mean position of all eye-region landmarks following model initialization.
 Eyelid errors were calculated as RMS distances from the eye corner and eyelid landmarks to ground truth eyelid boudnary.
 Iris errors were calculated by first least-squares fitting an ellipse to the tracked iris landmarks, discretizing it at a high resolution, removing points outside ground truth and tracked eyelid boundaries, and then calculating RMS distances to the ground truth iris ellipse.
