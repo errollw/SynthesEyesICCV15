@@ -4,18 +4,23 @@
 
 \section{Our Dynamic Eye-Region Model}
 
-We developed a dynamic eye-region model which can be randomly posed to generate fully labeled training images. 
-It features a realistic eyeball and face, and can exhibit variations encountered in the real world.
-For a set of training images to be useful, it should be large, representitive of real-world variety, and cleanly labelled.
-\commentA{I think it would be good to first describe in 1-2 paragraphs what the particular challenges of modelling eye shape, dynamics etc. are. This gives better context for the method description that follows and hopefully also underlines that this is a non-trivial task and the work therefore a significant step forward.}
-
 \input{figs/fig_process.tex}
 
-\todo{past tense}
-\commentA{we have to explain what makes the model dynamic}
-\commentA{could be nice to show existing renderings and ours side by side, e.g. Leszeks and others (if any)}
+We developed a realistic dynamic eye-region model which can be randomly posed to generate fully labeled training images.
+% For a set of training images to be useful, it should be large, representitive of real-world variety, and cleanly labelled.
+For training data to be useful, it should be representitive of real-world variety.
+Our goal therefore was to model the continuous changes in appearance that the face and eyes undergo following eye movement, so they are accurately represented in close-up synthetic eye images.
+This is more challenging than simply rendering a collection of static models, as dynamic geometry must be correctly topologized and rigged to be able to deform continuously.
+% this sentence is a bit clunky
+Appearance-wise, the eye-region is one of the most complex areas of the whole body. The eyelids, upper-cheek, and eye-ball are all independently mobile, and feature a range of reflectance properties and small-scale details.
+%
+In this section we first present our anatomically inspired computer graphics eyeball model, and then explain our procedure for converting a collection of static 3D head scans into dynamic eye-region models that can adopt a wide range of realistic poses, and are suitable for labelled data generation.
+%\commentA{I think it would be good to first describe in 1-2 paragraphs what the particular challenges of modelling eye shape, dynamics etc. are. This gives better context for the method description that follows and hopefully also underlines that this is a non-trivial task and the work therefore a significant step forward.}
 
-In this section we first present our anatomically inspired computer graphics eyeball model, and then explain our novel procedure for preparing a collection of 3D head scans for dynamic photorealistic labelled training data generation.
+%\todo{past tense}
+%\commentA{we have to explain what makes the model dynamic}
+%\commentA{could be nice to show existing renderings and ours side by side, e.g. Leszeks and others (if any)}
+
 
 \subsection{Simplified Eyeball Model}
 \label{subsec:eyeball_model}
