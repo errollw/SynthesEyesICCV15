@@ -36,9 +36,9 @@ Examples with fixed $L$ are shown in \autoref{fig:cam_pos_example_renders}.
 Gaze vectors $\mathbf{g}$ were chosen by first pointing the eye directly at the camera (simulating eye-contact), and then modifying the eyeball's pitch ($\alpha$) and yaw ($\beta$) angles over a chosen range.
 For our generic \dataset dataset, we rendered images with up to $45^{\circ}$ horizontal and vertical deviation from eye-contact, in increments of $10^{\circ}$.
 %
-A consequence of this approach is the possibility of rendering ``unhelpful'' images that either simulate impossible scenarios or are not useful for training.
+As we posed the model in this way, there was the possibility of rendering ``unhelpful'' images that either simulate impossible scenarios or are not useful for training.
 To avoid violating anatomical constraints, we only rendered images for valid eyeball rotations $|\alpha|\!\leq\!25^{\circ}$ and $|\beta|\!\leq\!35^{\circ}$ \cite{MIL-STD-1472G}.
-Before rendering, we also verified that the projected 2D pupil center in the image was within the 2D polygon of the eyelid landmarks -- this prevented us from rendering images where too little of the iris was visible.
+Before rendering, we also verified that the projected 2D pupil center in the image was within the 2D boundary of the eyelid landmarks -- this prevented us from rendering images where too little of the iris was visible.
 
 \subsection{Creating realistic illumination}
 
