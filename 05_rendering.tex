@@ -76,7 +76,7 @@ This simple and flexible approach creates varaibility using measured light level
 
 \subsection{Rendering engine}
 
-We use Blender's inbuilt Cycles path-tracing engine for rendering \commentE{CITE}.
+We use Blender's inbuilt Cycles path-tracing engine for rendering \cite{Cycles}.
 This Monte Carlo method traces the paths of many light rays per pixel, scattering light stochastically off physically-based materials in the scene until they reach illuminants.
 A GPU implementation is available for processing large numbers of rays simultaneously ($150/\textrm{px}$) to achieve noise-free and photorealistic images.
 Each $120\!\times\!80\textrm{px}$ eye-region image rendering took $5.26\textrm{s}$ on average across all head models using a commodity GPU (Nvidia GTX660).
