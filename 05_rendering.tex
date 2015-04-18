@@ -2,7 +2,25 @@
 
 \section{Rendering Photo-Realistic Images}
 
-\commentA{past tense}
+\begin{figure}
+	\captionsetup[subfigure]{labelformat=empty} % stop subcaption writing "(a)""
+    \captionsetup{subrefformat=parens} % add parentheses to \subref
+    \centering
+    \begin{subfigure}[t]{0.48\columnwidth}
+        \inlinelabel{a}{\includegraphics[width=\textwidth]{camera_position}}
+        \caption{}\label{fig:cam_pos_spher_coords}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\columnwidth}
+        \inlinelabel{b}{\includegraphics[width=\textwidth]{camera_pos_sample_renders_7x7}}
+        \caption{}\label{fig:cam_pos_example_renders}
+    \end{subfigure}
+    \par\vspace{-28pt}
+    \caption{The camera is positioned to simulate changes in head pose \subref{fig:cam_pos_spher_coords}. At each position, we render many eye images for different gaze directions by posing the eyeball model \subref{fig:cam_pos_example_renders}.}
+    \label{fig:cam_pos}
+\end{figure}
+
+We 
 
 % needs rewording
 In this section we first describe how we rendered our eye-region models, then we briefly describe how we use image-based lighting~\cite{debevec2002image} to model a wide range of realistic lighting conditions, and then finally discuss the details of our rendering setup.
@@ -19,23 +37,6 @@ Gaze vectors $\mathbf{g}$ were chosen by first pointing the eye directly at the 
 A consequence of this approach is the possibility of rendering ``unhelpful'' images that either simulate impossible scenarios or are not useful for training.
 To avoid violating anatomical constraints, we only rendered images for valid eyeball rotations $|\alpha|\!\leq\!25^{\circ}$ and $|\beta|\!\leq\!35^{\circ}$ \cite{MIL-STD-1472G}.
 Before rendering, we also verified that the projected 2D pupil center in the image was within the 2D polygon of the eyelid landmarks -- this prevented us from rendering images where too little of the iris was visible.
-
-\begin{figure}
-    \centering
-    \begin{subfigure}[t]{0.48\columnwidth}
-        \includegraphics[width=\textwidth]{camera_position}
-        \caption{}
-        \label{fig:cam_pos_spher_coords}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{0.48\columnwidth}
-        \includegraphics[width=\textwidth]{camera_pos_sample_renders_7x7}
-        \caption{}
-        \label{fig:cam_pos_example_renders}
-    \end{subfigure}
-    \caption{The camera is positioned to simulate changes in head pose (a). At each position, we render many eye images for different gaze directions by posing the eyeball model (b).}
-    \label{fig:cam_pos}
-\end{figure}
 
 \subsection{Lighting the Model}
 

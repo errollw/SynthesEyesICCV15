@@ -109,15 +109,14 @@ The face geometry is then assigned physically-based materials, including subsurf
 
 When someone looks up or down, their eyelids move accordingly \cite{liversedge2011oxford}.
 To simulate this we created blend shapes for upwards-looking and downwards-looking eyelids, and interpolate between them based on the global pitch of the eyeball model.
-This step makes our face-model dynamic, allowing it to continuously deform to match eyeball poses
+This makes our face-model dynamic, allowing it to continuously deform to match eyeball poses.
 Rather than rendering a single or perhaps several discrete head scans representing a particular gaze vector, for example \cite{sugano2014learning}, we can instead create training data with a dense distribution of facial deformation.
-Manually defining blend shapes through vertex manipulation can be a difficult, repetitive, and time-consuming task.
-Fortunately, only two are required, and they are localized to the eye-region.
+Defining blend shapes through vertex manipulation can be a difficult and time-consuming task but fortunately, only two are required and they have small regions of support.
 As the tissue around the eye is compressed or stretched, skin details like wrinkles and folds are either attenuated or exaggerated (see \autoref{fig:eyelids}).
 % As shown in \autoref{fig:eyelids}, downwards-looking eyelids appear smooth compared with the folds in an upwards-looking eyelid.
 We modeled this by using smoothed color and displacement textures for downwards-looking eyelids, removing any wrinkles.
 These blend shape and texture modifications were carried out using photos of the same heads looking up and down as references.
-However, an alternative would be to purchase the appropriate corresponding head scans and match the blend shape to that geometry.
+However, an alternative would be to purchase the corresponding head scans and match the blend shape to that geometry.
 
 \begin{figure}
     \includegraphics[width=\columnwidth]{eyelid_motion.png}
@@ -125,12 +124,13 @@ However, an alternative would be to purchase the appropriate corresponding head 
     \label{fig:eyelids}
 \end{figure}
 
-\subsection{Modelling of Eyelashes}
+% Eyelashes are connected to eyelids after all, so I think we can join subsections here.
+% \subsection{Modelling of Eyelashes}
 
-Eyelashes are short curved hairs that grow from the outer edges of the eyelids.
+Eyelashes are short curved hairs that grow from the edges of the eyelids.
 These can occlude parts of the eye and affect eye tracking algorithms, so are simulated as part of our comprehensive model.
 We followed the approach of \citet{swirski2014rendering}, and model eyelashes using directed hair particle effects.
-The hair particles were generated from a control surface manually placed below the eyelids.
+The particles were generated from a control surface manually placed below the eyelids.
 To make them curl, eyelash particles experience a slight amount of gravity during growth (negative gravity for the upper eyelash).
 
 \subsection{Eye-Region Landmark Annotation}
