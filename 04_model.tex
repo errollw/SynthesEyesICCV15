@@ -83,8 +83,8 @@ Facial appearance around the eye varies dramatically between people as a result 
 As can be seen in \autoref{fig:process_original_scan}, the cornea has been incorrectly reconstructed by the optical scanning process.
 This is because transparent surfaces are not directly visible, so cannot be reconstructed in the same way as diffuse surfaces, such as skin.
 Recent work used a hybrid reconstruction method to reconstruct the corneal surface separately, but requires additional hardware \cite{berard2014highquality} -- this level of detail was deemed unnecessary for our purposes.
-We wanted to render eye-region images representing a wide range of eye-gaze directions, so we needed to be able to pose the eyeball separately from the face geometry.
-We therefore removed the scanned eyeball from the mesh using boolean operations, and placed our own eyeball approximation in its place.
+We wanted images representing a wide range of eye-gaze directions, so we needed to be able to pose the eyeball separately from the face geometry.
+We therefore removed the scanned eyeball from the mesh, and placed our own eyeball approximation in its place.
 
 While the original head scan geometry is suitable for being rendered as a static model, its topology cannot easily represent dynamic changes in eye-region shape.
 Vertical saccades are always accompanied by eyelid motion \cite{liversedge2011oxford}, so we needed to be able to pose the eyelids according to the gaze vector.
@@ -96,21 +96,23 @@ This leads to a more efficient (low-resolution) geometric representation of the 
 We therefore \emph{retopologized} the face geometry into a more optimal form using a commercial semi-automatic system \cite{ZRemesher}.
 % Erroll: changed just the sentence below to present tense. As the model still exists, perhaps the tense should be present? Not sure.
 As can be seen in \autoref{fig:process_retopo}, edge loops now follow the \emph{Orbicularis Oculi} muscle, allowing for realistic eye-region deformations.
-This retopologized low-poly mesh lacks the detail of the original scan (e.g. the crease above the eye), and has visible sharp edges.
-We therefore used it as the control mesh for a displaced subdivision surface \cite{lee2000displaced}, with displacement map computed from the scanned geometry.
-As can be seen in \autoref{fig:process_displaced_subdiv}, skin surface detail like wrinkles and creases is restored.
+This retopologized low-poly mesh has now lost the detail of the original scan and has visible sharp edges.
+We therefore used it as a displaced subdivision surface \cite{lee2000displaced} with displacement map computed from the scanned geometry, thus restoring skin surface detail like wrinkles and creases (see \autoref{fig:process_displaced_subdiv}).
 Although they are two separate organs, there is normally no visible gap between eyeball and skin.
-However, as a consequence of removing the eyeball from the original scan, the retopologized mesh will not necessarily meet the geometry of our eyeball model (see \autoref{fig:process_retopo}).
-To compensate for this, the face mesh's eyelid vertices are displaced along their normals to their respective closest positions on the eyeball geometry (see \autoref{fig:process_displaced_subdiv}).
-This automatic operation prevents unwanted gaps between the models, even after changes in pose \cite{Shrinkwrap}.
-The face geometry is then assigned a mixture of physically based materials, including subsurface scattering to approximate the penetrative light transfer properties of skin, and a glossy component to simulate an oily surface layer.
+However, as a consequence of removing the eyeball from the original scan, the retopologized mesh will not necessarily meet the eyeball geometry (see \autoref{fig:process_retopo}).
+To compensate for this, the face mesh's eyelid vertices are automatically displaced along their normals to their respective closest positions on the eyeball geometry (see \autoref{fig:process_displaced_subdiv}) \cite{Shrinkwrap}.
+This prevents unwanted gaps between the models, even after changes in pose.
+The face geometry is then assigned physically-based materials, including subsurface scattering to approximate the penetrative light transfer properties of skin, and a glossy component to simulate its oily surface.
 
 
 \subsection{Modelling Eyelid Motion}
 
 When someone looks up or down, their eyelids move accordingly \cite{liversedge2011oxford}.
 To simulate this we created blend shapes for upwards-looking and downwards-looking eyelids, and interpolate between them based on the global pitch of the eyeball model.
-Manually defining blend shapes through vertex manipulation can be a difficult, repetitive, and time-consuming task. Fortunately, only two are required, and they are localized to the eye-region.
+This step makes our face-model dynamic, allowing it to continuously deform to match eyeball poses
+Rather than rendering a single or perhaps several discrete head scans representing a particular gaze vector, for example \cite{sugano2014learning}, we can instead create training data with a dense distribution of facial deformation.
+Manually defining blend shapes through vertex manipulation can be a difficult, repetitive, and time-consuming task.
+Fortunately, only two are required, and they are localized to the eye-region.
 As the tissue around the eye is compressed or stretched, skin details like wrinkles and folds are either attenuated or exaggerated (see \autoref{fig:eyelids}).
 % As shown in \autoref{fig:eyelids}, downwards-looking eyelids appear smooth compared with the folds in an upwards-looking eyelid.
 We modeled this by using smoothed color and displacement textures for downwards-looking eyelids, removing any wrinkles.
