@@ -35,7 +35,7 @@ We evaluated our eye-CLNF model on the 300 Faces In-the-Wild (300-W) datasets \c
 \input{figs/fig_example_fits_MPII.tex}
 
 While the 300-W images represent challenging conditions for eyelid registration, they are not representitive of typical webcam-style images and do not feature iris labels.
-We therefore annotated sub-pixel eyelid and iris boundaries onto a subset of MPIIGaze ($n\!=\!188$), a dataset collected during everday laptop use over several months \cite{zhang15_cvpr}.
+We therefore annotated sub-pixel eyelid and iris boundaries onto a subset of MPIIGaze ($n\!=\!188$), a recent large-scale dataset of face images and corresponding on-screen gaze locations collected during everyday laptop use over several months~\cite{zhang15_cvpr}.
 Pupil accuracy was not evaluated as it was impossible to discern in in most images.
 We compared our eye-CLNF with EyeTab \cite{wood2014eyetab}, a state-of-the-art shape-based approach that robustly fits ellipses to the limbus using image-aware RANSAC \cite{swirski2012robust}.
 We used the author's implementation, with their suggested modifications: improved eyelid localization with a CLNF facial landmark detector \cite{baltrusaitis2013constrained}.
