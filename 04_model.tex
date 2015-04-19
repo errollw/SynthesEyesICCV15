@@ -72,11 +72,18 @@ We vary the texture of the eye by randomly compositing images in three separate 
 \subsection{3D Head Scan Acquisition}
 \label{sec:eye_region_geom_prep}
 
-For an eye-region rendering to be realistic, it must also feature realstic nearby face detail.
-While previous approaches used lifelike artist-created models, for example~\cite{swirski2014rendering}, we instead rely on high quality head scan data captured by a professional photogrammetry studio (10K diffuse color textures, 0.1mm resolution geometry) \cite{Ten24}.
+For an eye-region rendering to be realistic, it must also feature realistic nearby face detail.
+While previous approaches used lifelike artist-created models, for example~\cite{swirski2014rendering}, we instead rely on high-quality head scans captured by a professional photogrammetry studio (10K diffuse color textures, 0.1mm resolution geometry)\footnote{Ten24 3D Scan Store -- \url{http://www.3dscanstore.com/}}.
+%\cite{Ten24}.
 %\commentA{link or even better reference if available}
+<<<<<<< HEAD
 Nowadays it is possible to cheaply purchase such head scans online\footnote{Ten24 3D Scan Store -- \url{http://www.3dscanstore.com/}} (from $\sim\!\$15$/scan), download similar freely available datasets \cite{stratou2011effect}, or use photogrammetry software to generate models in-house.
 Facial appearance around the eye varies dramatically between people as a result of different eye-shapes (e.g. round vs hooded), orbital bone structure (e.g. deep-set vs protruding), and flesh detail (wrinkled vs flat). Therefore our collection of head-models (see \autoref{fig:model_suite}) covers both genders with a variety of ethnicities and ages.
+=======
+%Nowadays it is possible to purchase such scans online (from $\sim\!\$15$/scan)
+%or use free or commercial photogrammetry software to generate facial geometry models in-house.
+Facial appearance around the eye varies dramatically between people as a result of different eye-shapes (e.g. round vs hooded), orbital bone structure (e.g. deep-set vs protruding), and flesh detail (wrinkled vs flat). Therefore our head models (see \autoref{fig:model_suite}) cover both genders with a variety of ethnicities and ages.
+>>>>>>> origin/master
 
 \subsection{Eye-Region Geometry Preparation}
 
@@ -107,6 +114,8 @@ The face geometry is then assigned physically-based materials, including subsurf
 
 \subsection{Modelling Eyelid Motion}
 
+\commentA{just as a reminder for later: we might want to use this as a minor method contribution if it is really novel and key to performance improvements (remains to be seen)}
+
 When someone looks up or down, their eyelids move accordingly \cite{liversedge2011oxford}.
 To simulate this we created blend shapes for upwards-looking and downwards-looking eyelids, and interpolate between them based on the global pitch of the eyeball model.
 This makes our face-model dynamic, allowing it to continuously deform to match eyeball poses.
@@ -129,9 +138,9 @@ However, an alternative would be to purchase the corresponding head scans and ma
 
 Eyelashes are short curved hairs that grow from the edges of the eyelids.
 These can occlude parts of the eye and affect eye tracking algorithms, so are simulated as part of our comprehensive model.
-We followed the approach of \citet{swirski2014rendering}, and model eyelashes using directed hair particle effects.
-The particles were generated from a control surface manually placed below the eyelids.
-To make them curl, eyelash particles experience a slight amount of gravity during growth (negative gravity for the upper eyelash).
+We followed the approach of {\'S}wirski and Dodgson~\cite{swirski2014rendering}, and modelled eyelashes using directed hair particle effects.
+Particles were generated from a control surface manually placed below the eyelids.
+To make them curl, eyelash particles experienced a slight amount of gravity during growth (negative gravity for the upper eyelash).
 
 \subsection{Eye-Region Landmark Annotation}
 

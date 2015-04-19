@@ -2,13 +2,15 @@
 
 \section{Experiments}
 
+\commentA{the distribution figures would be nice here, e.g. to make the point that we can synthesise arbitrary distributions and to beef up the gaze estimation experiments}
+
 % \input{figs/fig_example_fits_wild.tex}
 
-We evaluated the usefulness of our synthetic data generation method on two sample problems, eye registration and gaze estimation.
+We evaluated the usefulness of our synthetic data generation method on two sample problems, eye-shape registration and appearance-based gaze estimation.
 
 \commentA{briefly say something about significance/importance of both problems, more in corresponding subsections}
 
-\subsection{Eyelid registration in-the-wild}
+\subsection{Eyelid Registration In the Wild}
 
 \begin{figure}
     \centering
@@ -30,7 +32,9 @@ As shown in \autoref{fig:clnf_results_wild}, the results show the eye-CLNF outpe
 
 Our data synthesis system also allows us to examine what steps of the synthesis approach are important for generating good training data. We trained two further eye-CLNFs on different versions of \dataset, one without eyelid motion and one with only one fixed lighting condition. As can be seen in \autoref{fig:clnf_results_wild}, these perform worse as they are missing important degrees of variability.
 
-\subsection{Eye-shape registration for laptops}
+\subsection{Eye-Shape Registration for Laptops}
+
+\commentA{``for laptops'' sounds very specific. Does this generalise, do we need this strong constraint?}
 
 \begin{figure}
     \centering
@@ -41,7 +45,7 @@ Our data synthesis system also allows us to examine what steps of the synthesis 
 
 \input{figs/fig_example_fits_MPII.tex}
 
-While the 300-W images represent challenging conditions for eyelid registration, they are not representitive of typical webcam-style images and do not feature iris labels.
+While the 300-W images represent challenging conditions for eyelid registration, they are not representative of typical webcam-style images and do not feature iris labels.
 We therefore annotated sub-pixel eyelid and iris boundaries onto a subset of MPIIGaze ($n\!=\!188$), a recent large-scale dataset of face images and corresponding on-screen gaze locations collected during everyday laptop use over several months~\cite{zhang15_cvpr}.
 Pupil accuracy was not evaluated as it was impossible to discern in in most images.
 We compared our eye-CLNF with EyeTab \cite{wood2014eyetab}, a state-of-the-art shape-based approach that robustly fits ellipses to the limbus using image-aware RANSAC \cite{swirski2012robust}.
@@ -63,7 +67,7 @@ As shown in \autoref{fig:clnf_results_MPII}, our approach ($1.89\!\pm\!1.52\text
 % eye position detection?
 % ^ I think all of these come with what the deformable model gives us
 
-\subsection{Gaze Estimation}
+\subsection{Appearance-Based Gaze Estimation}
 
 \todo{We need results here as soon as possible}
 

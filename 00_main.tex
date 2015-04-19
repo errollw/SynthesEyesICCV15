@@ -66,6 +66,7 @@
 
 % create a command to set dataset name
 \newcommand{\dataset}{SynthesEyes\xspace}
+% Andreas: What about "SynthEyes"?
 
 % Pages are numbered in submission mode, and unnumbered in camera-ready
 \ificcvfinal\pagestyle{empty}\fi
@@ -73,7 +74,9 @@
 
 %%%%%%%%% TITLE
 % \title{Photorealistic Rendering of Face and Eye Regions for Eyelid Detection and Gaze Estimation}
-\title{Learning-by-Synthesis: Photorealistic Rendering of Eyes \\ for Eye-Region Registration and Gaze Estimation}
+\title{Learning-by-Synthesis: Photorealistic Rendering of Eyes \\ for Eye-Shape Registration and Gaze Estimation}
+% Andreas: here we discussed if we want to claim photorealistic since we can't measure it nor know so far if it is really needed. Anyway we need to motivate and show that photorealism is needed. Instead we could use "Accurate"
+
 % Erroll: we'd like to replace "eyelid detection" with something a bit more descriptive, as our system loacalizes them accurately and also gives estimates for iris and therefore eye-centre also. Perhaps "Eye Registration?"
 % Andreas: I understand the reasoning and agree. I am not sure, however, if eye registration is an established term, at least I have never heard it before. I would stick to something that people know, maybe landmarks or eye features?
 % Andreas: we might want to put "shape model" in the title as well
@@ -113,8 +116,13 @@ for\\
 \input{06_experiments}
 \input{07_conclusion}
 
+\commentA{we have eight pages plus one page references, might have to reduce}
+\commentA{I would not include the blender references, refs 24, 34, 35}
+
+\clearpage
+
 {\small
-\bibliographystyle{IEEEtranN}
+\bibliographystyle{ieee}
 \bibliography{bib}
 }
 
