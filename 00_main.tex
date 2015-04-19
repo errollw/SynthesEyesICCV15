@@ -31,11 +31,12 @@
 
 % better citing
 \usepackage[numbers,square]{natbib}
+\setlength{\bibsep}{2pt plus 0.3ex}
 
 % If you comment hyperref and then uncomment it, you should delete
 % egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
 % run, let it finish, and you should be clear).
-\usepackage[pagebackref=true,breaklinks=true,bookmarks=false]{hyperref}
+\usepackage[pagebackref=false,breaklinks=true,bookmarks=false]{hyperref}
 \renewcommand*{\figureautorefname}{Fig.}
 \hypersetup{%
   pdftitle={anonymous},
@@ -74,7 +75,7 @@
 
 %%%%%%%%% TITLE
 % \title{Photorealistic Rendering of Face and Eye Regions for Eyelid Detection and Gaze Estimation}
-\title{Learning-by-Synthesis: Photorealistic Rendering of Eyes \\ for Eye-Shape Registration and Gaze Estimation}
+\title{Rendering of Eyes for Eye-Shape Registration and Gaze Estimation}
 % Andreas: here we discussed if we want to claim photorealistic since we can't measure it nor know so far if it is really needed. Anyway we need to motivate and show that photorealism is needed. Instead we could use "Accurate"
 
 % Erroll: we'd like to replace "eyelid detection" with something a bit more descriptive, as our system loacalizes them accurately and also gives estimates for iris and therefore eye-centre also. Perhaps "Eye Registration?"
@@ -122,7 +123,7 @@ for\\
 \clearpage
 
 {\small
-\bibliographystyle{ieee}
+\bibliographystyle{IEEEtranN}
 \bibliography{bib}
 }
 
