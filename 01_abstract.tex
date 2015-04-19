@@ -1,17 +1,18 @@
 %!TEX root = 00_main.tex
 Images of the eye are used in several computer vision problems, such as facial feature localization and gaze estimation.
 %, iris-biometrics, and deception analysis.
-Large-scale supervised methods for these problems require time-consuming data collection procedures and unreliable manual annotation of training images.
+Recent large-scale supervised methods for these problems require time-consuming data collection procedures and unreliable manual annotation of training images.
 %, which is error-prone and slows down progress in these areas.
-Instead we propose synthesizing perfectly labelled photo-realistic training data in a fraction of the time.
+We propose synthesizing perfectly labelled photo-realistic training data in a fraction of the time.
 We used computer graphics techniques to build a collection of dynamic eye-region models from head scan geometry.
 %
 These were randomly posed to synthesize close-up eye images with a wide range of head poses, gaze directions, and illumination conditions.
 %
-The resulting dataset (\dataset) was used to train two systems: an eye-region landmark detector and an appearance-based gaze estimatior.
+\commentA{do we want to sell this also as a dataset? If yes we should characterise it better}
+We used the resulting dataset (\dataset) to train two example systems: an eye-region landmark detector and an appearance-based gaze estimator.
 % The model is able to simulate the large variability of real eyes, including pupil dilation, eyelid motion and corresponding changes in its shape, as well as iris colour variations.
 %dynamic changes in shape
-We demonstrate the benefits of synthesized training data by out-performing other state-of-the-art methods for eye-shape registration in the wild, and performing competitively in a challenging cross-dataset evaluation of gaze estimation.
+We demonstrate the benefits of synthesized training data by out-performing state-of-the-art methods for eye-shape registration in the wild, and performing competitively with a recent cross-dataset gaze estimation method.
 % needs reword.
-We also use our rendering framework to examine the effects of low illumination variance and less realism in training data.
+We further examine the effects of low illumination variance and level of realism in the training data on performance.
 %
