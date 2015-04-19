@@ -64,17 +64,6 @@
 \newcommand{\commentT}[1]{\textsf{\textbf{\textcolor{blue}{Tadas: #1}}}}
 \newcommand{\commentY}[1]{\textsf{\textbf{\textcolor{yellow}{Yusuke: #1}}}}
 
-  \let\oldthebibliography=\thebibliography
-  \let\endoldthebibliography=\endthebibliography
-  \renewenvironment{thebibliography}[1]{%
-    \begin{oldthebibliography}{#1}%
-      \setlength{\parskip}{0ex}%
-      \setlength{\itemsep}{0ex}%
-  }%
-  {%
-    \end{oldthebibliography}%
-  }
-
 % create a command to set dataset name
 \newcommand{\dataset}{SynthesEyes\xspace}
 % Andreas: What about "SynthEyes"?
@@ -129,8 +118,10 @@ for\\
 
 \commentA{we have eight pages plus one page references, might have to reduce}
 
+\clearpage
+
 {\small
-\bibliographystyle{IEEEtranN}
+\bibliographystyle{ieee}
 \bibliography{bib}
 }
 
