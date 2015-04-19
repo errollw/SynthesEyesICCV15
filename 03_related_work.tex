@@ -6,19 +6,20 @@ Our work is related to previous works on 1) learning using synthetic data as wel
 
 \subsection{Learning Using Synthetic Data}
 
-While learning-based approaches have been recognised as promising solutions for various computer vision tasks, the gap between training and test data is still causing practical issues.
-It is still not a trivial task for learning algorithms to handle unknown test data, and their performances often depend on how well the test data distribution is covered by the training data.
-One of the most straightforward solution is to use enough amount of training data which can cover the whole variation of potential test data; however, it is not always possible to obtaining real training data in this manner.
+While learning-based approaches have been recognised as promising solutions for various computer vision tasks, the gap between training and test data still causes practical issues.
+It is still not trivial for learning algorithms to handle unknown test data, and their performances often depend on how well the test data distribution is covered by the training data.
+One straightforward solution is to use training data that covers the whole variation of potential test data; however, it is not always possible to obtain real training data in this manner.
 The use of purely synthetic training data has been considered as a promising solution to address this issue.
 It has been shown that synthetic training data is beneficial to various tasks including body pose estimation~\cite{shakhnarovich2003fast,okada2008relevant,shotton2013real}, head pose estimation~\cite{fanelli2011real} and object detection/recognition~\cite{yu2010improving,liebelt2010multiview,jaderberg2014synthetic}.
 These works used 3D models, from a single 3D CAD object to deformable human body shape, to synthesise huge amount of training images for the target task.
-\commentY{CAD-based multi-view object recognition has a lot of works, though I don't think we need to cite them all}
+% \commentY{CAD-based multi-view object recognition has a lot of works, though I don't think we need to cite them all}
 
-As discussed in Kaneva et al.,~\cite{kaneva2011evaluation} \commentY{In some sense this is an important reference for our story}, one of the most important factors to be considered is the reality of synthesised training images.
-If the target object is highly complex like human eyes, it is not clear whether we can rely on simple object models.
-Most similar to this work, Sugano et al.~\cite{sugano2014learning} used 3D reconstructions of human eye regions to synthesise multi-view training data for appearance-based gaze estimation.
-However, Zhang et al.~\cite{zhang15_cvpr} pointed out that the estimation accuracy significantly drops when the test data is obtained from a completely new environment.
-Similarly to the case of facial expression recognition~\cite{stratou2011effect}, illumination condition is often a critical factor for computer vision tasks, and the change of viewpoints is not enough to cover the test data variability.
+As discussed by \citet{kaneva2011evaluation} \commentY{In some sense this is an important reference for our story}, one of the most important factors to consider is the realism of synthesised training images.
+If the object of interest is highly complex, like the human eye, it is not clear whether we can rely on overly-simplistic object models.
+Most similar to this work, \citet{sugano2014learning} used 3D reconstructions of eye regions to synthesise multi-view training data for appearance-based gaze estimation.
+However, \citet{zhang15_cvpr} revealed that estimation accuracy significantly drops when the test data is obtained from a completely new environment.
+Similarly to facial expression recognition~\cite{stratou2011effect}, illumination effects are a critical factor for computer vision, and the change of viewpoints is not enough to cover the test data variability.
+\citet{zface} varied ambient and directional lighting conditions during synthesis to achieve illumination invariance.
 \commentY{this line should be adjusted according to the result}
 In contrast, our model allows...
 
