@@ -87,6 +87,7 @@ This is because transparent surfaces are not directly visible, so cannot be reco
 Recent work used a hybrid reconstruction method to reconstruct the corneal surface separately, but requires additional hardware \cite{berard2014highquality} -- this level of detail was deemed unnecessary for our purposes.
 We wanted images representing a wide range of eye-gaze directions, so we needed to be able to pose the eyeball separately from the face geometry.
 We therefore removed the scanned eyeball from the mesh, and placed our own eyeball approximation in its place.
+\commentY{I feel this part should be explained beforehand,  i.e., we should first explain why take this approach combining eye model and face scan}
 
 While the original head scan geometry is suitable for being rendered as a static model, its topology cannot easily represent dynamic changes in eye-region shape.
 Vertical saccades are always accompanied by eyelid motion \cite{liversedge2011oxford}, so we needed to be able to pose the eyelids according to the gaze vector.
@@ -95,6 +96,7 @@ This leads to a more efficient (low-resolution) geometric representation of the 
 
 % Maybe: \commentE{Reference some other options, e.g automatic methods in research}
 
+\commentY{I feel this paragraph requires knowledge on both computer graphics and eye movement researches, not easy for ordinary CV readers}
 We therefore \emph{retopologized} the face geometry into a more optimal form using a commercial semi-automatic system \cite{ZRemesher}.
 % Erroll: changed just the sentence below to present tense. As the model still exists, perhaps the tense should be present? Not sure.
 As can be seen in \autoref{fig:process_retopo}, edge loops now follow the \emph{Orbicularis Oculi} muscle, allowing for realistic eye-region deformations.
@@ -111,6 +113,7 @@ The face geometry is then assigned physically-based materials, including subsurf
 
 \commentA{just as a reminder for later: we might want to use this as a minor method contribution if it is really novel and key to performance improvements (remains to be seen)}
 
+\commentY{Some parts of this paragraph is a repetition of the second paragraph of the previous section}
 When someone looks up or down, their eyelids move accordingly \cite{liversedge2011oxford}.
 To simulate this we created blend shapes for upwards-looking and downwards-looking eyelids, and interpolate between them based on the global pitch of the eyeball model.
 This makes our face-model dynamic, allowing it to continuously deform to match eyeball poses.
@@ -120,6 +123,7 @@ As the tissue around the eye is compressed or stretched, skin details like wrink
 % As shown in \autoref{fig:eyelids}, downwards-looking eyelids appear smooth compared with the folds in an upwards-looking eyelid.
 We modeled this by using smoothed color and displacement textures for downwards-looking eyelids, removing any wrinkles.
 These blend shape and texture modifications were carried out using photos of the same heads looking up and down as references.
+\commentY{Maybe we don't need the following sentence}
 However, an alternative would be to purchase the corresponding head scans and match the blend shape to that geometry.
 
 \begin{figure}
@@ -131,6 +135,7 @@ However, an alternative would be to purchase the corresponding head scans and ma
 % Eyelashes are connected to eyelids after all, so I think we can join subsections here.
 % \subsection{Modelling of Eyelashes}
 
+\commentY{At least we should give a different subsection title covering both eyelid motion and eyelashes?}
 Eyelashes are short curved hairs that grow from the edges of the eyelids.
 These can occlude parts of the eye and affect eye tracking algorithms, so are simulated as part of our comprehensive model.
 We followed the approach of {\'S}wirski and Dodgson~\cite{swirski2014rendering}, and modelled eyelashes using directed hair particle effects.
@@ -138,6 +143,8 @@ Particles were generated from a control surface manually placed below the eyelid
 To make them curl, eyelash particles experienced a slight amount of gravity during growth (negative gravity for the upper eyelash).
 
 \subsection{Eye-Region Landmark Annotation}
+
+\commentY{In my understanding, this section is only related to the shape registration task. And I think some parts in the next section are only relevant to the gaze estimation task? In this case, we should reorganize the next section as a "training data synthesis", starting from a general discussion and task-specific subsections.}
 
 As shown in \autoref{fig:process_ldmks}, each 3D eye-region was annotated once in 3D with $28$ landmarks, corresponding to the eye corners ($2$), eyelids ($5\!+\!5$), iris boundary ($8$), and pupil boundary ($8$).
 The iris and pupil landmarks were defined as a subset of the eyeball geometry vertices, so deform automatically with changes in pupil and iris size.
