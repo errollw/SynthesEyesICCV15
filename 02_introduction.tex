@@ -6,8 +6,9 @@
 % Looks like the template doesn't allow us to do this easily unfortunately :(
 
 Machine learning methods that leverage large amounts of training data currently perform best for many problems in computer vision, such as object detection, scene recognition, or gaze estimation~\cite{zhou2014learning,girshick2014rich,zhang15_cvpr}.
-However, capturing or collecting large-scale training data can be extremely time-consuming, especially for new areas of research without pre-existing datasets.
-In addition, supervised learning methods require accurate ground truth annotation for each image.
+However, capturing or collecting large-scale training data can be time-consuming
+%, especially for new areas of research without pre-existing datasets.
+and supervised learning methods additionally require accurate ground truth annotation for each image.
 This annotation process can be expensive and tedious, and there is no guarantee that human-provided labels will be correct.
 Ground truth annotation is particularly challenging and error-prone for learning tasks that require highly fine-grained and accurate labels, such as tracking facial landmarks for facial expression analysis and gaze estimation~\todo{REF}, or body joints for pose estimation and activity recognition~\todo{REF}.
 
@@ -22,12 +23,13 @@ To address these problems, researchers have employed \emph{learning-by-synthesis
 The advantages of this approach are that both data collection and annotation require little human labour and image synthesis can be geared to specific application scenarios.
 Perhaps the best known example is by \citet{shotton2013real}, who synthesized a large and varied depth-image dataset for training a real-time pose-estimator.
 
-Eyes and their movements are important for a range of applications including gaze-based human-computer interaction, visual behaviour monitoring, and deception analysis. \todo{cites} Recent work by \citet{sugano2014learning} demonstrated the benefits of learning-by-synthesis for gaze estimation, but employed only fundemental computer graphics techniques for synthesis.
+The eyes and their movements are important for a range of applications including gaze-based human-computer interaction~\cite{majaranta14_apc}, visual behaviour monitoring~\cite{bulling13_chi,bulling11_pami}, and -- more recently -- computer vision tasks, such as object recognition and detection~\cite{yun2013studying,papadopoulos2014training,karthikeyan2013and}. Recent work by \citet{sugano2014learning} demonstrated the benefits of learning-by-synthesis for appearance-based gaze estimation, but employed only fundamental computer graphics techniques for synthesis that did not account for shape changes \todo{maybe find some better more concrete limitation}.
 % One part of the human body largely neglected in the context of image synthesis so far is the face and particularly the eyes.
 % This is despite the fact that the eyes are important for a range of applications in different areas including gaze-based human-computer interaction, \todo{add more and refs}.
 % probably don't want to stress the number of possible deformations, we only model natural eyelid movement, not eye-scrunching etc.
 % maybe split up the sentence below
 The eye-region is particularly difficult to model accurately given the dynamic shape changes it undergoes with facial motion and eyeball rotation, the complex material structure of the eyeball itself, and the significant variation in facial shape and texture across different people.
+It is for this reason that previous work on rendering photorealistic images of the eye and eye-region is relatively sparse~\cite{ActiBlizEyes,berard2014highquality}.
 
 \todo{final sentence on limitations of existing models in this area}
 
@@ -38,7 +40,7 @@ The eye-region is particularly difficult to model accurately given the dynamic s
 
 %Synthesising training data is not novel in itself -- previous work has ... Our novel approach 
 
-In this paper we present a novel method for photorealistic rendering of full face and eye images at a large scale.
+we present a novel method for photorealistic rendering of full face and eye images at a large scale.
 Our method \todo{briefly summarise key characteristics of the method}
 We describe how we prepare a collection of dynamic eye-region models, and then our approach for generating large amounts of photorealistic training data.
 We then present and evaluate two separate systems trained on \dataset: a novel eye-region specific deformable model and an appearance-based gaze estimator.
