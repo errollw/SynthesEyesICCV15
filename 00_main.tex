@@ -64,6 +64,17 @@
 \newcommand{\commentT}[1]{\textsf{\textbf{\textcolor{blue}{Tadas: #1}}}}
 \newcommand{\commentY}[1]{\textsf{\textbf{\textcolor{yellow}{Yusuke: #1}}}}
 
+  \let\oldthebibliography=\thebibliography
+  \let\endoldthebibliography=\endthebibliography
+  \renewenvironment{thebibliography}[1]{%
+    \begin{oldthebibliography}{#1}%
+      \setlength{\parskip}{0ex}%
+      \setlength{\itemsep}{0ex}%
+  }%
+  {%
+    \end{oldthebibliography}%
+  }
+
 % create a command to set dataset name
 \newcommand{\dataset}{SynthesEyes\xspace}
 
