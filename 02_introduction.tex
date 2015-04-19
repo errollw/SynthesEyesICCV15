@@ -42,14 +42,11 @@ It is for this reason that previous work on rendering photorealistic images of t
 
 %Synthesising training data is not novel in itself -- previous work has ... Our novel approach 
 
-We present a novel method for photorealistic rendering of full face and eye images at a large scale.
-Our method \todo{briefly summarise key characteristics of the method}
-We describe how we prepare a collection of dynamic eye-region models, and then our approach for generating large amounts of photorealistic training data.
+We present a novel method for photorealistic rendering of full face and eye images at a large scale using a collection of dynamic eye-region models.
+In contrast to previous works, we provide a comprehensive and detailed description of the model preparation process and rendering pipeline.
 We then present and evaluate two separate systems trained on \dataset: a novel eye-region specific deformable model and an appearance-based gaze estimator.
 These systems are case studies that show how we leverage the degrees of control made available by rendering our training data to easily and quickly generate high quality training datasets.
-We show that by rendering all our training data, we achieve state of the art performance...
 
 The specific contributions of this work are threefold. First, \todo{...}
-
-\commentA{are we the first ones to use learning-by-synthesis for eye-region registration? -> contribution}
-\commentA{blend shapes? -> contribution}
+We present our dynamic eye-region model that uses multiple parts and blend shapes to model the continuous degrees of shape change and deformation exhibited by the eye.
+We then present a novel application of learning-by-synthesis: eye-region registration.
