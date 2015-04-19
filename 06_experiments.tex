@@ -73,11 +73,15 @@ As shown in \autoref{fig:clnf_results_MPII}, our approach ($1.89\!\pm\!1.52\text
 % ^ let's leave this as future work! Can put it in the discussion 
 
 % show that we can synthesise specific datasets for specific settings (specific head and gaze ranges, illumination conditions), show that we can competitive performance
-We render a targeted dataset that matches MPII's gaze and pose distribution, with added 3D laptop screen emitting light. This shows how we can target specific scenarios like laptop-based gaze estimation, and render a suitable dataset within a day rather than take 3 months of data collection.
+
+
+To evaluate the usage of our method on appearance gaze estimation, we perform the cross-dataset validation as described in~\cite{zhang15_cvpr}, where they train and test the model on different datasets. Following the same setting, we train the same Convolutional Neural Network (CNN) model model on the generic \dataset dataset, and test it on MPIIGaze dataset. As shown with the two bars at the far left of \autoref{fig:gazeResult}, compared to the model trained in~\cite{sugano2014learning}, the model trained on our generic \dataset dataset can achieve similar performance. 
+We render a targeted \dataset dataset that matches the gaze and pose distribution of MPIIGaze dataset, with added 3D laptop screen emitting light. This shows how we can target specific scenarios like laptop-based gaze estimation, and render a suitable dataset within a day rather than taking 3 months of data collection with 15 participants. For fair comparison, we re-sample a subset of UT Multiview dataset that also has the same gaze and head pose distribution. Since there are just have 10 subjects in our \dataset, we divide the UT Multiview subset into 5 groups with 10 subjects for each group. We then average the performance of the 5 groups for the final result. As shown in the third and forth bars of \autoref{fig:gazeResult}, the model trained on our targeted \dataset achieved much better performance than the UT subset. The fifth bar shows the person-independent validation within the MPIIGaze dataset to show the up bounder of this scenario.
+
 
 % train on synthesised images and show competitive performance on MPIIgaze with real images
 % show better performance than UT dataset
-Using Xucong's CNN sytem, we train on targeted version of \dataset, test on MPII. Show results are better than training on UT and testing on MPII. This shows that the range of lighting in \dataset is important for better results.
+%Using Xucong's CNN sytem, we train on targeted version of \dataset, test on MPII. Show results are better than training on UT and testing on MPII. This shows that the range of lighting in \dataset is important for better results.
 
 % does photorealistic data really help/is it necessary? either reduce quality and see how it affects performance, or compare model with and without shape variations
 % ^ I am not really sure how to do this well... Because we'd also have to have a measure of "how photorealistic" something is. Swapping the eyeball for a simpler model, e.g. sphere might not really have that much of an effect on "photorealism" for many eye-poses. Changing the shaders, e.g. pretending the skin is Lambertian (diffuse) might?
