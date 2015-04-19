@@ -40,7 +40,7 @@ As we posed the model in this way, there was the possibility of rendering ``unhe
 To avoid violating anatomical constraints, we only rendered images for valid eyeball rotations $|\alpha|\!\leq\!25^{\circ}$ and $|\beta|\!\leq\!35^{\circ}$ \cite{MIL-STD-1472G}.
 Before rendering, we also verified that the projected 2D pupil center in the image was within the 2D boundary of the eyelid landmarks -- this prevented us from rendering images where too little of the iris was visible.
 
-\subsection{Creating realistic illumination}
+\subsection{Creating Realistic illumination}
 
 \begin{figure}
     \begin{subfigure}[t]{\columnwidth}
@@ -74,7 +74,7 @@ The environment is then randomly rotated to simulate a continuous range of head-
 As shown in \autoref{fig:env_map_imgs_examples}, a combination of hard shadows and soft light can generate a range of appearances from only a single HDR environment.
 This simple and flexible approach creates varaibility using measured light levels in representitive environments rather than randomly configuring light sources and ambient lights \cite{zface}.
 
-\subsection{Rendering engine}
+\subsection{Rendering Engine}
 
 We use Blender's inbuilt Cycles path-tracing engine for rendering \cite{Cycles}.
 This Monte Carlo method traces the paths of many light rays per pixel, scattering light stochastically off physically-based materials in the scene until they reach illuminants.
