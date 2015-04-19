@@ -107,6 +107,8 @@ The face geometry is then assigned physically-based materials, including subsurf
 
 \subsection{Modelling Eyelid Motion}
 
+\commentA{just as a reminder for later: we might want to use this as a minor method contribution if it is really novel and key to performance improvements (remains to be seen)}
+
 When someone looks up or down, their eyelids move accordingly \cite{liversedge2011oxford}.
 To simulate this we created blend shapes for upwards-looking and downwards-looking eyelids, and interpolate between them based on the global pitch of the eyeball model.
 This makes our face-model dynamic, allowing it to continuously deform to match eyeball poses.
