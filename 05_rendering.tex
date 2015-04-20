@@ -95,9 +95,8 @@ This simple and flexible approach creates varaibility using measured light level
 We use Blender's\footnote{The Blender Project -- \url{http://www.blender.org/}} inbuilt Cycles path-tracing engine for rendering.
 This Monte Carlo method traces the paths of many light rays per pixel, scattering light stochastically off physically-based materials in the scene until they reach illuminants.
 A GPU implementation is available for processing large numbers of rays simultaneously ($150/\textrm{px}$) to achieve noise-free and photorealistic images.
-Each $120\!\times\!80\textrm{px}$ eye-region image rendering took $5.26\textrm{s}$ on average across all head models using a commodity GPU (Nvidia GTX660).
-Our generic head-pose and gaze-direction dataset of 11,000 images can be rendered in under a day on a single machine
-% , though in practice we rendered using multiple machines simultaneously.
-As a result we can quickly generate a large, representitive dataset with clean labels in a fraction of the time taken by traditional data collection procedures \cite{zhang15_cvpr,sugano2014learning}.
 
-For general use, we rendered ... \commentE{Will characterize the dataset here}
+For eye-region registration, we rendered a generic \dataset dataset of 11,382 images covering $40^{\circ}$ of viewpoint (i.e. head pose) variation and $90^{\circ}$ of gaze variation.
+We sampled eye color and environmental lighting randomly for each image.
+Each $120\!\times\!80\textrm{px}$ rendering took $5.26\textrm{s}$ on average across all head models using a commodity GPU (Nvidia GTX660).
+As a result our cleanly-labelled dataset can be rendered in under a day on a single machine -- a fraction of the time taken by traditional data collection procedures \cite{zhang15_cvpr,sugano2014learning}. In addition, our method allows us to target specific domains. For webcam-oriented eye gaze estimation we also rendered a targetted dataset guided by typical laptop use ($10^{\circ}$ pose variation, $20^{\circ}$ gaze variation).
