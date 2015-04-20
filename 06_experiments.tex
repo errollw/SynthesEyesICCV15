@@ -33,7 +33,7 @@ As our method can reliably generate consistent landmark location training data w
     \label{fig:clnf_results_wild}
 \end{figure}
 
-\input{figs/fig_example_fits_wild.tex}
+% \input{figs/fig_example_fits_wild.tex}
 
 % Erroll to Tadas: need to make sure these facts are straight...
 We performed an experiment to see how our our system generalises on unseen and unconstrained images from the 300 Faces In-the-Wild (300-W) \cite{sagonas2013300} validation datasets which contain labels for eyelid boundaries. We tested all of the approaches on the 830 (out of 1026) test images. We discarded images that did not contain visible eyes (occluded by hair or sunglasses) or face detection step failed in some of the baselines. This lead to 1660 eye images for evaluation.
@@ -58,6 +58,8 @@ Our data synthesis system also allows us to examine what steps of the synthesis 
 
 % \commentA{``for laptops'' sounds very specific. Does this generalise, do we need this strong constraint?}
 
+\input{figs/fig_clnf_fits.tex}
+
 \begin{figure}
     \centering
     \includegraphics[width=\columnwidth]{CLNF_MPII_experiment}
@@ -65,7 +67,7 @@ Our data synthesis system also allows us to examine what steps of the synthesis 
     \label{fig:clnf_results_MPII}
 \end{figure}
 
-\input{figs/fig_example_fits_MPII.tex}
+% \input{figs/fig_example_fits_MPII.tex}
 
 While the 300-W images represent challenging conditions for eyelid registration, they are not representative of typical webcam-style images and do not feature iris labels.
 We therefore annotated sub-pixel eyelid and iris boundaries onto a subset of MPIIGaze ($n\!=\!188$), a recent large-scale dataset of face images and corresponding on-screen gaze locations collected during everyday laptop use over several months~\cite{zhang15_cvpr}.

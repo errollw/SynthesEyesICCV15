@@ -47,15 +47,10 @@ In addition, their model was not fully controllable and the synthesized dataset 
 We present a novel method for realistic rendering face and eye images at a large scale using a collection of dynamic and controllable eye-region models.
 In contrast to previous works, we provide a comprehensive and detailed description of the model preparation process and rendering pipeline (see~\autoref{fig:process} for an overview of the model preparation process and~\autoref{fig:eye_model} for the eye model used).
 We then present and evaluate two separate systems trained on the resulting data (\emph{\dataset}): a novel eye-region specific deformable model and an appearance-based gaze estimator.
-<<<<<<< HEAD
-These systems are case studies that show how we leverage the controllability made available by rendering our training data to easily and quickly generate high quality training datasets.
-To ensure reproducibility and stimulate research in this area we will make the eyeball model and generated training sets publicly available at time of publication.
-=======
 These systems are case studies that show how we leverage the controllability made possible by our model to easily and quickly generate high-quality training datasets.
 Please note that we picked these two examples for illustration purposes only.
 Our model is not limited to these computer vision tasks per se but potentially applicable to other tasks that require \commentA{insert requirements that our model covers}.
-To ensure reproducibility and stimulate research in this area we will make the model, rendering pipeline as well as the generated training sets for the two example tasks publicly available at time of publication.
->>>>>>> origin/master
+To ensure reproducibility and stimulate research in this area we will make the eyeball model and generated training sets publicly available at time of publication.
 
 The specific contributions of this work are threefold.
 First, we present our dynamic eye-region model that uses multiple parts and blend shapes to model the continuous degrees of shape change and deformation exhibited by the eye.
