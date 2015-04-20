@@ -86,7 +86,7 @@ We therefore \emph{retopologized} the face geometry into a more optimal form usi
 % Erroll: changed just the sentence below to present tense. As the model still exists, perhaps the tense should be present? Not sure.
 % As can be seen in \autoref{fig:process_retopo}, edge loops now follow the \emph{Orbicularis Oculi} muscle, allowing for realistic eye-region deformations.
 As can be seen in \autoref{fig:process_retopo}, edge loops now follow the exterior eye muscles, allowing for realistic eye-region deformations.
-This retopologized low-poly mesh has now lost the skin surface detail of the original scan, like wrinkles and creases (see \autoref{fig:process_displaced_subdiv})
+This retopologized low-poly mesh has now lost the skin surface detail of the original scan, like wrinkles and creases (see \autoref{fig:process_displaced_subdiv}).
 These were restored with a displacement map computed from the scanned geometry \cite{lee2000displaced}.
 Although they are two separate organs, there is normally no visible gap between eyeball and skin.
 However, as a consequence of removing the eyeball from the original scan, the retopologized mesh will not necessarily meet the eyeball geometry (see \autoref{fig:process_retopo}).
@@ -119,16 +119,3 @@ These can occlude parts of the eye and affect eye tracking algorithms, so are si
 We followed the approach of {\'S}wirski and Dodgson~\cite{swirski2014rendering}, and modelled eyelashes using directed hair particle effects.
 Particles were generated from a control surface manually placed below the eyelids.
 To make them curl, eyelash particles experienced a slight amount of gravity during growth (negative gravity for the upper eyelash).
-
-\subsection{Eye-Region Landmark Annotation}
-
-\commentY{In my understanding, this section is only related to the shape registration task. And I think some parts in the next section are only relevant to the gaze estimation task? In this case, we should reorganize the next section as a "training data synthesis", starting from a general discussion and task-specific subsections.}
-
-As shown in \autoref{fig:process_ldmks}, each 3D eye-region was annotated once in 3D with $28$ landmarks, corresponding to the eye corners ($2$), eyelids ($5\!+\!5$), iris boundary ($8$), and pupil boundary ($8$).
-The iris and pupil landmarks were defined as a subset of the eyeball geometry vertices, so deform automatically with changes in pupil and iris size.
-The eyelid and eye corner landmarks were manually labelled with a separate mesh that follows the seam where eyeball geometry meets skin geometry.
-This mesh is assigned shape keys and deforms automatically during eyelid motion.
-%
-% So instead of having humans ambiguously label eye-region anatomy, we carefully manually annotate each eye-region once, ensuring higher-quality labels.
-% Maybe put the sentence below in later
-Whenever an image is rendered, the 2D image-space coordinates of these 3D landmarks are calculated using the camera projection matrix and saved.

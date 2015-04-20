@@ -1,6 +1,6 @@
 %!TEX root = 00_main.tex
 
-\section{Rendering Photo-Realistic Images}
+\section{Training data synthesis}
 
 \begin{figure}
 	\captionsetup[subfigure]{labelformat=empty} % stop subcaption writing "(a)""
@@ -24,6 +24,18 @@
 In-the-wild images exhibit huge amounts of appearance variability across different viewpoints and illumination. Our goal was to sufficiently sample our model across these degrees of variation to create a representitive dataset.
 In this section we first describe how we pose our viewpoint and model, then we explain how we use image-based lighting~\cite{debevec2002image} to model a wide range of realistic environments, and finally discuss the details of our rendering setup.
 
+\subsection{Eye-Region Landmark Annotation}
+
+\commentY{In my understanding, this section is only related to the shape registration task. And I think some parts in the next section are only relevant to the gaze estimation task? In this case, we should reorganize the next section as a "training data synthesis", starting from a general discussion and task-specific subsections.}
+
+As shown in \autoref{fig:process_ldmks}, each 3D eye-region was annotated once in 3D with $28$ landmarks, corresponding to the eye corners ($2$), eyelids ($5\!+\!5$), iris boundary ($8$), and pupil boundary ($8$).
+The iris and pupil landmarks were defined as a subset of the eyeball geometry vertices, so deform automatically with changes in pupil and iris size.
+The eyelid and eye corner landmarks were manually labelled with a separate mesh that follows the seam where eyeball geometry meets skin geometry.
+This mesh is assigned shape keys and deforms automatically during eyelid motion.
+%
+% So instead of having humans ambiguously label eye-region anatomy, we carefully manually annotate each eye-region once, ensuring higher-quality labels.
+% Maybe put the sentence below in later
+Whenever an image is rendered, the 2D image-space coordinates of these 3D landmarks are calculated using the camera projection matrix and saved.
 \subsection{Posing the model}
 
 % not sure if its worthwhile trying to formally parameterize the rendering model in the paper
