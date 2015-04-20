@@ -26,7 +26,7 @@ Our goal was to sufficiently sample our model across these degrees of variation 
 In this section we first describe how we posed our viewpoint and model and how we extracted corresponding 2D landmarks to augment the training data.
 We then explain our novel approach for using image-based lighting~\cite{debevec2002image} to model a wide range of realistic environments, and finally discuss the details of our rendering setup.
 
-\subsection{Posing the model}
+\subsection{Posing the Model}
 
 % not sure if its worthwhile trying to formally parameterize the rendering model in the paper
 % might be simpler to just use words?
@@ -55,7 +55,7 @@ This mesh is assigned shape keys and deforms automatically during eyelid motion.
 % Maybe put the sentence below in later
 Whenever an image is rendered, the 2D image-space coordinates of these 3D landmarks are calculated using the camera projection matrix and saved.
 
-\subsection{Creating Realistic illumination}
+\subsection{Creating Realistic Illumination}
 
 \begin{figure}
     \begin{subfigure}[t]{\columnwidth}
@@ -84,7 +84,8 @@ One of the main challenges in computer vision is illumination invariance -- a go
 We realistically illuminate our eye-model using \emph{image-based lighting}, a technique where high dynamic range (HDR) panoramic images are used to provide light in a scene \cite{debevec2002image}.
 This works by photographically capturing omni-directional light information, storing it in a texture, and then projecting it onto a sphere around the object.
 When a ray hits that texture during rendering, it takes that texture's pixel value as light intensity.
-At render time we randomly chose one of four freely available HDR environment images to simulate a range of different lighting conditions (see \autoref{fig:environment_maps}) \cite{AdaptiveSamplesHDR}.
+At render time we randomly chose one of four freely available HDR environment images\footnote{\url{http://adaptivesamples.com/category/hdr-panos/}} to simulate a range of different lighting conditions (see \autoref{fig:environment_maps}).
+%\cite{AdaptiveSamplesHDR}.
 The environment is then randomly rotated to simulate a continuous range of head-pose, and randomly scaled in intensity to simulate changes in ambient light.
 As shown in \autoref{fig:env_map_imgs_examples}, a combination of hard shadows and soft light can generate a range of appearances from only a single HDR environment.
 This simple and flexible approach creates varaibility using measured light levels in representitive environments rather than randomly configuring light sources and ambient lights \cite{zface}.
