@@ -90,7 +90,7 @@ The environment is then randomly rotated to simulate a continuous range of head-
 As shown in \autoref{fig:env_map_imgs_examples}, a combination of hard shadows and soft light can generate a range of appearances from only a single HDR environment.
 This simple and flexible approach creates varaibility using measured light levels in representitive environments rather than randomly configuring light sources and ambient lights \cite{zface}.
 
-\subsection{Rendering Engine}
+\subsection{Rendering Images}
 
 We use Blender's\footnote{The Blender Project -- \url{http://www.blender.org/}} inbuilt Cycles path-tracing engine for rendering.
 This Monte Carlo method traces the paths of many light rays per pixel, scattering light stochastically off physically-based materials in the scene until they reach illuminants.
@@ -99,3 +99,5 @@ Each $120\!\times\!80\textrm{px}$ eye-region image rendering took $5.26\textrm{s
 Our generic head-pose and gaze-direction dataset of 11,000 images can be rendered in under a day on a single machine
 % , though in practice we rendered using multiple machines simultaneously.
 As a result we can quickly generate a large, representitive dataset with clean labels in a fraction of the time taken by traditional data collection procedures \cite{zhang15_cvpr,sugano2014learning}.
+
+For general use, we rendered ... \commentE{Will characterize the dataset here}
