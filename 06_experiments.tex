@@ -11,18 +11,22 @@
     \label{fig:head_gaze_distribution}
 \end{figure*}
 
-
 % \input{figs/fig_example_fits_wild.tex}
 
+% \commentA{briefly say something about significance/importance of both problems, more in corresponding subsections}
+
 We evaluated the usefulness of our synthetic data generation method on two sample problems, eye-shape registration and appearance-based gaze estimation.
-
-\commentA{briefly say something about significance/importance of both problems, more in corresponding subsections}
-
-Appearance-based gaze estimation attempt to learn the maps from eye image appearance to the gaze direction. The performance of such method suffer from the appearance variation caused by head movement and illumination. This results in large training data. Our method can generate the synthetic data with different head pose, gaze range and illumination conditions. Such advantage can achieve the suitable training data quickly and adapt the model to unknown target domain.
-
-Eye-shape registration attempts to detect biological landmarks of the eye - eyelids, iris and the pupil. 
+%
+Eye-shape registration attempts to detect biological landmarks of the eye -- eyelids, iris and the pupil. 
 Such approaches either attempt to model the shape of the eye directly by relying on edge information \cite{wood2014eyetab, swirski2012robust} or by using statistically learnt deformable models \cite{alabort2014statistically}. 
-As our method can reliably generate consistent landmark location training data we use it for Constrained Local Neural Field (CLNF) \cite{baltrusaitis2013constrained} deformable model training.
+As our method can reliably generate consistent landmark location training data, we use it for Constrained Local Neural Field (CLNF) \cite{baltrusaitis2013constrained} deformable model training.
+
+Appearance-based gaze estimation systems learn a mapping directly from eye image pixels to gaze direction.
+% This is in contrast to geometry-based approaches that rely on tracking features of 
+This is a challenging task considering the changes in appearance caused by head movement and illumination, thus requiring large amounts of training data to perform well \cite{zhang15_cvpr}.
+%
+Since our method allows the synthesis of eye images with arbitrary head poses, gaze directions, and illumination conditions, we can generate a suitable training dataset rapidly, and even tailor it to the target domain.
+
 
 \subsection{Eyelid Registration In the Wild}
 
