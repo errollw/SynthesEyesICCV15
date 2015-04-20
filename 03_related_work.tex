@@ -14,7 +14,8 @@ It has been shown that synthetic training data is beneficial to various tasks in
 These works used 3D models, from a single 3D CAD object to deformable human body shape, to synthesise huge amount of training images for the target task.
 % \commentY{CAD-based multi-view object recognition has a lot of works, though I don't think we need to cite them all}
 
-As discussed by \citet{kaneva2011evaluation} \commentY{In some sense this is an important reference for our story}, one of the most important factors to consider is the realism of synthesised training images.
+% \commentY{In some sense this is an important reference for our story}
+As discussed by \citet{kaneva2011evaluation}, one of the most important factors to consider is the realism of synthesised training images.
 If the object of interest is highly complex, like the human eye, it is not clear whether we can rely on overly-simplistic object models.
 Most similar to this work, \citet{sugano2014learning} used 3D reconstructions of eye regions to synthesise multi-view training data for appearance-based gaze estimation.
 However, \citet{zhang15_cvpr} revealed that estimation accuracy significantly drops when the test data is obtained from a completely new environment.
@@ -40,25 +41,23 @@ This enables us to address the eye shape registration task via the learning-by-s
 
 \subsection{Computer Generated Eyes}
 
-\commentA{first paragraph: other body parts, then second paragraph: In contrast, the problem of modelling the human eye has received considerably less attention.}
-
-The eyeballs are complex organs comprised of multiple layers of tissue, each with different reflectance properties and levels of transparency.
-Fortunately, given that rendering realistic eyes is important for many areas in computer graphics (CG), there is already a large body of previous work on modelling and rendering eyes (see~\cite{ruhland2014look} for a recent survey).
-
-% \cite{feng1998variance} -- very early work on synthesising eye images
+% \commentA{first paragraph: other body parts, then second paragraph: In contrast, the problem of modelling the human eye has received considerably less attention.}
 
 % \cite{alabort2014statistically} -- trained a detailed deformable eye region model on in-the-wild images.
 
+The eyeballs are complex organs comprised of multiple layers of tissue, each with different reflectance properties and levels of transparency.
+Fortunately, given that realistic eyes are important for many areas of computing, there is already a large body of previous work on modelling and rendering eyes (see~\cite{ruhland2014look} for a recent survey).
+
 % As we spend so much time looking at eyes, mistakes in their appearance can cause a CG face to appear unfamiliar.
 
-CG eyes are important for the entertainment industry, who want to model them across different characters and with potentially dramatic appearance (e.g. crying).
-\citet{ActiBlizEyes} recently developed techniques for real-time modelling of eye wetness, redness, refraction, and ambient occlusion in a standard rasterization pipeline, as well as approximations for light-transfer properties of eyelids.
+Eyes are important for the entertainment industry, who want to model them realistically across different characters and with potentially dramatic appearance (e.g. crying).
+\mbox{\citet{ActiBlizEyes}} recently developed techniques for real-time modelling of eye wetness, redness, refraction, and ambient occlusion in a standard rasterization pipeline, as well as approximations for light-transfer properties of eyelids.
 \citet{berard2014highquality} represent the state-of-the-art in computer representation of eyes.
 They used a hybrid reconstruction method to capture both transparent corneal surface and diffuse sclera separately at a high resolution, and recorded deformations of the eyeball's interior structures.
 However, this requires imaging at a close range with specialist hardware.
 
-Aside from visual effects, previous work has used computer models to examine the eye from a medical viewpoint.
-\citet{sagar1994virtual} built a detailed model of the eye and surrounding face for a simulator that mechanically simulated surgery with finite element analysis.
+Aside from visual effects, previous work has used computer models to examine the eye from a medical perspective.
+\citet{sagar1994virtual} built a detailed model of the eye and surrounding face in a virtual environment that mechanically simulated surgery with finite element analysis.
 \citet{priamikov14_openeyesim} built a 3D biomechanical model of the eye and its interior muscles to understand the underlying problems of visual perception and motor control. 
  
 CG eyes have also been used to evalaute geometric gaze estimation algorithms, allowing individual parts of an eye-tracking system to be evaluated individually, rather than as an entire system \cite{bohme2008software,swirski2014rendering}. \citet{swirski2014rendering} used a rigged head model and reduced eyeball model to render ground truth images for pupil tracking algorithms.
