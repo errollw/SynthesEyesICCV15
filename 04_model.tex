@@ -9,7 +9,7 @@
 We developed a realistic dynamic eye-region model which can be randomly posed to generate fully labeled training images.
 % For a set of training images to be useful, it should be large, representitive of real-world variety, and cleanly labelled.
 For training data to be useful, it should be representitive of real-world variety.
-Our goal therefore was to model the continuous changes in appearance that the face and eyes undergo following eye movement, so they are accurately represented in close-up synthetic eye images.
+Our goal therefore was to model the continuous changes in appearance that the face and eyes undergo during eye movement, so they are accurately represented in close-up synthetic eye images.
 This is more challenging than simply rendering a collection of static models, as dynamic geometry must be correctly topologized and rigged to be able to deform continuously.
 To achieve this, we combine scanned facial geometry with a separate controllable eye model. These can together be posed to synthesize labelled training data.
 % Appearance-wise, the eye-region is one of the most complex areas of the whole body -- separate parts can all move independently, and feature a range of reflectance properties and small-scale details.
@@ -31,7 +31,7 @@ In this section we first present our anatomically inspired computer graphics eye
 
 As shown in \autoref{fig:eye_model_parts}, our eye model consists of two parts.
 The outer part (red wireframe) approximates the eye's overall shape with two spheres ($r_1\!=\!12\textrm{mm}, r_2\!=\!8\textrm{mm}$ \cite{ruhland2014look}), the latter representing the corneal bulge.
-To avoid a discontinuous seam between spheres, their meshes were joined, and the vertices along the seam where smoothed to minimize differences in face-angle.
+To avoid a discontinuous seam between spheres, their meshes were joined, and the vertices along the seam were smoothed to minimize differences in face-angle.
 % \commentA{how joined and smoothed?} Erroll - Maybe needs rewording. Perhaps i'll just put a citation for the smoothing operation? I don't particularly want to describe it
 This outer part is transparent, refractive ($n\!=\!1.376$), and partially reflective.
 The sclera's bumpy surface is modelled with smoothed solid noise functions, and applied using a \emph{displacement map} -- a 2D scalar function that shifts a surface in the direction of its normal \cite{lee2000displaced}.
