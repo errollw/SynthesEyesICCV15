@@ -1,6 +1,6 @@
 %!TEX root = 00_main.tex
 
-\section{Training data synthesis}
+\section{Training Data Synthesis}
 
 \begin{figure}
 	\captionsetup[subfigure]{labelformat=empty} % stop subcaption writing "(a)""
@@ -21,8 +21,9 @@
 \end{figure}
 
 % reword?
-In-the-wild images exhibit huge amounts of appearance variability across different viewpoints and illumination. Our goal was to sufficiently sample our model across these degrees of variation to create representitive datasets for both eye-shape registration and gaze estimation.
-In this section we first describe how we how we pose our viewpoint and model, and how we extract corresponding 2D landmarks for training data.
+In-the-wild images exhibit large amounts of appearance variability across different viewpoints and illuminations.
+Our goal was to sufficiently sample our model across these degrees of variation to create representative datasets for both eye-shape registration and appearance-based gaze estimation.
+In this section we first describe how we posed our viewpoint and model and how we extracted corresponding 2D landmarks to augment the training data.
 We then explain our novel approach for using image-based lighting~\cite{debevec2002image} to model a wide range of realistic environments, and finally discuss the details of our rendering setup.
 
 \subsection{Posing the model}
