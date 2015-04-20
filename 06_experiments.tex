@@ -82,9 +82,11 @@ As a baseline, we used the mean position of all eye-landmarks following model in
 Eyelid errors were calculated as RMS distances from eyelid landmarks to the ground truth eyelid boudnary.
 Iris errors were calculated by first least-squares fitting an ellipse to the tracked iris landmarks, discretizing it, removing points outside ground truth and tracked eyelid boundaries, and then measuring RMS distances to the ground truth iris.
 This avoided calculating errors for parts of the iris which were occluded by the eyelid.
-Errors were normalized by the eye-width, and are reported using average eye-width ($44.4\!\pm\!8.85\textrm{px}$) as reference.
+Errors were normalized by the eye-width, and are reported using average eye-width ($44.4{px}$) as reference.
 
-As shown in \autoref{fig:clnf_results_MPII}, our approach ($1.89\!\pm\!1.52\textrm{px}$) demonstrates comparable iris-fitting accuracy with EyeTab ($1.79\!\pm\!1.22\textrm{px}$), a state-of-the-art specialist algorithm for fitting ellipses to irises. However, our eye-CLM is more robust, with EyeTab failing to terminate in $2\%$ of test cases. As also shown by the 300-W experiment, our eye-CLNF localizes eyelids better than the face-CLNF.
+As shown in \autoref{fig:clnf_results_MPII}, our approach ($1.48{px}$) demonstrates comparable iris-fitting accuracy with EyeTab ($1.44{px}$), a state-of-the-art specialist algorithm for fitting ellipses to irises.
+However, our eye-CLM is more robust, with EyeTab failing to terminate in $2\%$ of test cases.
+As also shown by the 300-W experiment, our eye-CLNF localizes eyelids better than the face-CLNF.
 %As shown by \todo{prev exp.}, our eye-CLM ($2.79\!\pm\!2.20\textrm{px}$) also localizes eyelids better than previous state-of-the-art facial landmark trackers ($4.27\!\pm\!1.84\textrm{px}$).
 
 % show that we only need data from few(er) people and show competitive performance
