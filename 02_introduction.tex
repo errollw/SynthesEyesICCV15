@@ -10,7 +10,7 @@ However, capturing or collecting large-scale training data can be time-consuming
 %, especially for new areas of research without pre-existing datasets.
 and supervised learning methods additionally require accurate ground truth annotation for each image.
 This annotation process can be expensive and tedious, and there is no guarantee that human-provided labels will be correct.
-Ground truth annotation is particularly challenging and error-prone for learning tasks that require highly fine-grained and accurate labels, such as tracking facial landmarks for facial expression analysis and gaze estimation~\todo{REF}, or body joints for pose estimation and activity recognition~\todo{REF}.
+Ground truth annotation is particularly challenging and error-prone for learning tasks that require highly fine-grained and accurate labels, such as tracking facial landmarks for facial expression analysis and gaze estimation, or body joints for pose estimation and activity recognition.
 
 \begin{figure}
     \includegraphics[width=\columnwidth]{teaser}
@@ -26,7 +26,8 @@ Perhaps the best known example is by \citet{shotton2013real}, who synthesized a 
 The eyes and their movements are important for a range of applications including gaze-based human-computer interaction~\cite{majaranta14_apc}, visual behaviour monitoring~\cite{bulling13_chi,bulling11_pami}, and -- more recently -- computer vision tasks, such as object recognition and detection~\cite{yun2013studying,papadopoulos2014training,karthikeyan2013and}.
 The eye-region is particularly difficult to model accurately given the dynamic shape changes it undergoes with facial motion and eyeball rotation, and the complex material structure of the eyeball itself.
 For this reason, a recent learning-by-synthesis work for gaze estimation employed only fundamental computer graphics techniques -- rendering low-resolution meshes without allowing lighting variation or accounting for the varying material properties of the face \citet{sugano2014learning}.
-In addition, their synthesized dataset contains only gaze labels, limiting its usefulness to other fields, e.g. facial landmark registration.
+In addition, their model was not fully controllable and the synthesized dataset contained only gaze labels, limiting its usefulness for other computer vision problems, such as facial landmark registration.
+\commentA{what about Leszeks work? should also fit in here, right?}
 
 % \commentA{we can also remove these last references if we have to save space}
 % Recent work by \citet{sugano2014learning} demonstrated the benefits of learning-by-synthesis for appearance-based gaze estimation, but employed only fundamental computer graphics techniques for synthesising low-resolution meshes that did not account for lighting variation.
@@ -44,11 +45,12 @@ In addition, their synthesized dataset contains only gaze labels, limiting its u
 \input{figs/fig_process.tex}
 
 We present a novel method for photorealistic rendering face and eye images at a large scale using a collection of dynamic and controllable eye-region models.
-In contrast to previous works, we provide a comprehensive and detailed description of the model preparation process and rendering pipeline.
+In contrast to previous works, we provide a comprehensive and detailed description of the model preparation process and rendering pipeline (see~\autoref{fig:process} for an overview of the model preparation process and~\autoref{fig:eye_model} for the eye model used).
 We then present and evaluate two separate systems trained on the resulting data (\emph{\dataset}): a novel eye-region specific deformable model and an appearance-based gaze estimator.
 These systems are case studies that show how we leverage the controllability made available by rendering our training data to easily and quickly generate high quality training datasets.
 
 The specific contributions of this work are threefold.
 First, we present our dynamic eye-region model that uses multiple parts and blend shapes to model the continuous degrees of shape change and deformation exhibited by the eye.
-We then describe in detail our novel but straight-forward techniques for generating large degrees of realistic lighting variation in synthesized training data using image-based-lighting.
-We finally present a novel application of learning-by-synthesis: eye-region registration.
+We further describe in detail our novel but straight-forward techniques for generating large degrees of realistic lighting variation in synthesized training data using image-based-lighting.
+We show that \commentA{insert key gaze estimation result here}
+We finally present eye-region registration as a novel application of learning-by-synthesis and demonstrate that \commentA{insert key result here}
