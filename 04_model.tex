@@ -84,7 +84,7 @@ Facial appearance around the eye varies dramatically between people as a result 
 
 As can be seen in \autoref{fig:process_original_scan}, the cornea has been incorrectly reconstructed by the optical scanning process.
 This is because transparent surfaces are not directly visible, so cannot be reconstructed in the same way as diffuse surfaces, such as skin.
-Recent work used a hybrid reconstruction method to reconstruct the corneal surface separately, but requires additional hardware \cite{berard2014highquality} -- this level of detail was deemed unnecessary for our purposes.
+% Recent work used a hybrid reconstruction method to reconstruct the corneal surface separately, but requires additional hardware \cite{berard2014highquality} -- this level of detail was deemed unnecessary for our purposes.
 We wanted images representing a wide range of eye-gaze directions, so we needed to be able to pose the eyeball separately from the face geometry.
 We therefore removed the scanned eyeball from the mesh, and placed our own eyeball approximation in its place.
 \commentY{I feel this part should be explained beforehand,  i.e., we should first explain why take this approach combining eye model and face scan}
