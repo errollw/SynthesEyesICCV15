@@ -1,14 +1,13 @@
 %!TEX root = 00_main.tex
 
-\input{figs/fig_process.tex}
-
 \input{figs/fig_model_suite.tex}
 
 \section{Our Dynamic Eye-Region Model}
 
 We developed a realistic dynamic eye-region model which can be randomly posed to generate fully labeled training images.
+\autoref{fig:process} provides an overview of the model preparation process.
 % For a set of training images to be useful, it should be large, representitive of real-world variety, and cleanly labelled.
-For training data to be useful, it should be representitive of real-world variety.
+For the resulting training data to be useful, it should be representative of real-world variety.
 Our goal therefore was to model the continuous changes in appearance that the face and eyes undergo during eye movement, so they are accurately represented in close-up synthetic eye images.
 This is more challenging than simply rendering a collection of static models, as dynamic geometry must be correctly topologized and rigged to be able to deform continuously.
 To achieve this, we combine scanned facial geometry with a separate controllable eye model. These can together be posed to synthesize labelled training data.
