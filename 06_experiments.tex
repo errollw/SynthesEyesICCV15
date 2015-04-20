@@ -20,6 +20,10 @@ We evaluated the usefulness of our synthetic data generation method on two sampl
 
 Appearance-based gaze estimation attempt to learn the maps from eye image appearance to the gaze direction. The performance of such method suffer from the appearance variation caused by head movement and illumination. This results in large training data. Our method can generate the synthetic data with different head pose, gaze range and illumination conditions. Such advantage can achieve the suitable training data quickly and adapt the model to unknown target domain.
 
+Eye-shape registration attempts to detect biological landmarks of the eye - eyelids, iris and the pupil. 
+Such approaches either attempt to model the shape of the eye directly by relying on edge information \cite{wood2014eyetab, swirski2012robust} or by using statistically learnt deformable models \cite{alabort2014statistically}. 
+As our method can reliably generate consistent landmark location training data we use it for Constrained Local Neural Field (CLNF) \cite{baltrusaitis2013constrained} deformable model training.
+
 \subsection{Eyelid Registration In the Wild}
 
 \begin{figure}
@@ -32,13 +36,21 @@ Appearance-based gaze estimation attempt to learn the maps from eye image appear
 \input{figs/fig_example_fits_wild.tex}
 
 % Erroll to Tadas: need to make sure these facts are straight...
-We performed an experiment to see how our our system generalises on unseen and unconstrained images from the 300 Faces In-the-Wild (300-W) \cite{sagonas2013300} datasets.
-We used a generic \dataset dataset for training with 11,382 images rendered with $40^{\circ}$ head pose variation and $90^{\circ}$ gaze variation.
-We compared our approach with the following: \todo{briefly list other systems}
-The 1026 test images feature 6 eye-region landmarks from the Multi-PIE \cite{gross2010multi} mark-up corresponding to the eyelid boundary. Errors were recorded as the RMS point-to-boundary distance from tracked eyelid landmarks to ground truth eyelid boundary, and were normalized by inter-ocular distance.
-To initialize model fitting we first used the face-CLNF \cite{baltrusaitis2013constrained}, which we also use as a baseline.
+We performed an experiment to see how our our system generalises on unseen and unconstrained images from the 300 Faces In-the-Wild (300-W) \cite{sagonas2013300} validation datasets which contain labels for eyelid boundaries. We tested all of the approaches on the 830 (out of 1026) test images. We discarded images that did not contain visible eyes (occluded by hair or sunglasses) or face detection step failed in some of the baselines. This lead to 1660 eye images for evaluation.
 
-As shown in \autoref{fig:clnf_results_wild}, the results show the eye-CLNF outperforming all comparison systems in eye-lid localization. \todo{more}. Note that our system trained on only ten participants in four lighting conditions results in comparable performance to a system trained on unconstrained in-the-wild images -- this suggests high-quality labels are important.
+We trained CLNF patch experts using the generic \dataset dataset with 11,382 images rendered with $40^{\circ}$ head pose variation and $90^{\circ}$ gaze variation. 
+We used the 3D landmark locations to construct a Point Distribution Model (PDM) using Principal Component Analysis. 
+We initialised our approach by using the face-CLNF \cite{baltrusaitis2013constrained} facial landmark detector.
+
+To compare synthetic to real training images we trained an eyelid CLNF model on 300-W images, but used the same PDM used for synthetic data (CLNF 300-W). 
+We also compared our approach with the following state-of-the-art facial landmark detectors trained on real world in-the-wild data: CLNF \cite{baltrusaitis2013constrained}, Supervised Descent Method \cite{Xiong2013sdm}, Discriminative Response Map Fitting \cite{Asthana2013drmf}, and tree based face and landmark detector \cite{Zhu2012tree}. 
+
+The results of our experiments can be seen in \autoref{fig:clnf_results_wild}. 
+Errors were recorded as the RMS point-to-boundary distance from tracked eyelid landmarks to ground truth eyelid boundary, and were normalized by inter-ocular distance. 
+First, the results show the eye-CLNF (both synthetic and real data) outperforming all other systems in eye-lid localization. 
+Second, our system (CLNF Synth) trained on only ten participants in four lighting conditions results in very similar performance to a system trained on unconstrained in-the-wild images (CLNF 300-W). This suggests the importance of high-quality consistent labels.
+% and that our system can be used to achieve state-of-the-art performance for eye shape registration. 
+%Furthermore, our approach managed to generalise without explicit modelling of eye-glasses or other partial occlusions.
 
 Our data synthesis system also allows us to examine what steps of the synthesis approach are important for generating good training data. We trained two further eye-CLNFs on different versions of \dataset, one without eyelid motion and one with only one fixed lighting condition. As can be seen in \autoref{fig:clnf_results_wild}, these perform worse as they are missing important degrees of variability.
 
