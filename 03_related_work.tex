@@ -19,16 +19,16 @@ If the object of interest is highly complex, like the human eye, it is not clear
 Most similar to this work, \citet{sugano2014learning} used 3D reconstructions of eye regions to synthesise multi-view training data for appearance-based gaze estimation.
 However, \citet{zhang15_cvpr} revealed that estimation accuracy significantly drops when the test data is obtained from a completely new environment.
 Similarly to facial expression recognition~\cite{stratou2011effect}, illumination effects are a critical factor for computer vision, and the change of viewpoints is not enough to cover the test data variability.
-\commentY{Is the following line correct? I thought they are just evaluating robustness of their approach against these factors}
-\citet{zface} varied ambient and directional lighting conditions during synthesis to achieve illumination invariance.
+% \commentY{Is the following line correct? I thought they are just evaluating robustness of their approach against these factors}
+% \citet{zface} varied ambient and directional lighting conditions during synthesis to achieve illumination invariance.
 \commentY{this line should be adjusted according to the result}
 In contrast, our model allows...
 
-\commentY{reality and controllability should be both important, while currently the story focuses on the reality side. but this point is rather related to the next section (Computer Generated Eyes) maybe?}
+% \commentY{reality and controllability should be both important, while currently the story focuses on the reality side. but this point is rather related to the next section (Computer Generated Eyes) maybe?}
 Another limitation of Sugano et al.'s dataset~\cite{sugano2014learning} is that they do not provide a parametric model.
-Their data is essentially a set of rigid and low-resolution 3D models of eye regions with their ground-truth gaze directions, and hence cannot be easily applied to different tasks.
-The scope of a realistic eye model for learning-based approach is not limited to the appearance-based gaze estimation task, but the model can be also applied to, e.g., eye shape registration task.
-Since our model is fully synthetic, it can be also used to synthesise close-up eye images with ground-truth eye landmark positions.
+Their data is essentially a set of rigid and low-resolution 3D models of eye regions with ground-truth gaze directions, and hence cannot be easily applied to different tasks.
+The scope of a realistic eye model for learning-based approach is not limited to the task of appearance-based gaze estimation; the model can be also applied to other problems, e.g. eye shape registration.
+Since our model is fully synthetic, it can be used to synthesise close-up eye images with ground-truth eye landmark positions.
 This enables us to address the eye shape registration task via the learning-by-synthesis approach for the first time.
 
 %\cite{okada2008relevant}, \cite{shakhnarovich2003fast} -- both rendered RGB training images with poser for pose recognition
