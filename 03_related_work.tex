@@ -2,23 +2,24 @@
 
 \section{Related Work}
 
-Our work is related to previous works on 1) learning using synthetic data as well as 2) computer generated eyes.
+Our work is related to previous works on 1) learning using synthetic data as well as 2) computational modelling of the eyes.
 
 \subsection{Learning Using Synthetic Data}
 
-While learning-based approaches have been recognised as promising solutions for various computer vision tasks, the gap between training and test data still causes practical issues.
-It is still not trivial for learning algorithms to handle unknown test data, and their performances often depend on how well the test data distribution is covered by the training data.
-One straightforward solution is to use training data that covers the whole variation of potential test data; however, it is not always possible to obtain real training data in this manner.
-The use of purely synthetic training data has been considered as a promising solution to address this issue.
-It has been shown that synthetic training data is beneficial to various tasks including body pose estimation~\cite{shakhnarovich2003fast,okada2008relevant,shotton2013real}, head pose estimation~\cite{fanelli2011real} and object detection/recognition~\cite{yu2010improving,liebelt2010multiview,jaderberg2014synthetic}.
-These works used 3D models, from a single 3D CAD object to deformable human body shape, to synthesise huge amount of training images for the target task.
+Learning-based approaches have been recognised as a promising solution for various computer vision tasks
+% the gap between training and test data still causes practical issues.
+but it remains challenging for such approaches to handle unknown test data and their performances often depends on how well the test data distribution is covered by the training data.
+Given that recordings of training data that covers the whole variation of potential test data is challenging,
+%One solution is to use training data that covers the whole variation of potential test data but it is not always possible to obtain real training data in this manner.
+the use of purely synthetic training data has been considered as a promising solution.
+Previous works demonstrated that synthetic training data is beneficial for tasks such as body pose estimation~\cite{shakhnarovich2003fast,okada2008relevant,shotton2013real}, head pose estimation~\cite{fanelli2011real}, and object detection/recognition~\cite{yu2010improving,liebelt2010multiview,jaderberg2014synthetic}.
+These works used 3D models, from a single 3D CAD object to deformable human body shape, to synthesise large amounts of training images.
 % \commentY{CAD-based multi-view object recognition has a lot of works, though I don't think we need to cite them all}
 
 % \commentY{In some sense this is an important reference for our story}
 As discussed by \citet{kaneva2011evaluation}, one of the most important factors to consider is the realism of synthesised training images.
 If the object of interest is highly complex, like the human eye, it is not clear whether we can rely on overly-simplistic object models.
-Most similar to this work, \citet{sugano2014learning} used 3D reconstructions of eye regions to synthesise multi-view training data for appearance-based gaze estimation.
-However, \citet{zhang15_cvpr} revealed that estimation accuracy significantly drops when the test data is obtained from a completely new environment.
+\citet{zhang15_cvpr} revealed that estimation accuracy significantly drops when the test data is obtained from a different environment.
 Similarly to facial expression recognition~\cite{stratou2011effect}, illumination effects are a critical factor for computer vision, and the change of viewpoints is not enough to cover the test data variability.
 % \commentY{Is the following line correct? I thought they are just evaluating robustness of their approach against these factors}
 % \citet{zface} varied ambient and directional lighting conditions during synthesis to achieve illumination invariance.
@@ -26,11 +27,12 @@ Similarly to facial expression recognition~\cite{stratou2011effect}, illuminatio
 In contrast, our model allows...
 
 % \commentY{reality and controllability should be both important, while currently the story focuses on the reality side. but this point is rather related to the next section (Computer Generated Eyes) maybe?}
-Another limitation of Sugano et al.'s dataset~\cite{sugano2014learning} is that they do not provide a parametric model.
+Most similar to this work, \citet{sugano2014learning} used 3D reconstructions of eye regions to synthesise multi-view training data for appearance-based gaze estimation.
+One limitation of that work is that they do not provide a parametric model.
 Their data is essentially a set of rigid and low-resolution 3D models of eye regions with ground-truth gaze directions, and hence cannot be easily applied to different tasks.
-The scope of a realistic eye model for learning-based approach is not limited to the task of appearance-based gaze estimation; the model can be also applied to other problems, e.g. eye shape registration.
+The scope of learning-by-synthesis with a realistic eye model is not limited to appearance-based gaze estimation; the model can be also applied to other problems, e.g. eye shape registration.
 Since our model is fully synthetic, it can be used to synthesise close-up eye images with ground-truth eye landmark positions.
-This enables us to address the eye shape registration task via the learning-by-synthesis approach for the first time.
+This enables us to address eye shape registration via learning-by-synthesis for the first time.
 
 %\cite{okada2008relevant}, \cite{shakhnarovich2003fast} -- both rendered RGB training images with poser for pose recognition
 %\cite{fanelli2011real} -- train head pose estimator on only synthetic depth data.
@@ -39,7 +41,7 @@ This enables us to address the eye shape registration task via the learning-by-s
 
 %\commentY{(As one of the authors) I think this approach is in a little different context and we don't necessarily need to mention here:} \cite{lu2012head}
 
-\subsection{Computer Generated Eyes}
+\subsection{Computational Modelling of the Eyes}
 
 % \commentA{first paragraph: other body parts, then second paragraph: In contrast, the problem of modelling the human eye has received considerably less attention.}
 
@@ -50,20 +52,20 @@ Fortunately, given that realistic eyes are important for many areas of computing
 
 % As we spend so much time looking at eyes, mistakes in their appearance can cause a CG face to appear unfamiliar.
 
-Eyes are important for the entertainment industry, who want to model them realistically across different characters and with potentially dramatic appearance (e.g. crying).
-\mbox{\citet{ActiBlizEyes}} recently developed techniques for real-time modelling of eye wetness, redness, refraction, and ambient occlusion in a standard rasterization pipeline, as well as approximations for light-transfer properties of eyelids.
-\citet{berard2014highquality} represent the state-of-the-art in computer representation of eyes.
-They used a hybrid reconstruction method to capture both transparent corneal surface and diffuse sclera separately at a high resolution, and recorded deformations of the eyeball's interior structures.
-However, this requires imaging at a close range with specialist hardware.
+Eyes are important for the entertainment industry, who want to model them with potentially dramatic appearance (e.g. crying).
+\mbox{\citet{ActiBlizEyes}} recently developed techniques for real-time modelling of eye wetness, refraction, and ambient occlusion in a standard rasterisation pipeline for video games.
+\citet{berard2014highquality} represents the state-of-the-art in computer representation of eyes.
+They used a hybrid reconstruction method to capture both transparent corneal surface and diffuse sclera separately and recorded deformations of the eyeball's interior structures.
+However, this required imaging at a close range with specialist hardware.
 
-Aside from visual effects, previous work has used computer models to examine the eye from a medical perspective.
-\citet{sagar1994virtual} built a detailed model of the eye and surrounding face in a virtual environment that mechanically simulated surgery with finite element analysis.
-\citet{priamikov14_openeyesim} built a 3D biomechanical model of the eye and its interior muscles to understand the underlying problems of visual perception and motor control. 
- 
-CG eyes have also been used to evalaute geometric gaze estimation algorithms, allowing individual parts of an eye-tracking system to be evaluated individually, rather than as an entire system \cite{bohme2008software,swirski2014rendering}. \citet{swirski2014rendering} used a rigged head model and reduced eyeball model to render ground truth images for pupil tracking algorithms.
+Aside from visual effects, previous work has used CG models to examine the eye from a medical perspective.
+\citet{sagar1994virtual} built a virtual environment of the eye and surrounding face for mechanically simulating surgery with finite element analysis.
+\citet{priamikov14_openeyesim} built a 3D biomechanical model of the eye and its interior muscles to understand the underlying problems of visual perception and motor control.
+CG eyes have also been used to evaluate geometric gaze estimation algorithms, allowing individual parts of an eye tracking system to be evaluated separately~\cite{bohme2008software,swirski2014rendering}.
+\citet{swirski2014rendering} used a rigged head model and reduced eyeball model to render ground truth images for pupil tracking algorithms.
 
 % reword
-The facial region around the eye is also important. There is a vast amount of research on animating and rendering the face ... \cite{orvalho2012facial}
+% The facial region around the eye is also important. There is a vast amount of research on animating and rendering the face ... \cite{orvalho2012facial}
 
 % and the level of detail was deemed unnecessary for our purposes.
 
