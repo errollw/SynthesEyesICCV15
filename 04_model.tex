@@ -43,8 +43,8 @@ To model shape variation we use \emph{blend shapes} -- an animation technique wh
 We created blend shapes for dilated and constricted pupils, as well as large and small irises to account for a small amount ($10\%$) of variation in iris size.
 % Maybe try to explain blend shapes better
 % Blend shapes are localized so can be mixed, so we can easily model an eye with a small pupil, and a large iris.
-\commentY{The texture changes randomly at rendering stage? As a model, it will be better to separate the description about model parameters (this section) and how they are changed during the rendering (next section).}
-We vary the texture of the eye by randomly compositing images in three separate layers:
+% \commentY{The texture changes randomly at rendering stage? As a model, it will be better to separate the description about model parameters (this section) and how they are changed during the rendering (next section).}
+We vary the texture of the eye by compositing images in three separate layers:
 \begin{inparaenum}[\itshape i\upshape)]
 \item a \emph{sclera} tint layer (white, pink, or yellow);
 \item an \emph{iris} layer with four different photo-textures (amber, blue, brown, grey); and
@@ -71,7 +71,8 @@ This is because transparent surfaces are not directly visible, so cannot be reco
 We also wanted images representing a wide range of eye-gaze directions, so we needed to be able to pose the eyeball separately from the face geometry.
 We therefore removed the scanned eyeball from the mesh, and placed our own eyeball approximation in its place.
 % \commentY{I feel this part should be explained beforehand,  i.e., we should first explain why take this approach combining eye model and face scan}
-\commentY{Moved this paragraph here. And maybe we do not need to mention the quality of the cornea shape reconstruction, we anyway need to replace it to change gaze directions}
+\commentY{Maybe we do not need to mention the quality of the cornea shape reconstruction, we anyway need to replace it to change gaze directions}
+\commentE{I think it's important, as otherwise they might ask why we didn't use the scanned eyeball geometry as part of our model}
 
 \subsection{Eye-Region Geometry Preparation}
 

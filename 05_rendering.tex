@@ -44,8 +44,6 @@ Before rendering, we also verified that the projected 2D pupil center in the ima
 
 \subsection{Creating Realistic Illumination}
 
-\commentY{swapped the section order, I think this is more important point than landmark annotation}
-
 \begin{figure}
     \begin{subfigure}[t]{\columnwidth}
         \includegraphics[width=0.24\textwidth]{fig_env_1} \hfill
@@ -83,8 +81,8 @@ This simple and flexible approach creates variability using measured light level
 \subsection{Eye-Region Landmark Annotation}
 
 % \commentY{In my understanding, this section is only related to the shape registration task. And I think some parts in the next section are only relevant to the gaze estimation task? In this case, we should reorganize the next section as a "training data synthesis", starting from a general discussion and task-specific subsections.}
-\commentY{Added a sentence here}
-For the eye shape registration task, we need an additional ground-truth annotation of eye-region landmarks in the training images.
+% \commentY{Added a sentence here}
+For eye shape registration, we need additional ground-truth annotations of eye-region landmarks in the training images.
 As shown in \autoref{fig:process_ldmks}, each 3D eye-region was annotated once in 3D with $28$ landmarks, corresponding to the eye corners ($2$), eyelids ($5\!+\!5$), iris boundary ($8$), and pupil boundary ($8$).
 The iris and pupil landmarks were defined as a subset of the eyeball geometry vertices, so deform automatically with changes in pupil and iris size.
 The eyelid and eye corner landmarks were manually labelled with a separate mesh that follows the seam where eyeball geometry meets skin geometry.
@@ -100,7 +98,8 @@ We use Blender's\footnote{The Blender Project -- \url{http://www.blender.org/}} 
 This Monte Carlo method traces the paths of many light rays per pixel, scattering light stochastically off physically-based materials in the scene until they reach illuminants.
 A GPU implementation is available for processing large numbers of rays simultaneously ($150/\textrm{px}$) to achieve noise-free and photorealistic images.
 
-For eye-region registration \commentY{how about gaze estimation?}, we rendered a generic \dataset dataset of 11,382 images covering $40^{\circ}$ of viewpoint (i.e. head pose) variation and $90^{\circ}$ of gaze variation.
+% For eye-region registration \commentY{how about gaze estimation?},
+We rendered a generic \dataset dataset of 11,382 images covering $40^{\circ}$ of viewpoint (i.e. head pose) variation and $90^{\circ}$ of gaze variation.
 We sampled eye color and environmental lighting randomly for each image.
 Each $120\!\times\!80\textrm{px}$ rendering took $5.26\textrm{s}$ on average using a commodity GPU (Nvidia GTX660).
 As a result our cleanly-labelled dataset can be rendered in under a day on a single machine -- a fraction of the time taken by traditional data collection procedures \cite{zhang15_cvpr,sugano2014learning}. 
