@@ -156,6 +156,7 @@ If the target setting can be preliminary specified, as the laptop interaction ca
 %Since the samples from the small range of head poses can be trained together, while extreme head poses wouldn't share eye appearance. Also the gaze direction space is arbitrary and difficult to be densely covered by collected dataset.
 In order to analyze the effect of different head pose ranges, we additionally render a~\dataset subset that matches the gaze and pose distribution of MPIIGaze dataset.
 Since our method also allows us to control lighting conditions, we also added 3D laptop screen emitting light to simulate the target condition.
+\commentY{Xucong said now this subset might not contain screen emitting light. Can you double check?}
 %Notice that the head pose and gaze direction range can be estimated based on the task, so the required information is not sophisticated. 
 %This shows how we can target specific scenarios like laptop-based gaze estimation, and render a suitable dataset within a day rather than taking 3 months of data collection with 15 participants. 
 For comparison, we also re-sample a subset of UT dataset as described in~\cite{zhang15_cvpr} that has the same gaze and head pose distribution with MPIIGaze.
