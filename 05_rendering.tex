@@ -31,12 +31,12 @@ We then explain our novel approach for using image-based lighting~\cite{debevec2
 % not sure if its worthwhile trying to formally parameterize the rendering model in the paper
 % might be simpler to just use words?
 For a chosen eye-region model configuration, each rendered image is determined by parameters $(\mathbf{c}, \mathbf{g}, L)$: 3D camera position $\mathbf{c}$; 3D gaze vector $\mathbf{g}$; and lighting environment $L$.
-As shown in \autoref{fig:cam_pos}, camera positions $\mathbf{c}$ were chosen by iterating over spherical coordinates $(r, \theta, \phi)$, centered around the eyeball center.
+Camera positions $\mathbf{c}$ were chosen by iterating over spherical coordinates $(r, \theta, \phi)$, centered around the eyeball center (see~\autoref{fig:cam_pos}).
 We used orthographic rendering, as this simulates an eye region-of-interest being cropped from a wide-angle camera image, so we set $r\!=\!1$ for convenience.
 At each camera position $\mathbf{c}$, we rendered multiple images with different 3D gaze vectors to simulate the eye looking in different directions.
 Examples with fixed $L$ are shown in \autoref{fig:cam_pos_example_renders}.
 Gaze vectors $\mathbf{g}$ were chosen by first pointing the eye directly at the camera (simulating eye-contact), and then modifying the eyeball's pitch ($\alpha$) and yaw ($\beta$) angles over a chosen range.
-For our generic \dataset dataset, we rendered images with up to $45^{\circ}$ horizontal and vertical deviation from eye-contact, in increments of $10^{\circ}$.
+For our generic dataset, we rendered images with up to $45^{\circ}$ horizontal and vertical deviation from eye-contact, in increments of $10^{\circ}$.
 %
 As we posed the model in this way, there was the possibility of rendering ``unhelpful'' images that either simulate impossible scenarios or are not useful for training.
 To avoid violating anatomical constraints, we only rendered images for valid eyeball rotations $|\alpha|\!\leq\!25^{\circ}$ and $|\beta|\!\leq\!35^{\circ}$ \cite{MIL-STD-1472G}.
