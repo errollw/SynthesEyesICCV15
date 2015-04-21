@@ -23,6 +23,7 @@
 % reword?
 In-the-wild images exhibit large amounts of appearance variability across different viewpoints and illuminations.
 Our goal was to sufficiently sample our model across these degrees of variation to create representative datasets for both eye-shape registration and appearance-based gaze estimation.
+\commentY{Did we already clearly state that this paper focuses on these two tasks?}
 In this section we first describe how we posed our viewpoint and model and how we extracted corresponding 2D landmarks to augment the training data.
 We then explain our approach for using image-based lighting \cite{debevec2002image} to model a wide range of realistic environments, and finally discuss the details of our rendering setup.
 
@@ -106,4 +107,4 @@ Each $120\!\times\!80\textrm{px}$ rendering took $5.26\textrm{s}$ on average usi
 As a result our cleanly-labelled dataset can be rendered in under a day on a single machine -- a fraction of the time taken by traditional data collection procedures \cite{zhang15_cvpr,sugano2014learning}. 
 \commentY{This claim is a little misleading. We practically need to consider the model construction time too; the rendering time can be much shorter with the simple UT dataset models}
 In addition, our method allows us to target specific domains. For webcam-oriented eye gaze estimation we rendered a targetted dataset guided by typical laptop use ($10^{\circ}$ pose variation, $20^{\circ}$ gaze variation).
-\commentY{As I commented before, this is not directly related to the model/data itself. I think it's better to simply mention in the experiments section as an additional analysis}
+\commentY{As I commented before, this is not directly related to the model/data itself. I think it's better to simply mention in the experiments section as an additional analysis. This adapted rendering becomes the contribution if we can adjust, e.g., lighting condition to the target domain.}
