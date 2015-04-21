@@ -43,6 +43,7 @@ To model shape variation we use \emph{blend shapes} -- an animation technique wh
 We created blend shapes for dilated and constricted pupils, as well as large and small irises to account for a small amount ($10\%$) of variation in iris size.
 % Maybe try to explain blend shapes better
 % Blend shapes are localized so can be mixed, so we can easily model an eye with a small pupil, and a large iris.
+\commentY{The texture changes randomly at rendering stage? As a model, it will be better to separate the description about model parameters (this section) and how they are changed during the rendering (next section).}
 We vary the texture of the eye by randomly compositing images in three separate layers:
 \begin{inparaenum}[\itshape i\upshape)]
 \item a \emph{sclera} tint layer (white, pink, or yellow);
@@ -64,14 +65,15 @@ While previous approaches used lifelike artist-created models, for example~\cite
 %or use free or commercial photogrammetry software to generate facial geometry models in-house.
 Facial appearance around the eye varies dramatically between people as a result of different eye-shapes (e.g. round vs hooded), orbital bone structure (e.g. deep-set vs protruding), and skin detail (wrinkled vs smooth). Therefore our head models (see \autoref{fig:model_suite}) cover both genders with a variety of ethnicities and ages.
 
-\subsection{Eye-Region Geometry Preparation}
-
 As can be seen in \autoref{fig:process_original_scan}, the cornea of the original head scan has been incorrectly reconstructed by the optical scanning process.
 This is because transparent surfaces are not directly visible, so cannot be reconstructed in the same way as diffuse surfaces, such as skin.
 % Recent work used a hybrid reconstruction method to reconstruct the corneal surface separately, but requires additional hardware \cite{berard2014highquality} -- this level of detail was deemed unnecessary for our purposes.
-We wanted images representing a wide range of eye-gaze directions, so we needed to be able to pose the eyeball separately from the face geometry.
+We also wanted images representing a wide range of eye-gaze directions, so we needed to be able to pose the eyeball separately from the face geometry.
 We therefore removed the scanned eyeball from the mesh, and placed our own eyeball approximation in its place.
 % \commentY{I feel this part should be explained beforehand,  i.e., we should first explain why take this approach combining eye model and face scan}
+\commentY{Moved this paragraph here. And maybe we do not need to mention the quality of the cornea shape reconstruction, we anyway need to replace it to change gaze directions}
+
+\subsection{Eye-Region Geometry Preparation}
 
 While the original head scan geometry is suitable for being rendered as a static model, its high resolution topology cannot be easily controlled changes in eye-region shape.
 % \commentA{the following reference is not strictly needed and could be removed to make space for affective computing reference} \cite{liversedge2011oxford}
