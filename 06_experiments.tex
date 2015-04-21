@@ -157,6 +157,9 @@ If the target setting can be preliminary specified, as the laptop interaction ca
 In order to analyze the effect of different head pose ranges, we additionally render a~\dataset subset that matches the gaze and pose distribution of MPIIGaze dataset.
 Since our method also allows us to control lighting conditions, we also added 3D laptop screen emitting light to simulate the target condition.
 \commentY{Xucong said now this subset might not contain screen emitting light. Can you double check?}
+\commentE{There is no 3D screen.}
+% note on the screen: I tried it briefly early on, and it didn't make much of a difference compared to the powerful environment light, also it wasn't clear how bright to make the screen etc. Considering our results for lighting vs very unrealistic lighting on SynthEyes, I doubt we would have evidence for using it anyway at this stage
+
 %Notice that the head pose and gaze direction range can be estimated based on the task, so the required information is not sophisticated. 
 %This shows how we can target specific scenarios like laptop-based gaze estimation, and render a suitable dataset within a day rather than taking 3 months of data collection with 15 participants. 
 For comparison, we also re-sample a subset of UT dataset as described in~\cite{zhang15_cvpr} that has the same gaze and head pose distribution with MPIIGaze.
