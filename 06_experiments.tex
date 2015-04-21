@@ -172,26 +172,26 @@ Besides head pose and gaze direction ranges, it is well known that person-depend
 \end{center}
 \end{table}
 
-\paragraph{Realism and Light Conditions}
-To test the influence of realism and light condition factors, we use the subsets of those datasets that just include frontal face clusters. We first randomly select 10 subjects from UT dataset, and take the frontal pose with their 160 gaze directions as UT frontal subset. Then we generate a~\dataset frontal subset that has the same head pose and gaze distribution with the UT frontal subset in three setting: with varying light conditions, without varying light conditions and without eyelid movement. The test set is the samples in MPIIGaze with head pose within $\pm$ 5 degrees of frontal head pose. The results are shown in~\autoref{tab:frontal_160}.
+% \paragraph{Realism and Light Conditions}
+% To test the influence of realism and light condition factors, we use the subsets of those datasets that just include frontal face clusters. We first randomly select 10 subjects from UT dataset, and take the frontal pose with their 160 gaze directions as UT frontal subset. Then we generate a~\dataset frontal subset that has the same head pose and gaze distribution with the UT frontal subset in three setting: with varying light conditions, without varying light conditions and without eyelid movement. The test set is the samples in MPIIGaze with head pose within $\pm$ 5 degrees of frontal head pose. The results are shown in~\autoref{tab:frontal_160}.
 
-\begin{table}
-\begin{center}
-\begin{tabular}{ |c|c| } 
- \hline
- Train Set & Estimation Error \\ 
- \hline
- SynthEye with varying light condition & 6.8 \\ 
- \hline
- SynthEye without varying light condition & 6.7 \\ 
- \hline
- SynthEye without eyelid movement & 6.8 \\
- \hline
-\end{tabular}
-\caption{Result on realism and light conditions}
-\label{tab:frontal_160}
-\end{center}
-\end{table}
+% \begin{table}
+% \begin{center}
+% \begin{tabular}{ |c|c| } 
+%  \hline
+%  Train Set & Estimation Error \\ 
+%  \hline
+%  SynthEye with varying light condition & 6.8 \\ 
+%  \hline
+%  SynthEye without varying light condition & 6.7 \\ 
+%  \hline
+%  SynthEye without eyelid movement & 6.8 \\
+%  \hline
+% \end{tabular}
+% \caption{Result on realism and light conditions}
+% \label{tab:frontal_160}
+% \end{center}
+% \end{table}
 
 % train on synthesised images and show competitive performance on MPIIgaze with real images
 % show better performance than UT dataset
