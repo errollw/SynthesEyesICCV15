@@ -17,16 +17,15 @@
 
 % \commentA{briefly say something about significance/importance of both problems, more in corresponding subsections}
 
-\commentY{Maybe this should be presented earlier (in the related works section? we are currently missing references to other appearance-based gaze estimation methods), definition of the two tasks and why and how synthetic data is expected to be helpful. Especially eye-shape registration is not well defined during the previous section}
+% \commentY{Maybe this should be presented earlier (in the related works section? we are currently missing references to other appearance-based gaze estimation methods), definition of the two tasks and why and how synthetic data is expected to be helpful. Especially eye-shape registration is not well defined during the previous section}
 We evaluated the usefulness of our synthetic data generation method on two sample problems, eye-shape registration and appearance-based gaze estimation.
 %
 Eye-shape registration attempts to detect anatomical landmarks of the eye -- eyelids, iris and the pupil. 
 Such approaches either attempt to model the shape of the eye directly by relying on edge information \cite{wood2014eyetab, swirski2012robust} or by using statistically learnt deformable models \cite{alabort2014statistically}. 
 As our method can reliably generate consistent landmark location training data, we use it for Constrained Local Neural Field (CLNF) \cite{baltrusaitis2013constrained} deformable model training.
 
-\commentY{Edited this paragraph}
 Appearance-based gaze estimation systems learn a mapping directly from eye image pixels to gaze direction.
-While most of the prior work focused on the {\em person-dependent} training scenario which assumes training data from the target user, recently more attention is paid to the {\em person-independent} training scenario~\cite{funes2013person,schneider2014manifold,sugano2014learning,zhang15_cvpr}. 
+While most previous approaches focused on {\em person-dependent} training scenarios which require training data from the target user, recently more attention has been paid to {\em person-independent} training \cite{funes2013person,schneider2014manifold,sugano2014learning,zhang15_cvpr}. 
 % This is in contrast to geometry-based approaches that rely on tracking features of 
 %This is a challenging task considering the changes in appearance, 
 %thus requiring large amounts of training data to perform well.
@@ -40,7 +39,7 @@ Compared to \citet{sugano2014learning}, our method can provide a wider range of 
 
 \subsection{Eye-Shape Registration}
 
-\commentY{I feel this subsection + paragraph structure is better to summarize two shape registration experiments?}
+% \commentY{I feel this subsection + paragraph structure is better to summarize two shape registration experiments?}
 
 \paragraph{Eye-Shape Registration In the Wild}
 
@@ -131,33 +130,28 @@ See \autoref{fig:fits_MPII} for example model fits.
 
 \begin{figure}
     \centering
-    \includegraphics[width=\columnwidth]{gazeResult.pdf}
+    \includegraphics[width=\columnwidth]{gazeResult_v2.pdf}
     \caption{Gaze estimation performance comparison. The X axis indicates the test set is the MPIIGaze dataset or its frontal pose subset. The legend shows different training sets.}
     \label{fig:gazeResult}
 \end{figure}
 
-\commentY{Edited this paragraph}
+%\commentY{Edited this paragraph}
 To evaluate the usage of our method on appearance gaze estimation, we perform the cross-dataset validation as described in \citet{zhang15_cvpr}, where they train and test the model on different datasets. 
 We synthesized our dataset using the same camera setting as UT dataset~\cite{sugano2014learning}, and the same normalization scheme can be applied to the test data.
 The training data is fully compatible with UT dataset, and we can directly compare our~\dataset using the same Convolutional Neural Network (CNN) model~\cite{zhang15_cvpr}.
 
 %Following the same setting, we train the same Convolutional Neural Network (CNN) model on the generic~\dataset dataset, and test it on MPIIGaze evaluation subset proposed by~\cite{zhang15_cvpr}. 
-As shown with the two bars at the far left of~\autoref{fig:gazeResult}, compared to the mean gaze direction prediction error 13.9 degrees that trained with UT dataset, the model trained with our generic~\dataset dataset can achieve the same performance with 14.0 degrees mean error. It confirms that our method can generate a equivalent data for the appearance-based gaze estimation training.
-\commentY{Moved \& edited}
-The fifth bar of~\autoref{fig:gazeResult} shows the leave-one-person-out cross validation within the MPIIGaze dataset to show the up bounder of this scenario.
+As shown with the two bars at the far left of~\autoref{fig:gazeResult}, compared to the median gaze direction prediction error 12.7 degrees that trained with UT dataset, the model trained with our generic~\dataset dataset can achieve similar performance performance. This confirms that our method can generate a equivalent data for the appearance-based gaze estimation training.
+The blue background line of~\autoref{fig:gazeResult} shows the leave-one-person-out cross validation score within the MPIIGaze dataset to show the lower bound of this scenario.
 These result indicates that both \dataset~and UT datasets still have their own error sources which is causing the performance gap.
 
 %\paragraph{Head Pose and Gaze Ranges}
-\commentY{Edited}
 One of the important factors related to the above gap is the head pose and gaze ranges.
 While it is important to cover a wide range of head poses to handle arbitrary camera settings, this can make the training task more difficult.
 If the target setting can be preliminary specified, as the laptop interaction case in \citet{zhang15_cvpr}, it is practically possible to limit the synthesis of training data with minimum required head pose and gaze ranges.
 %The head pose and gaze direction range are also quite important priors for appearance-based gaze estimation. 
 %Since the samples from the small range of head poses can be trained together, while extreme head poses wouldn't share eye appearance. Also the gaze direction space is arbitrary and difficult to be densely covered by collected dataset.
 In order to analyze the effect of different head pose ranges, we additionally render a~\dataset subset that matches the gaze and pose distribution of MPIIGaze dataset.
-Since our method also allows us to control lighting conditions, we also added 3D laptop screen emitting light to simulate the target condition.
-\commentY{Xucong said now this subset might not contain screen emitting light. Can you double check?}
-\commentE{There is no 3D screen.}
 % note on the screen: I tried it briefly early on, and it didn't make much of a difference compared to the powerful environment light, also it wasn't clear how bright to make the screen etc. Considering our results for lighting vs very unrealistic lighting on SynthEyes, I doubt we would have evidence for using it anyway at this stage
 
 %Notice that the head pose and gaze direction range can be estimated based on the task, so the required information is not sophisticated. 
