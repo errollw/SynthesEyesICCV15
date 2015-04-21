@@ -42,20 +42,9 @@ As we posed the model in this way, there was the possibility of rendering ``unhe
 To avoid violating anatomical constraints, we only rendered images for valid eyeball rotations $|\alpha|\!\leq\!25^{\circ}$ and $|\beta|\!\leq\!35^{\circ}$ \cite{MIL-STD-1472G}.
 Before rendering, we also verified that the projected 2D pupil center in the image was within the 2D boundary of the eyelid landmarks -- this prevented us from rendering images where too little of the iris was visible.
 
-\subsection{Eye-Region Landmark Annotation}
-
-% \commentY{In my understanding, this section is only related to the shape registration task. And I think some parts in the next section are only relevant to the gaze estimation task? In this case, we should reorganize the next section as a "training data synthesis", starting from a general discussion and task-specific subsections.}
-
-As shown in \autoref{fig:process_ldmks}, each 3D eye-region was annotated once in 3D with $28$ landmarks, corresponding to the eye corners ($2$), eyelids ($5\!+\!5$), iris boundary ($8$), and pupil boundary ($8$).
-The iris and pupil landmarks were defined as a subset of the eyeball geometry vertices, so deform automatically with changes in pupil and iris size.
-The eyelid and eye corner landmarks were manually labelled with a separate mesh that follows the seam where eyeball geometry meets skin geometry.
-This mesh is assigned shape keys and deforms automatically during eyelid motion.
-%
-% So instead of having humans ambiguously label eye-region anatomy, we carefully manually annotate each eye-region once, ensuring higher-quality labels.
-% Maybe put the sentence below in later
-Whenever an image is rendered, the 2D image-space coordinates of these 3D landmarks are calculated using the camera projection matrix and saved.
-
 \subsection{Creating Realistic Illumination}
+
+\commentY{swapped the section order, I think this is more important point than landmark annotation}
 
 \begin{figure}
     \begin{subfigure}[t]{\columnwidth}
@@ -89,6 +78,21 @@ At render time we randomly chose one of four freely available HDR environment im
 The environment is then randomly rotated to simulate a continuous range of head-pose, and randomly scaled in intensity to simulate changes in ambient light.
 As shown in \autoref{fig:env_map_imgs_examples}, a combination of hard shadows and soft light can generate a range of appearances from only a single HDR environment.
 This simple and flexible approach creates variability using measured light levels in real-world environments rather than randomly configuring light sources and ambient illumination \cite{zface}.
+\commentY{We may need a justification (or evidence)}
+
+\subsection{Eye-Region Landmark Annotation}
+
+% \commentY{In my understanding, this section is only related to the shape registration task. And I think some parts in the next section are only relevant to the gaze estimation task? In this case, we should reorganize the next section as a "training data synthesis", starting from a general discussion and task-specific subsections.}
+\commentY{Added a sentence here}
+For the eye shape registration task, we need an additional ground-truth annotation of eye-region landmarks in the training images.
+As shown in \autoref{fig:process_ldmks}, each 3D eye-region was annotated once in 3D with $28$ landmarks, corresponding to the eye corners ($2$), eyelids ($5\!+\!5$), iris boundary ($8$), and pupil boundary ($8$).
+The iris and pupil landmarks were defined as a subset of the eyeball geometry vertices, so deform automatically with changes in pupil and iris size.
+The eyelid and eye corner landmarks were manually labelled with a separate mesh that follows the seam where eyeball geometry meets skin geometry.
+This mesh is assigned shape keys and deforms automatically during eyelid motion.
+%
+% So instead of having humans ambiguously label eye-region anatomy, we carefully manually annotate each eye-region once, ensuring higher-quality labels.
+% Maybe put the sentence below in later
+Whenever an image is rendered, the 2D image-space coordinates of these 3D landmarks are calculated using the camera projection matrix and saved.
 
 \subsection{Rendering Images}
 
@@ -96,7 +100,10 @@ We use Blender's\footnote{The Blender Project -- \url{http://www.blender.org/}} 
 This Monte Carlo method traces the paths of many light rays per pixel, scattering light stochastically off physically-based materials in the scene until they reach illuminants.
 A GPU implementation is available for processing large numbers of rays simultaneously ($150/\textrm{px}$) to achieve noise-free and photorealistic images.
 
-For eye-region registration, we rendered a generic \dataset dataset of 11,382 images covering $40^{\circ}$ of viewpoint (i.e. head pose) variation and $90^{\circ}$ of gaze variation.
+For eye-region registration \commentY{how about gaze estimation?}, we rendered a generic \dataset dataset of 11,382 images covering $40^{\circ}$ of viewpoint (i.e. head pose) variation and $90^{\circ}$ of gaze variation.
 We sampled eye color and environmental lighting randomly for each image.
 Each $120\!\times\!80\textrm{px}$ rendering took $5.26\textrm{s}$ on average using a commodity GPU (Nvidia GTX660).
-As a result our cleanly-labelled dataset can be rendered in under a day on a single machine -- a fraction of the time taken by traditional data collection procedures \cite{zhang15_cvpr,sugano2014learning}. In addition, our method allows us to target specific domains. For webcam-oriented eye gaze estimation we rendered a targetted dataset guided by typical laptop use ($10^{\circ}$ pose variation, $20^{\circ}$ gaze variation).
+As a result our cleanly-labelled dataset can be rendered in under a day on a single machine -- a fraction of the time taken by traditional data collection procedures \cite{zhang15_cvpr,sugano2014learning}. 
+\commentY{This claim is a little misleading. We practically need to consider the model construction time too; the rendering time can be much shorter with the simple UT dataset models}
+In addition, our method allows us to target specific domains. For webcam-oriented eye gaze estimation we rendered a targetted dataset guided by typical laptop use ($10^{\circ}$ pose variation, $20^{\circ}$ gaze variation).
+\commentY{As I commented before, this is not directly related to the model/data itself. I think it's better to simply mention in the experiments section as an additional analysis}
