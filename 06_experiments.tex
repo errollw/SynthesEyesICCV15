@@ -138,13 +138,14 @@ See \autoref{fig:fits_MPII} for example model fits.
 
 \commentY{Edited this paragraph}
 To evaluate the usage of our method on appearance gaze estimation, we perform the cross-dataset validation as described in \citet{zhang15_cvpr}, where they train and test the model on different datasets. 
-We synthesized our dataset using the same camera setting as UT dataset~\cite{sugano2014learning}, so that the same normalization scheme can be applied to the test data.
+We synthesized our dataset using the same camera setting as UT dataset~\cite{sugano2014learning}, and the same normalization scheme can be applied to the test data.
 The training data is fully compatible with UT dataset, and we can directly compare our~\dataset using the same Convolutional Neural Network (CNN) model~\cite{zhang15_cvpr}.
 
 %Following the same setting, we train the same Convolutional Neural Network (CNN) model on the generic~\dataset dataset, and test it on MPIIGaze evaluation subset proposed by~\cite{zhang15_cvpr}. 
 As shown with the two bars at the far left of~\autoref{fig:gazeResult}, compared to the mean gaze direction prediction error 13.9 degrees that trained with UT dataset, the model trained with our generic~\dataset dataset can achieve the same performance with 14.0 degrees mean error. It confirms that our method can generate a equivalent data for the appearance-based gaze estimation training.
 
 \paragraph{Head Pose and Gaze Ranges}
+\commentY{I will fully update this paragraph, this also contains a discussion about the case using the same number of persons and different light condition.}
 The head pose and gaze direction range are also quite important priors for appearance-based gaze estimation. Since the samples from the small range of head poses can be trained together, while extreme head poses wouldn't share eye appearance. Also the gaze direction space is arbitrary and difficult to be densely covered by collected dataset. 
 We render a~\dataset subset that matches the gaze and pose distribution of MPIIGaze dataset, with added 3D laptop screen emitting light. Notice that the head pose and gaze direction range can be estimated based on the task, so the required information is not sophisticated. This shows how we can target specific scenarios like laptop-based gaze estimation, and render a suitable dataset within a day rather than taking 3 months of data collection with 15 participants. 
 For comparison, we also re-sample a subset of UT dataset as described in~\cite{zhang15_cvpr} that has the same gaze and head pose distribution with MPIIGaze. The head pose and gaze direction distribution are shown in~\autoref{fig:head_gaze_distribution}. Since there are just have 10 subjects in our~\dataset, we divide the UT Multiview subset into 5 groups with 10 subjects. Each group of this UT subset has 15,000 samples as with our~\dataset subset. We then average the performance of the 5 groups for the final result. 
