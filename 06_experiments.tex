@@ -52,7 +52,7 @@ We initialised our approach by using the face-CLNF \cite{baltrusaitis2013constra
 To compare using synthetic or real training images, we trained an eyelid CLNF model on 300-W images, but used the same PDM used for synthetic data (CLNF 300-W).
 We also compared our approach with the following state-of-the-art facial landmark detectors trained on real world in-the-wild data: CLNF \cite{baltrusaitis2013constrained}, Supervised Descent Method \cite{Xiong2013sdm}, Discriminative Response Map Fitting \cite{Asthana2013drmf}, and tree based face and landmark detector \cite{Zhu2012tree}. 
 
-The results of our experiments can be seen in \autoref{fig:clnf_results_wild}. 
+The results of our experiments can be seen in \autoref{fig:clnf_results_wild}, and example model fits are shown in \autoref{fig:fits_300W}.
 Errors were recorded as the RMS point-to-boundary distance from tracked eyelid landmarks to ground truth eyelid boundary, and were normalized by inter-ocular distance. 
 First, the results show the eye-CLNF (both synthetic and real data) outperforming all other systems in eye-lid localization. 
 Second, our system (CLNF Synth) trained on only ten participants in four lighting conditions results in very similar performance to a system trained on unconstrained in-the-wild images (CLNF 300-W). This suggests the importance of high-quality consistent labels.
@@ -70,7 +70,7 @@ Our data synthesis system also allows us to examine what steps of the synthesis 
 \begin{figure}
     \centering
     \includegraphics[width=\columnwidth]{CLNF_MPII_experiment}
-    \caption{We outperform the state-of-the-art for eyelid-registration in the wild.}
+    \caption{We perform comparably with state-of-the-art for iris-registration on in-the-wild webcam images.}
     \label{fig:clnf_results_MPII}
 \end{figure}
 
@@ -88,6 +88,7 @@ Errors were normalized by the eye-width, and are reported using average eye-widt
 As shown in \autoref{fig:clnf_results_MPII}, our approach ($\textrm{Mdn}\!=\!1.48\textrm{px}$) demonstrates comparable iris-fitting accuracy with EyeTab ($\textrm{Mdn}\!=\!1.44\textrm{px}$), a state-of-the-art algorithm for fitting ellipses to irises in low-quality images.
 However, our eye-CLNF is more robust, with EyeTab failing to terminate in $2\%$ of test cases.
 As also shown by the 300-W experiment, our eye-CLNF localizes eyelids better than the face-CLNF.
+See \autoref{fig:fits_MPII} for example model fits.
 %As shown by \todo{prev exp.}, our eye-CLM ($2.79\!\pm\!2.20\textrm{px}$) also localizes eyelids better than previous state-of-the-art facial landmark trackers ($4.27\!\pm\!1.84\textrm{px}$).
 
 % show that we only need data from few(er) people and show competitive performance
