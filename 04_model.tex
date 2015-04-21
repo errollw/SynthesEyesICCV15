@@ -74,6 +74,7 @@ We therefore removed the scanned eyeball from the mesh, and placed our own eyeba
 % \commentY{I feel this part should be explained beforehand,  i.e., we should first explain why take this approach combining eye model and face scan}
 
 While the original head scan geometry is suitable for being rendered as a static model, its high resolution topology cannot be easily controlled changes in eye-region shape.
+\commentA{the following reference is not strictly needed}
 Vertical saccades are always accompanied by eyelid motion \cite{liversedge2011oxford}, so we needed to be able to control the eyelid positions according to the gaze vector.
 To do this, we need a more efficient (low-resolution) geometric representation of the eye-region, where edge loops flow around the natural contours of facial muscles.
 This leads to more realistic animation as mesh deformation matches that of actual skin tissue and muscles \cite{orvalho2012facial}.
