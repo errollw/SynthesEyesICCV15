@@ -168,9 +168,9 @@ As shown in the third and forth bars of~\autoref{fig:gazeResult}, in general hav
 % Since both UT subset and~\dataset subset have the similar head pose and gaze direction range, the performance gains should come from the realistic samples generate from precise 3D eye model and also simulated variant appearance caused by light conditions.
 % This result indicates, under the condition with the same number of face variations, our~\dataset subset can be a better training set compared to UT subset.
 
-\paragraph{Difference Between Synthesis and Realistic Data}
-The UT dataset is synthetically generated based on collected data, while our~\dataset is purely synthesis, the different affect between them for the gaze estimation training is interesting. We thus based on the the above experiments to play around their roles in such cross datasets scenario.
-We use the pre-trained model on the~\dataset and fine tune it with the UT dataset to test on MPIIGaze dataset, it is the case that we can pre-train the model with the synthetic~\dataset and fine tune the model if we have more realistic data. For caparison, we test the opposite way, i.e. pre-train the model in UT dataset and fine tune it with the~\dataset. As shown in~\autoref{tab:Synthesis_Realistic_Gaze}, our~\dataset is suitable as training data due to its generality while UT doesn't have such quality. 
+% \paragraph{Difference Between Synthesis and Realistic Data}
+% The UT dataset is synthetically generated based on collected data, while our~\dataset is purely synthesis, the different affect between them for the gaze estimation training is interesting. We thus based on the the above experiments to play around their roles in such cross datasets scenario.
+% We use the pre-trained model on the~\dataset and fine tune it with the UT dataset to test on MPIIGaze dataset, it is the case that we can pre-train the model with the synthetic~\dataset and fine tune the model if we have more realistic data. For caparison, we test the opposite way, i.e. pre-train the model in UT dataset and fine tune it with the~\dataset. As shown in~\autoref{tab:Synthesis_Realistic_Gaze}, our~\dataset is suitable as training data due to its generality while UT doesn't have such quality. 
 
 \begin{figure}
     \centering
@@ -179,27 +179,27 @@ We use the pre-trained model on the~\dataset and fine tune it with the UT datase
     \label{fig:person_specific_training}
 \end{figure}
 
-\begin{table}
-\begin{center}
-\begin{tabular}{ |c|p{80pt}|p{80pt}| } 
- \hline
- Train set & pre-train~\dataset and fine tune with UT & pre-train UT and fine tune with~\dataset \\ 
- \hline
- Full & X.X & X.X \\ 
- \hline
- Subset & 7.8 & 8.8 \\ 
- \hline
-\end{tabular}
-\caption{The difference of pre-training on different dataset. The first row show we use the full~\dataset and full UT; The second row show the experiment done with~\dataset subset and UT subset.} 
-\label{tab:Synthesis_Realistic_Gaze}
-\end{center}
-\end{table}
+% \begin{table}
+% \begin{center}
+% \begin{tabular}{ |c|p{80pt}|p{80pt}| } 
+%  \hline
+%  Train set & pre-train~\dataset and fine tune with UT & pre-train UT and fine tune with~\dataset \\ 
+%  \hline
+%  Full & X.X & X.X \\ 
+%  \hline
+%  Subset & 7.8 & 8.8 \\ 
+%  \hline
+% \end{tabular}
+% \caption{The difference of pre-training on different dataset. The first row show we use the full~\dataset and full UT; The second row show the experiment done with~\dataset subset and UT subset.} 
+% \label{tab:Synthesis_Realistic_Gaze}
+% \end{center}
+% \end{table}
 
 \paragraph{Person Specific Appearance}
 
 Appearance-based gaze estimation performs best when trained and tested on the same person, as the training data includes the exact same eye-shape appearances that can be occur during testing. However, eye-region images from \dataset and MPIIGaze can appear very different due to eye-shape, skin-texture, and skin color. We explored what this meant for gaze estimation accuracy. We conducted an experiment where we trained 10 separate systems (one for each \dataset eye model) and tested them on MPIIGaze, recording average error for each MPIIGaze participant. The results can be seen in \autoref{fig:person_specific_training} where we plot errors along with representative images of eye-regions seen during training and testing.
 
-This plot reveals which \dataset eye-region models have been useful for training, and which ones have not. As we can see, the test set contains few dark-skinned participants, so training with dark-skinned eye models leads to poor test results. Similarly, learning with an asian-shaped eye-region model leads poor performance for non-asian-shape eye-region test subjects. Though intuitive, our experiments further confirm the importance of correctly covering appearance variations with training data.
+This plot reveals which \dataset eye-region models have been useful for training, and which ones have not. As we can see, the test set contains few dark-skinned participants, so training with dark-skinned eye models (f3,m2) leads to poor test results. Similarly, learning with an asian-shaped eye-region model (m4) leads poor performance for non-asian-shape eye-region test subjects. Also, it can be said that some test participants have ``easier'' eye-regions than others, e.g. ones with a plain appearance (p15). Though intuitive, our experiments further confirm the importance of correctly covering appearance variations with training data.
 
 % Besides head pose and gaze direction ranges, it is well known that person-dependent is always the essayist scenario for gaze estimation, since the similar appearance would make the task much easier. To avoid the tedious personal calibration or long term personal data collection, one option is to use the most similar personal appearance from the training data for testing on target person. However, such training samples selection is limited inside the collected training data. Our method could generate any kind of personal appearance and do not have such limitation. As shown in~\autoref{fig:person_specific_training}, there are some subjects that suitable as training set for the MPIIGaze dataset, such as subject 1, 2, 6, 8 and 10. We use these subjects as the training set and can achieve X.X degrees on the MPIIGaze dataset.
 
@@ -251,5 +251,5 @@ This plot reveals which \dataset eye-region models have been useful for training
 % does photorealistic data really help/is it necessary? either reduce quality and see how it affects performance, or compare model with and without shape variations
 % ^ I am not really sure how to do this well... Because we'd also have to have a measure of "how photorealistic" something is. Swapping the eyeball for a simpler model, e.g. sphere might not really have that much of an effect on "photorealism" for many eye-poses. Changing the shaders, e.g. pretending the skin is Lambertian (diffuse) might?
 
-\commentY{Reminder: ideally we should have a discussion on potential limitations of the current approach}
+% \commentY{Reminder: ideally we should have a discussion on potential limitations of the current approach}
 
