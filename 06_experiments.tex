@@ -73,17 +73,17 @@ Our data synthesis system also allows us to examine what steps of the synthesis 
 \end{figure}
 
 While the 300-W images represent challenging conditions for eyelid registration, they are not representative of typical webcam-style images and do not feature iris labels.
-We therefore annotated sub-pixel eyelid and iris boundaries onto a subset of MPIIGaze (188 images), a recent large-scale dataset of face images and corresponding on-screen gaze locations collected during everyday laptop use over several months~\cite{zhang15_cvpr}.
+We therefore annotated sub-pixel eyelid and iris boundaries onto a subset of MPIIGaze (188 images), a recent large-scale dataset of face images and corresponding on-screen gaze locations collected during everyday laptop use over several months \cite{zhang15_cvpr}.
 Pupil accuracy was not evaluated as it was impossible to discern in in most images.
 We compared our eye-CLNF with EyeTab \cite{wood2014eyetab}, a state-of-the-art shape-based approach for webcam gaze estimation that robustly fits ellipses to the iris boundary using image-aware RANSAC \cite{swirski2012robust}.
-We used the author's implementation, with their suggested modification: improved eyelid localization with a CLNF facial landmark detector \cite{baltrusaitis2013constrained}.
+We used a modified version of the author's implementation with improved eyelid localization using CLNF \cite{baltrusaitis2013constrained}.
 As a baseline, we used the mean position of all 28 eye-landmarks following model initialization.
 Eyelid errors were calculated as RMS distances from eyelid landmarks to the ground truth eyelid boudnary.
 Iris errors were calculated by first least-squares fitting an ellipse to the tracked iris landmarks, discretizing it, removing points outside ground truth and tracked eyelid boundaries, and then measuring RMS distances to the ground truth iris.
 This avoided calculating errors for parts of the iris which were occluded by the eyelid.
 Errors were normalized by the eye-width, and are reported using average eye-width ($44.4\textrm{px}$) as reference.
 
-As shown in \autoref{fig:clnf_results_MPII}, our approach ($1.48\textrm{px}$) demonstrates comparable iris-fitting accuracy with EyeTab ($1.44\textrm{px}$), a state-of-the-art specialist algorithm for fitting ellipses to irises in low-quality images.
+As shown in \autoref{fig:clnf_results_MPII}, our approach ($\textrm{Mdn}\!=\!1.48\textrm{px}$) demonstrates comparable iris-fitting accuracy with EyeTab ($\textrm{Mdn}\!=\!1.44\textrm{px}$), a state-of-the-art algorithm for fitting ellipses to irises in low-quality images.
 However, our eye-CLNF is more robust, with EyeTab failing to terminate in $2\%$ of test cases.
 As also shown by the 300-W experiment, our eye-CLNF localizes eyelids better than the face-CLNF.
 %As shown by \todo{prev exp.}, our eye-CLM ($2.79\!\pm\!2.20\textrm{px}$) also localizes eyelids better than previous state-of-the-art facial landmark trackers ($4.27\!\pm\!1.84\textrm{px}$).

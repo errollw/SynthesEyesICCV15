@@ -24,7 +24,7 @@
 In-the-wild images exhibit large amounts of appearance variability across different viewpoints and illuminations.
 Our goal was to sufficiently sample our model across these degrees of variation to create representative datasets for both eye-shape registration and appearance-based gaze estimation.
 In this section we first describe how we posed our viewpoint and model and how we extracted corresponding 2D landmarks to augment the training data.
-We then explain our novel approach for using image-based lighting~\cite{debevec2002image} to model a wide range of realistic environments, and finally discuss the details of our rendering setup.
+We then explain our approach for using image-based lighting \cite{debevec2002image} to model a wide range of realistic environments, and finally discuss the details of our rendering setup.
 
 \subsection{Posing the Model}
 
@@ -98,5 +98,5 @@ A GPU implementation is available for processing large numbers of rays simultane
 
 For eye-region registration, we rendered a generic \dataset dataset of 11,382 images covering $40^{\circ}$ of viewpoint (i.e. head pose) variation and $90^{\circ}$ of gaze variation.
 We sampled eye color and environmental lighting randomly for each image.
-Each $120\!\times\!80\textrm{px}$ rendering took $5.26\textrm{s}$ on average across all head models using a commodity GPU (Nvidia GTX660).
+Each $120\!\times\!80\textrm{px}$ rendering took $5.26\textrm{s}$ on average using a commodity GPU (Nvidia GTX660).
 As a result our cleanly-labelled dataset can be rendered in under a day on a single machine -- a fraction of the time taken by traditional data collection procedures \cite{zhang15_cvpr,sugano2014learning}. In addition, our method allows us to target specific domains. For webcam-oriented eye gaze estimation we rendered a targetted dataset guided by typical laptop use ($10^{\circ}$ pose variation, $20^{\circ}$ gaze variation).

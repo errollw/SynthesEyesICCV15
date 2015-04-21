@@ -2,6 +2,7 @@
 
 \section{Related Work}
 
+\commentE{reword or explain better}
 Our work is related to previous works on 1) learning using synthetic data and 2) computational modelling of the eyes.
 
 \subsection{Learning Using Synthetic Data}
@@ -12,7 +13,7 @@ but it remains challenging for such approaches to handle unknown test data and t
 Given that recordings of training data that covers the whole variation of potential test data is challenging,
 %One solution is to use training data that covers the whole variation of potential test data but it is not always possible to obtain real training data in this manner.
 the use of purely synthetic training data has been considered as a promising solution.
-Previous works demonstrated that synthetic training data is beneficial for tasks such as body pose estimation~\cite{shakhnarovich2003fast,okada2008relevant,shotton2013real}, head pose estimation~\cite{fanelli2011real}, and object detection/recognition~\cite{yu2010improving,liebelt2010multiview,jaderberg2014synthetic}.
+Previous work demonstrates that synthetic training data is beneficial for tasks such as body pose estimation~\cite{shakhnarovich2003fast,okada2008relevant,shotton2013real}, head pose estimation~\cite{fanelli2011real}, and object detection/recognition~\cite{yu2010improving,liebelt2010multiview,jaderberg2014synthetic}.
 These works used 3D models, from a single 3D CAD object to deformable human body shape, to synthesise large amounts of training images.
 % \commentY{CAD-based multi-view object recognition has a lot of works, though I don't think we need to cite them all}
 
@@ -31,7 +32,7 @@ Most similar to this work, \citet{sugano2014learning} used 3D reconstructions of
 One limitation of that work is that they do not provide a parametric model.
 Their data is essentially a set of rigid and low-resolution 3D models of eye regions with ground-truth gaze directions, and hence cannot be easily applied to different tasks.
 The scope of learning-by-synthesis with a realistic eye model is not limited to appearance-based gaze estimation; the model can be also applied to other problems, e.g. eye shape registration.
-Since our model is fully synthetic, it can be used to synthesise close-up eye images with ground-truth eye landmark positions.
+Since our model is fully controllable, it can be used to synthesise close-up eye images with ground-truth eye landmark positions.
 This enables us to address eye shape registration via learning-by-synthesis for the first time.
 
 %\cite{okada2008relevant}, \cite{shakhnarovich2003fast} -- both rendered RGB training images with poser for pose recognition
@@ -48,11 +49,11 @@ This enables us to address eye shape registration via learning-by-synthesis for 
 % \cite{alabort2014statistically} -- trained a detailed deformable eye region model on in-the-wild images.
 
 The eyeballs are complex organs comprised of multiple layers of tissue, each with different reflectance properties and levels of transparency.
-Fortunately, given that realistic eyes are important for many areas of computing, there is already a large body of previous work on modelling and rendering eyes (see~\cite{ruhland2014look} for a recent survey).
+Fortunately, given that realistic eyes are important for many fields, there is already a large body of previous work on modelling and rendering eyes (see~\cite{ruhland2014look} for a recent survey).
 
 % As we spend so much time looking at eyes, mistakes in their appearance can cause a CG face to appear unfamiliar.
 
-Eyes are important for the entertainment industry, who want to model them with potentially dramatic appearance (e.g. crying).
+Eyes are important for the entertainment industry, who want to model them with potentially dramatic appearance.
 \mbox{\citet{ActiBlizEyes}} recently developed techniques for real-time modelling of eye wetness, refraction, and ambient occlusion in a standard rasterisation pipeline for video games.
 \citet{berard2014highquality} represents the state-of-the-art in computer representation of eyes.
 They used a hybrid reconstruction method to capture both transparent corneal surface and diffuse sclera separately and recorded deformations of the eyeball's interior structures.
