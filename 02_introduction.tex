@@ -6,16 +6,17 @@
 % Looks like the template doesn't allow us to do this easily unfortunately :(
 
 Machine learning methods that leverage large amounts of training data currently perform best for many problems in computer vision, such as object detection, scene recognition, or gaze estimation~\cite{zhou2014learning,girshick2014rich,zhang15_cvpr}.
-However, capturing or collecting large-scale training data can be time-consuming
+However, capturing data for supervised learning can be time-consuming and require accurate ground truth annotation.
+% capturing or collecting large-scale training data can be time-consuming
 %, especially for new areas of research without pre-existing datasets.
-and supervised learning methods additionally require accurate ground truth annotation for each image.
+% and supervised learning methods additionally require accurate ground truth annotation for each image.
 This annotation process can be expensive and tedious, and there is no guarantee that human-provided labels will be correct.
-Ground truth annotation is particularly challenging and error-prone for learning tasks that require highly fine-grained and accurate labels, such as tracking facial landmarks for facial expression analysis and gaze estimation.
+Ground truth annotation is particularly challenging and error-prone for learning tasks that require accurate labels, such as tracking facial landmarks for expression analysis, and gaze estimation.
 %, or body joints for pose estimation and activity recognition.
 
 \begin{figure}
     \includegraphics[width=\columnwidth]{teaser}
-    \caption{At the core of our method is a dynamic eye-region model that allows us to render large numbers of photorealistic eye images as training data for eye region registration and gaze estimation.}
+    \caption{We render a large number of photorealistic images of eyes using a dynamic eye region model. These are used as training data for eye-shape registration and appearance-based gaze estimation.}
     \label{fig:teaser}
 \end{figure}
 
