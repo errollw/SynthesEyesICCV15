@@ -131,7 +131,7 @@ See \autoref{fig:fits_MPII} for example model fits.
 \begin{figure}
     \centering
     \includegraphics[width=\columnwidth]{gazeResult_v2.pdf}
-    \caption{Gaze estimation performance comparison. The X axis indicates the test set is the MPIIGaze dataset or its frontal pose subset. The legend shows different training sets.}
+    \caption{Gaze estimation performance on MPIIGaze using different training datasets. Red bar is median, and blue line represents a practical lower-bound (within-dataset cross-validation score).}
     \label{fig:gazeResult}
 \end{figure}
 
@@ -151,27 +151,33 @@ While it is important to cover a wide range of head poses to handle arbitrary ca
 If the target setting can be preliminary specified, as the laptop interaction case in \citet{zhang15_cvpr}, it is practically possible to limit the synthesis of training data with minimum required head pose and gaze ranges.
 %The head pose and gaze direction range are also quite important priors for appearance-based gaze estimation. 
 %Since the samples from the small range of head poses can be trained together, while extreme head poses wouldn't share eye appearance. Also the gaze direction space is arbitrary and difficult to be densely covered by collected dataset.
-In order to analyze the effect of different head pose ranges, we additionally render a~\dataset subset that matches the gaze and pose distribution of MPIIGaze dataset.
-% note on the screen: I tried it briefly early on, and it didn't make much of a difference compared to the powerful environment light, also it wasn't clear how bright to make the screen etc. Considering our results for lighting vs very unrealistic lighting on SynthEyes, I doubt we would have evidence for using it anyway at this stage
-
+In order to analyze the effect of different head pose ranges, we rendered an additional targetted dataset guided by typical laptop use ($10^{\circ}$ pose variation, $20^{\circ}$ gaze variation).
 %Notice that the head pose and gaze direction range can be estimated based on the task, so the required information is not sophisticated. 
 %This shows how we can target specific scenarios like laptop-based gaze estimation, and render a suitable dataset within a day rather than taking 3 months of data collection with 15 participants. 
-For comparison, we also re-sample a subset of UT dataset as described in~\cite{zhang15_cvpr} that has the same gaze and head pose distribution with MPIIGaze.
-The head pose and gaze direction distribution are shown in~\autoref{fig:head_gaze_distribution}.
+For comparison, we also re-sample a subset of UT dataset as described in~\cite{zhang15_cvpr} that has the same gaze and head pose distribution as MPIIGaze.
+The head pose and gaze distributions are shown in~\autoref{fig:head_gaze_distribution}.
 
 Another important difference between two datasets is the number of subjects in the dataset.
 %Since there are just have 10 subjects in our~\dataset, 
 In order to compare two approaches with the same number of subjects, we divide the UT Multiview subset into 5 groups with 10 subjects.
 Each group of this UT subset has 15,000 samples as with our~\dataset subset.
 We then average the performance of the 5 groups for the final result. 
-As shown in the third and forth bars of~\autoref{fig:gazeResult}, in general having the similar head pose and gaze direction ranges of target domain can significantly improve the performance. 
-\commentY{Put actual numbers here} 
-Since both UT subset and~\dataset subset have the similar head pose and gaze direction range, the performance gains should come from the realistic samples generate from precise 3D eye model and also simulated variant appearance caused by light conditions.
-This result indicates, under the condition with the same number of face variations, our~\dataset subset can be a better training set compared to UT subset.
+As shown in the third and forth bars of~\autoref{fig:gazeResult}, in general having the similar head pose and gaze direction ranges of target domain can significantly improve the performance: $\textrm{Mdn}\!=\!8.95^{\circ}$ and $\textrm{Mdn}\!=\!8.29^{\circ}$ for UT and \dataset respectively.
+
+% Erroll: not sure about the below paragraph
+% Since both UT subset and~\dataset subset have the similar head pose and gaze direction range, the performance gains should come from the realistic samples generate from precise 3D eye model and also simulated variant appearance caused by light conditions.
+% This result indicates, under the condition with the same number of face variations, our~\dataset subset can be a better training set compared to UT subset.
 
 \paragraph{Difference Between Synthesis and Realistic Data}
 The UT dataset is synthetically generated based on collected data, while our~\dataset is purely synthesis, the different affect between them for the gaze estimation training is interesting. We thus based on the the above experiments to play around their roles in such cross datasets scenario.
 We use the pre-trained model on the~\dataset and fine tune it with the UT dataset to test on MPIIGaze dataset, it is the case that we can pre-train the model with the synthetic~\dataset and fine tune the model if we have more realistic data. For caparison, we test the opposite way, i.e. pre-train the model in UT dataset and fine tune it with the~\dataset. As shown in~\autoref{tab:Synthesis_Realistic_Gaze}, our~\dataset is suitable as training data due to its generality while UT doesn't have such quality. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{Confusion_annotated_smallfile.pdf}
+    \caption{Gaze estimation performance on MPIIGaze using different training datasets. Red bar is median, and blue line represents a practical lower-bound (within-dataset cross-validation score).}
+    \label{fig:person_specific_training}
+\end{figure}
 
 \begin{table}
 \begin{center}
@@ -189,29 +195,33 @@ We use the pre-trained model on the~\dataset and fine tune it with the UT datase
 \end{center}
 \end{table}
 
-
 \paragraph{Person Specific Appearance}
-Besides head pose and gaze direction ranges, it is well known that person-dependent is always the essayist scenario for gaze estimation, since the similar appearance would make the task much easier. To avoid the tedious personal calibration or long term personal data collection, one option is to use the most similar personal appearance from the training data for testing on target person. However, such training samples selection is limited inside the collected training data. Our method could generate any kind of personal appearance and do not have such limitation. As shown in~\autoref{tab:personal_specific}, there are some subjects that suitable as training set for the MPIIGaze dataset, such as subject 1, 2, 6, 8 and 10. We use these subjects as the training set and can achieve X.X degrees on the MPIIGaze dataset.
+
+Appearance-based gaze estimation performs best when trained and tested on the same person, as the training data includes the exact same eye-shape appearances that can be occur during testing. However, eye-region images from \dataset and MPIIGaze can appear very different due to eye-shape, skin-texture, and skin color. We explored what this meant for gaze estimation accuracy. We conducted an experiment where we trained 10 separate systems (one for each \dataset eye model) and tested them on MPIIGaze, recording average error for each MPIIGaze participant. The results can be seen in \autoref{fig:person_specific_training} where we plot errors along with representative images of eye-regions seen during training and testing.
+
+This plot reveals which \dataset eye-region models have been useful for training, and which ones have not. As we can see, the test set contains few dark-skinned participants, so training with dark-skinned eye models leads to poor test results. Similarly, learning with an asian-shaped eye-region model leads poor performance for non-asian-shape eye-region test subjects. Though intuitive, our experiments further confirm the importance of correctly covering appearance variations with training data.
+
+% Besides head pose and gaze direction ranges, it is well known that person-dependent is always the essayist scenario for gaze estimation, since the similar appearance would make the task much easier. To avoid the tedious personal calibration or long term personal data collection, one option is to use the most similar personal appearance from the training data for testing on target person. However, such training samples selection is limited inside the collected training data. Our method could generate any kind of personal appearance and do not have such limitation. As shown in~\autoref{fig:person_specific_training}, there are some subjects that suitable as training set for the MPIIGaze dataset, such as subject 1, 2, 6, 8 and 10. We use these subjects as the training set and can achieve X.X degrees on the MPIIGaze dataset.
 
 
-\begin{table}
-\begin{center}
-\begin{tabular}{ |c|c|c|c|c|c| } 
- \hline
- Subject ID & 1 & 2 & 3 & 4& 5 \\ 
- \hline
- Error & 8.5 & 9.0 & 11.65 & 10.72 & 9.3 \\ 
- \hline
- \hline
- Subject ID & 6 & 7 & 8 & 9 & 10 \\ 
- \hline
- Error & 8.3 & 10.4 & 8.5 & 11.1 & 8.6 \\ 
- \hline
-\end{tabular}
-\caption{The test results on MPIIGaze dataset with the training on individual subjects from~\dataset}
-\label{tab:personal_specific}
-\end{center}
-\end{table}
+% \begin{table}
+% \begin{center}
+% \begin{tabular}{ |c|c|c|c|c|c| } 
+%  \hline
+%  Subject ID & 1 & 2 & 3 & 4& 5 \\ 
+%  \hline
+%  Error & 8.5 & 9.0 & 11.65 & 10.72 & 9.3 \\ 
+%  \hline
+%  \hline
+%  Subject ID & 6 & 7 & 8 & 9 & 10 \\ 
+%  \hline
+%  Error & 8.3 & 10.4 & 8.5 & 11.1 & 8.6 \\ 
+%  \hline
+% \end{tabular}
+% \caption{The test results on MPIIGaze dataset with the training on individual subjects from~\dataset}
+% \label{tab:personal_specific}
+% \end{center}
+% \end{table}
 
 % \paragraph{Realism and Light Conditions}
 % To test the influence of realism and light condition factors, we use the subsets of those datasets that just include frontal face clusters. We first randomly select 10 subjects from UT dataset, and take the frontal pose with their 160 gaze directions as UT frontal subset. Then we generate a~\dataset frontal subset that has the same head pose and gaze distribution with the UT frontal subset in three setting: with varying light conditions, without varying light conditions and without eyelid movement. The test set is the samples in MPIIGaze with head pose within $\pm$ 5 degrees of frontal head pose. The results are shown in~\autoref{tab:frontal_160}.
