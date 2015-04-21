@@ -103,7 +103,4 @@ A GPU implementation is available for processing large numbers of rays simultane
 We rendered a generic \dataset dataset of 11,382 images covering $40^{\circ}$ of viewpoint (i.e. head pose) variation and $90^{\circ}$ of gaze variation.
 We sampled eye color and environmental lighting randomly for each image.
 Each $120\!\times\!80\textrm{px}$ rendering took $5.26\textrm{s}$ on average using a commodity GPU (Nvidia GTX660).
-As a result we can specify and render a cleanly-labelled dataset in under a day on a single machine -- a fraction of the time taken by traditional data collection procedures \cite{zhang15_cvpr}. 
-\commentY{If we compare these two approaches, SynthEyes and MPIIGaze, we also need to compare their performances too -- which is currently not comparative.}
-In addition, our method allows us to target specific domains. For webcam-oriented eye gaze estimation we rendered a targetted dataset guided by typical laptop use ($10^{\circ}$ pose variation, $20^{\circ}$ gaze variation).
-\commentY{As I commented before, this is not directly related to the model/data itself. I think it's better to simply mention in the experiments section as an additional analysis. This adapted rendering becomes the contribution if we can adjust, e.g., lighting condition to the target domain.}
+As a result we can specify and render a cleanly-labelled dataset in under a day on a single machine -- a fraction of the time taken by traditional data collection procedures \cite{zhang15_cvpr}.
