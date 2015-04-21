@@ -28,7 +28,7 @@ In this section we first present our anatomically inspired computer graphics eye
 
 % It is important to accurately model reflections and refractions in the eye as they can lead to specular highlights -- these common eye-region image features are often used by eye-tracking algorithms, or can confound approaches that are not robust.
 
-As shown in \autoref{fig:eye_model_parts}, our eye model consists of two parts.
+Our eye model consists of two parts (see~\autoref{fig:eye_model_parts}).
 The outer part (red wireframe) approximates the eye's overall shape with two spheres ($r_1\!=\!12\textrm{mm}, r_2\!=\!8\textrm{mm}$ \cite{ruhland2014look}), the latter representing the corneal bulge.
 To avoid a discontinuous seam between spheres, their meshes were joined, and the vertices along the seam were smoothed to minimize differences in face-angle.
 % \commentA{how joined and smoothed?} Erroll - Maybe needs rewording. Perhaps i'll just put a citation for the smoothing operation? I don't particularly want to describe it
