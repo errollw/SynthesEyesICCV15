@@ -1,7 +1,7 @@
 %!TEX root = 00_main.tex
 Images of the eye are key in several computer vision problems, such as facial feature localization and gaze estimation.
 %, iris-biometrics, and deception analysis.
-Recent large-scale supervised methods for these problems require time-consuming data collection procedures and unreliable manual annotation of training images.
+Recent large-scale supervised methods for these problems require time-consuming data collection and manual annotation, which can be unreliable.
 %, which is error-prone and slows down progress in these areas.
 We propose synthesizing perfectly labelled photo-realistic training data in a fraction of the time.
 We used computer graphics techniques to build a collection of dynamic eye-region models from head scan geometry.
@@ -10,10 +10,9 @@ These were randomly posed to synthesize close-up eye images with a wide range of
 %
 %\commentA{do we want to sell this also as a dataset? If yes we should characterise it better}
 %\commentE{Probably not, as the license doesn't allow "sharing" of data derived from the head scans. "Portfolio work" is fine however, so they shouldn't have issue with using shots of the scan in the paper}
-We used the resulting dataset to train two example systems: an eye-region landmark detector and an appearance-based gaze estimator.
+% We validated the usefulness of the dataset on two scenarios: an eye landmark detector and an appearance-based gaze estimator.
 % The model is able to simulate the large variability of real eyes, including pupil dilation, eyelid motion and corresponding changes in its shape, as well as iris colour variations.
 %dynamic changes in shape
-We demonstrate the benefits of synthesized training data by out-performing state-of-the-art methods for eye-shape registration in the wild, and performing competitively with a recent cross-dataset gaze estimation method.
+We demonstrate the benefits of our synthesized training data (\dataset) by out-performing state-of-the-art methods for eye-shape registration in the wild, and achieving competitive performance on appearance-based gaze estimation.
 % needs reword.
-We further examine the effects of low illumination variance and level of realism in the training data on performance.
-%
+Furthermore, we show that its important to include realistic illumination and shape variation in training data.
