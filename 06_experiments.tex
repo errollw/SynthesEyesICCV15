@@ -136,7 +136,7 @@ See \autoref{fig:fits_MPII} for example model fits.
 \begin{figure}
     \centering
     \includegraphics[width=\columnwidth]{gazeResult_v3.pdf}
-    \caption{Gaze estimation performance on MPIIGaze using different datasets for training. Black dots are mean errors, and red line represents a practical lower-bound (within-dataset cross-validation score). Note how combining synthetic datasets for training leads to improved performance (blue plots).}
+    \caption{Test performance on MPIIGaze; x-axis represents training set used. Dots are mean errors, and red line represents a practical lower-bound (within-dataset cross-validation score). Note how combining synthetic datasets for training lead to improved performance (blue plots).}
     \label{fig:gazeResult}
 \end{figure}
 
@@ -247,7 +247,7 @@ To examine the effects of this we conducted a second experiment where we trained
 The results can be seen in \autoref{fig:person_specific_training}.
 
 This plot illustrates which \dataset models were useful for training and which ones were not.
-As we can see, training with certain eye models leads to poor generalization, for example \texttt{f3}, \texttt{m2}, and \texttt{m4}, perhaps due to differences in skin-tone and eye-shape.
+As we can see, training with certain eye models lead to poor generalization, for example \texttt{f3}, \texttt{m2}, and \texttt{m4}, perhaps due to differences in skin-tone and eye-shape.
 % Similarly, learning with an Asian-shaped eye-region model (m4) leads poor performance for non-Asian-shape eye-region test participants.
 Also, total errors for some target participants are lower than for others, perhaps because of simpler eye-region shape that is matched to the training images.
 %``easier'' eye-regions than others, e.g. ones with a plain appearance (p15).
