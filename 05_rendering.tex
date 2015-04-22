@@ -31,6 +31,7 @@ We then describe our landmark annotation process and finally discuss the details
 
 % not sure if its worthwhile trying to formally parameterize the rendering model in the paper
 % might be simpler to just use words?
+\commentY{In my understanding, on the top level this rendering process also has eyeball texture parameter (any other random parameters?). In this case, I think it will be better to use L (or different character) to represent additional rendering parameters.}
 For a chosen eye-region model configuration, each rendered image is determined by parameters $(\mathbf{c}, \mathbf{g}, L)$: 3D camera position $\mathbf{c}$; 3D gaze vector $\mathbf{g}$; and lighting environment $L$.
 Camera positions $\mathbf{c}$ were chosen by iterating over spherical coordinates $(\theta, \phi)$, centered around the eyeball center (see~\autoref{fig:cam_pos}).
 We used orthographic rendering, as this simulates an eye region-of-interest being cropped from a wide-angle camera image, so we set $r\!=\!1$ for convenience.
