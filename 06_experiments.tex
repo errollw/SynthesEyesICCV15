@@ -51,6 +51,13 @@ As our method can reliably generate consistent landmark location training data, 
     \label{fig:clnf_results_wild}
 \end{figure}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{CLNF_MPII_experiment}
+    \caption{We perform comparably with state-of-the-art for iris-registration on in-the-wild webcam images.}
+    \label{fig:clnf_results_MPII}
+\end{figure}
+
 % \input{figs/fig_example_fits_wild.tex}
 
 % Erroll to Tadas: need to make sure these facts are straight...
@@ -81,13 +88,6 @@ Our approach also allow us to examine what steps of the synthesis are important 
 % \commentA{``for laptops'' sounds very specific. Does this generalize, do we need this strong constraint?}
 
 \input{figs/fig_clnf_fits.tex}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\columnwidth]{CLNF_MPII_experiment}
-    \caption{We perform comparably with state-of-the-art for iris-registration on in-the-wild webcam images.}
-    \label{fig:clnf_results_MPII}
-\end{figure}
 
 While the 300-W images represent challenging conditions for eyelid registration they do not feature iris labels and are not representative of conditions encountered during everyday human-computer interaction.
 We therefore annotated sub-pixel eyelid and iris boundaries for a subset of MPIIGaze \cite{zhang15_cvpr} (188 images), a recent large-scale dataset of face images and corresponding on-screen gaze locations collected during everyday laptop use over several months \cite{zhang15_cvpr}.
