@@ -148,8 +148,7 @@ We synthesized training images using the same camera settings as in the UT datas
 % and used the same normalization scheme for the test data.
 The head pose and gaze distributions for the three datasets are shown in~\autoref{fig:head_gaze_distribution}.
 %The training data was fully compatible with UT dataset, and
-We then trained the same convolutional neural network (CNN) model as described by~\citet{zhang15_cvpr} on both synthetic datasets and evaluated their performance on MPIIGaze.
-
+We then trained the same convolutional neural network (CNN) model as in~\cite{zhang15_cvpr} on both synthetic datasets and evaluated their performance on MPIIGaze.
 %Following the same setting, we train the same Convolutional Neural Network (CNN) model on the generic~\dataset dataset, and test it on MPIIGaze evaluation subset proposed by~\cite{zhang15_cvpr}. 
 As shown
 %with the two bars at the far left o
@@ -157,7 +156,8 @@ in~\autoref{fig:gazeResult}, the CNN model trained on our generic~\dataset datas
 %\commentE{I will prepare numbers here}
 This confirms that our approach can synthesize data that leads to comparable results with previous synthesis procedures \cite{sugano2014learning}.
 % We're finding it hard to argue why SynthEyes is better than UT, but maybe thats OK
-Note from \autoref{fig:gazeResult} that there is still a performance gap between the within-dataset training (red line) and training with an external dataset.
+Note from \autoref{fig:gazeResult} that there is still a performance gap between this cross-dataset and the within-dataset training (red line).
+%and training with an external dataset.
 % The blue line in~\autoref{fig:gazeResult} shows the leave-one-person-out cross validation score within the MPIIGaze dataset and thus represents the lower bound in this evaluation scenario.
 % still have error sources that cause this performance gap.
 % \commentA{are these values comparable in terms of training setting etc to fig 7 in the CVPR paper? I feel we need to link these results to that work here, either for the estimation accuracy or the lower bound.}
@@ -167,11 +167,11 @@ Note from \autoref{fig:gazeResult} that there is still a performance gap between
 
 % One of the important factors related to the above gap is the head pose and gaze ranges.
 While it is important to cover a wide range of head poses to handle arbitrary camera settings, this can make training more difficult.
-If the target setting is known in advance, e.g. laptop gaze interaction, it is possible to guide data synthesis with the expected head pose and gaze ranges.
+If the target setting is known in advance, e.g. laptop gaze interaction as in case of MPIIGaze, it is possible to target data synthesis to the expected head pose and gaze ranges.
 %The head pose and gaze direction range are also quite important priors for appearance-based gaze estimation. 
 %Since the samples from the small range of head poses can be trained together, while extreme head poses wouldn't share eye appearance. Also the gaze direction space is arbitrary and difficult to be densely covered by collected dataset.
 % To analyze the effect of different head pose ranges
-Therefore we rendered an additional targeted dataset (\dataset targeted) for a typical laptop setting ($10^{\circ}$ pose and $20^{\circ}$ gaze variation).
+To study the ability of our method to perform such a targeting, we rendered an additional dataset (\dataset targeted) for a typical laptop setting ($10^{\circ}$ pose and $20^{\circ}$ gaze variation).
 %Notice that the head pose and gaze direction range can be estimated based on the task, so the required information is not sophisticated. 
 %This shows how we can target specific scenarios like laptop-based gaze estimation, and render a suitable dataset within a day rather than taking 3 months of data collection with 15 participants. 
 For comparison, we also re-sampled the entire UT dataset to create a subset (UT subset) that has the same gaze and head pose distribution as MPIIGaze.
@@ -180,7 +180,7 @@ For comparison, we also re-sampled the entire UT dataset to create a subset (UT 
 %Since there are just have 10 subjects in our~\dataset,
 %To make the comparison fairer, 
 % \commentY{I feel we shouldn't say this is a "fair" comparison.}
-To make a comparison assuming the same number of subjects, we further divided the UT subset into five groups with 10 subjects each,
+To make a comparison assuming the same number of participants, we further divided the UT subset into five groups with 10 participants each,
 %(15,000 samples per group, as with our~\dataset).
 and averaged the performance of the five groups for the final result. 
 As shown in the third and forth bars of~\autoref{fig:gazeResult}, having similar head pose and gaze ranges as the target domain improves performance compared to the generic datasets.
@@ -189,7 +189,7 @@ Trained on our \dataset dataset the CNN achieves a statistically significant per
 % $\textrm{Mdn}\!=\!8.95^{\circ}$ and $\textrm{Mdn}\!=\!8.29^{\circ}$ for UT and \dataset respectively.
 
 % \commentY{Updated, and moved some sentences here too}
-These results suggest that neither \dataset~nor the UT dataset captures all variations present in the test set, but different ones individually.
+These results suggest that neither \dataset~nor the UT dataset alone capture all variations present in the test set, but different ones individually.
 %, while each dataset covers different aspect of the test data. 
 For example, while we cover more variations in lighting and facial appearance, the UT dataset contains real eye movements captured from more participants.
 %For example we do not model eye-glasses and the distortions caused by them; camera-related effects such over and under-exposure; and we do not capture all possible eye-shape variations. 
