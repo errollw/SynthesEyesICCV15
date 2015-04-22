@@ -66,7 +66,7 @@ We also compared our approach with the following state-of-the-art facial landmar
 The results of our experiments can be seen in \autoref{fig:clnf_results_wild}, and example model fits are shown in \autoref{fig:fits_300W}.
 Errors were recorded as the RMS point-to-boundary distance from tracked eyelid landmarks to ground truth eyelid boundary, and were normalized by inter-ocular distance. 
 %
-First, our system CLNF Synth ($\mathrm{Mdn}=0.0110$) trained on only ten participants in four lighting conditions results in very similar performance to a system trained on unconstrained in-the-wild images, CLNF 300-W ($\mathrm{Mdn}=0.0110$).
+First, our system CLNF Synth ($\mathrm{Mdn}=0.0110$) trained on only 10 participants in four lighting conditions results in very similar performance to a system trained on unconstrained in-the-wild images, CLNF 300-W ($\mathrm{Mdn}=0.0110$).
 %
 Second, the results show the eye-specific CLNF outperformed all other systems in eye-lid localization: SDM ($\mathrm{Mdn}=0.0134$), face-CLNF ($\mathrm{Mdn}=0.0139$), DRMF ($\mathrm{Mdn}=0.0238$), and Tree based ($\mathrm{Mdn}=0.0217$). 
 % and that our system can be used to achieve state-of-the-art performance for eye shape registration. 
@@ -182,8 +182,8 @@ For comparison, we also re-sampled the entire UT dataset to create a subset (UT 
 % \commentY{I feel we shouldn't say this is a "fair" comparison.}
 To make a comparison assuming the same number of subjects, we further divided the UT subset into five groups with 10 subjects each,
 %(15,000 samples per group, as with our~\dataset).
-and then averaged the performance of the five groups for the final result. 
-As shown in the third and forth bars of~\autoref{fig:gazeResult}, having similar head pose and gaze direction ranges as the target domain improves performance compared to the generic datasets.
+and averaged the performance of the five groups for the final result. 
+As shown in the third and forth bars of~\autoref{fig:gazeResult}, having similar head pose and gaze ranges as the target domain improves performance compared to the generic datasets.
 %$\textrm{Mdn}\!=\!8.95^{\circ}$ and $\textrm{Mdn}\!=\!8.29^{\circ}$ for UT and \dataset respectively.
 Trained on our \dataset dataset the CNN achieves a statistically significant performance improvement over the UT dataset of 0.74$^{\circ}$ (Wilcoxon signed-rank test: $p\!<\!0.0001$).
 % $\textrm{Mdn}\!=\!8.95^{\circ}$ and $\textrm{Mdn}\!=\!8.29^{\circ}$ for UT and \dataset respectively.
@@ -214,8 +214,7 @@ The performance of the untargeted case significantly outperformed the state-of-t
 \begin{figure}
     \centering
     \includegraphics[width=\columnwidth]{Confusion_annotated_smallfile.pdf}
-    \caption{Per-eye-model gaze estimation performance on MPIIGaze. Red represents worst scores. Note how some eye-models have proved more useful than others.
-    %\commentT{Does it matter that it's left eye for some right eye for others in the small images?}
+    \caption{Per--eye-model gaze estimation mean errors on MPIIGaze. Red represents worst scores. Note how some eye-models have proved more useful than others for training.
     }
     \label{fig:person_specific_training}
 \end{figure}
