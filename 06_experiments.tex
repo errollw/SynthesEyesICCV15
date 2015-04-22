@@ -184,19 +184,22 @@ To make a comparison assuming the same number of subjects, we further divided th
 and then averaged the performance of the five groups for the final result. 
 As shown in the third and forth bars of~\autoref{fig:gazeResult}, having similar head pose and gaze direction ranges as the target domain improves performance compared to the generic datasets.
 %$\textrm{Mdn}\!=\!8.95^{\circ}$ and $\textrm{Mdn}\!=\!8.29^{\circ}$ for UT and \dataset respectively.
-Trained on our \dataset dataset the CNN achieves a statistically significant performance improvement over the UT dataset of 0.74$^{\circ}$ (Wilcoxon signed-rank test  $p\!<\!0.0001$).
+Trained on our \dataset dataset the CNN achieves a statistically significant performance improvement over the UT dataset of 0.74$^{\circ}$ (Wilcoxon signed-rank test: $p\!<\!0.0001$).
 % $\textrm{Mdn}\!=\!8.95^{\circ}$ and $\textrm{Mdn}\!=\!8.29^{\circ}$ for UT and \dataset respectively.
 
 \commentY{Updated, and moved some sentences here too}
-These results suggest that both the \dataset~and UT datasets do not capture all variations present in the test set, while each dataset covers different aspect of the test data. 
-For example we capture more variations in lighting conditions and facial appearances, while the UT dataset contains real eye movements captured from more subjects.
-%For example we do not model eye-glasses and the distortions caused by them; camera-related effects such over and under-exposure; and we do not capture all possible eye-shape variations.
-In \autoref{fig:gazeResult}, we also evaluated the performance using both datasets.
-\commentY{Not sure this assumption is reasonable to justify this order of pre-training + fine tuning}
-Assuming that the~\dataset~dataset has wider range of appearance variation, we first trained the same CNN model with the~\dataset~dataset, and further fine-tuned the model with the UT dataset.
-This fine-tuning model achieved better performances on both settings (untargeted $\mu\!=\!11.12^{\circ}$, targeted $\mu\!=\!7.90^{\circ}$).
-The performance of the untargeted case significantly outperformed the state-of-the-art result~\cite{zhang15_cvpr} (Wilcoxon signed-rank test  $p\!<\!0.0001$), and indicates a promising way for a future investigation to fill the performance gap.
-%As shown in \autoref{fig:gazeResult}, it is possible to achieve better performances (untargetted $\mu\!=\!11.12^{\circ}$, targeted $\mu\!=\!7.90^{\circ}$) when we train with both datasets (pre-train with \dataset, and then fine tune with UT), perhaps because they capture different degrees of variation.
+These results suggest that neither the \dataset~nor the UT dataset captures all variations present in the test set but different ones individually.
+%, while each dataset covers different aspect of the test data. 
+For example, while we capture more variations in lighting conditions and facial appearances the UT dataset contains real eye movements captured from more participants.
+%For example we do not model eye-glasses and the distortions caused by them; camera-related effects such over and under-exposure; and we do not capture all possible eye-shape variations. 
+We therefore further evaluated the performance using both datasets (see~\autoref{fig:gazeResult}).
+%\commentY{Not sure this assumption is reasonable to justlfy this order of pre-training + fine tuning}
+% I don't think we need to provide an explanation for this
+%Assuming that the~\dataset~dataset has wider range of appearance variation,
+Specifically, we first trained the same CNN model on the~\dataset~dataset and fine-tuned the model using the UT dataset.
+This fine-tuned model achieved better performances in both settings (untargeted $\mu\!=\!11.12^{\circ}$, targeted $\mu\!=\!7.90^{\circ}$).
+The performance of the untargeted case significantly outperformed the state-of-the-art result~\cite{zhang15_cvpr} (Wilcoxon signed-rank test: $p\!<\!0.0001$), and indicates a promising way for a future investigation to fill the performance gap.
+%As shown in \autoref{fig:gazeResult}, it is possible to achieve better performances (untargetted $\mu\!=\!11.12^{\circ}$, targetted $\mu\!=\!7.90^{\circ}$) when we train with both datasets (pre-train with \dataset, and then fine tune with UT), perhaps because they capture different degrees of variation.
 %Interestingly pre-training using UT followed by \dataset led to worse performance. This indicates further need to investigate best strategies for dataset combination.
 
 % Erroll: not sure about the below paragraph
