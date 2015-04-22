@@ -3,7 +3,7 @@
 \section{Introduction}
 
 The eyes and their movements convey our attention and play a role in communicating social and emotional information \cite{Argyle1965}.
-Therefore they are important for a range of applications including gaze-based human-computer interaction~\cite{majaranta14_apc}, visual behavior monitoring~\cite{bulling11_pami}, conversational agents~\cite{vertegaal2001eye}, and -- more recently -- collaborative human-computer vision systems~\cite{yun2013studying,papadopoulos2014training,sattar15_cvpr}. 
+Therefore they are important for a range of applications including gaze-based human-computer interaction~\cite{majaranta14_apc}, visual behavior monitoring~\cite{bulling11_pami}, and -- more recently -- collaborative human-computer vision systems~\cite{papadopoulos2014training,sattar15_cvpr}. 
 Typical computer vision tasks involving the eye include \emph{gaze estimation}: determining where someone is looking, and \emph{eye-shape registration}: detecting anatomical landmarks of the eye, often as part of the face (e.g. eyelids).
 
 Machine learning methods that leverage large amounts of training data currently perform best for many problems in computer vision, such as object detection~\cite{girshick2014rich}, scene recognition~\cite{zhou2014learning}, or gaze estimation~\cite{zhang15_cvpr}.
@@ -61,8 +61,9 @@ Please note that our model is not only limited to these scenarios but can potent
 The specific contributions of this work are threefold.
 %First, we present our dynamic eye-region model that uses multiple parts and blend shapes to model the continuous degrees of shape change and deformation exhibited by the eye.
 %
-We describe in detail our novel but straight-forward techniques for generating large amounts of synthesized training data, including wide degrees of realistic appearance variation using image-based-lighting.
+We first describe in detail our novel but straight-forward techniques for generating large amounts of synthesized training data, including wide degrees of realistic appearance variation using image-based-lighting.
 %
-We then demonstrate the usefulness of \dataset for eye-shape registration, where we outperform the state-of-the-art, and perform competitively in challenging cross-dataset gaze estimation experiments.
+We then demonstrate the usefulness of \dataset by out-performing state-of-the-art methods for eye-shape registration as well as challenging cross-dataset appearance-based gaze estimation in the wild.
+%, and perform competitively in challenging cross-dataset gaze estimation experiments.
 %
-Finally, to ensure reproducibility and stimulate research in this area we will make the eyeball model and generated training data publicly available at time of publication.
+Finally, to ensure reproducibility and stimulate research in this area, we will make the eyeball model and generated training data publicly available at time of publication.
