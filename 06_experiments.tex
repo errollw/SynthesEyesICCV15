@@ -166,11 +166,12 @@ Note from \autoref{fig:gazeResult} that there is still a performance gap between
 %To better model the variations encountered for everyday laptop-use images, we 
 
 % One of the important factors related to the above gap is the head pose and gaze ranges.
-While it is important to cover a wide range of head poses to handle arbitrary camera settings, this can make the training task more difficult.
-If the target setting is known in advance, e.g. laptop gaze interaction, it is  possible to target the synthesis of training data to the expected head pose and gaze ranges.
+While it is important to cover a wide range of head poses to handle arbitrary camera settings, this can make training more difficult.
+If the target setting is known in advance, e.g. laptop gaze interaction, it is possible to guide data synthesis with the expected head pose and gaze ranges.
 %The head pose and gaze direction range are also quite important priors for appearance-based gaze estimation. 
 %Since the samples from the small range of head poses can be trained together, while extreme head poses wouldn't share eye appearance. Also the gaze direction space is arbitrary and difficult to be densely covered by collected dataset.
-To analyze the effect of different head pose ranges we rendered an additional targeted dataset (\dataset targeted) for a typical laptop setting ($10^{\circ}$ pose variation, $20^{\circ}$ gaze variation).
+% To analyze the effect of different head pose ranges
+Therefore we rendered an additional targeted dataset (\dataset targeted) for a typical laptop setting ($10^{\circ}$ pose and $20^{\circ}$ gaze variation).
 %Notice that the head pose and gaze direction range can be estimated based on the task, so the required information is not sophisticated. 
 %This shows how we can target specific scenarios like laptop-based gaze estimation, and render a suitable dataset within a day rather than taking 3 months of data collection with 15 participants. 
 For comparison, we also re-sampled the entire UT dataset to create a subset (UT subset) that has the same gaze and head pose distribution as MPIIGaze.
