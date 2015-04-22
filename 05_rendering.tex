@@ -7,7 +7,7 @@
     \captionsetup{subrefformat=parens} % add parentheses to \subref
     \centering
     \begin{subfigure}[t]{0.48\columnwidth}
-        \inlinelabel{a}{\includegraphics[width=\textwidth]{camera_position}}
+        \inlinelabel{a}{\includegraphics[width=\textwidth]{camera_position_smallsize}}
         \caption{}\label{fig:cam_pos_spher_coords}
     \end{subfigure}
     \hfill
@@ -32,7 +32,7 @@ We then describe our landmark annotation process and finally discuss the details
 % not sure if its worthwhile trying to formally parameterize the rendering model in the paper
 % might be simpler to just use words?
 For a chosen eye-region model configuration, each rendered image is determined by parameters $(\mathbf{c}, \mathbf{g}, L)$: 3D camera position $\mathbf{c}$; 3D gaze vector $\mathbf{g}$; and lighting environment $L$.
-Camera positions $\mathbf{c}$ were chosen by iterating over spherical coordinates $(r, \theta, \phi)$, centered around the eyeball center (see~\autoref{fig:cam_pos}).
+Camera positions $\mathbf{c}$ were chosen by iterating over spherical coordinates $(\theta, \phi)$, centered around the eyeball center (see~\autoref{fig:cam_pos}).
 We used orthographic rendering, as this simulates an eye region-of-interest being cropped from a wide-angle camera image, so we set $r\!=\!1$ for convenience.
 At each camera position $\mathbf{c}$, we rendered multiple images with different 3D gaze vectors to simulate the eye looking in different directions.
 Examples with fixed $L$ are shown in \autoref{fig:cam_pos_example_renders}.
@@ -55,7 +55,7 @@ Before rendering, we also verified that the projected 2D pupil center in the ima
     \end{subfigure}
     \par \medskip
     \begin{subfigure}[t]{0.48\columnwidth}
-        \includegraphics[width=\textwidth]{env_explain_5x4}
+        \includegraphics[width=\textwidth]{env_explain_5x4_smallsize.pdf}
     	\caption{The environment is rotated to simulate different head poses}
     \end{subfigure}%
     \hfill
@@ -84,9 +84,9 @@ As shown in \autoref{fig:env_map_imgs_examples}, a combination of hard shadows a
 % \commentY{In my understanding, this section is only related to the shape registration task. And I think some parts in the next section are only relevant to the gaze estimation task? In this case, we should reorganize the next section as a "training data synthesis", starting from a general discussion and task-specific subsections.}
 % \commentY{Added a sentence here}
 For eye shape registration, we need additional ground-truth annotations of eye-region landmarks in the training images.
-As shown in \autoref{fig:process_ldmks}, each 3D eye-region was annotated once in 3D with $28$ landmarks, corresponding to the eye corners ($2$), eyelids ($5\!+\!5$), iris boundary ($8$), and pupil boundary ($8$).
+As shown in \autoref{fig:process_ldmks}, each 3D eye-region was annotated once in 3D with $28$ landmarks, corresponding to the eyelids ($12$), iris boundary ($8$), and pupil boundary ($8$).
 The iris and pupil landmarks were defined as a subset of the eyeball geometry vertices, so deform automatically with changes in pupil and iris size.
-The eyelid and eye corner landmarks were manually labelled with a separate mesh that follows the seam where eyeball geometry meets skin geometry.
+The eyelid landmarks were manually labelled with a separate mesh that follows the seam where eyeball geometry meets skin geometry.
 This mesh is assigned shape keys and deforms automatically during eyelid motion.
 %
 % So instead of having humans ambiguously label eye-region anatomy, we carefully manually annotate each eye-region once, ensuring higher-quality labels.

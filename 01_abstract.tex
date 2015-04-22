@@ -4,5 +4,11 @@ Recent large-scale supervised methods for these problems require time-consuming 
 We propose synthesizing perfectly labelled photo-realistic training data in a fraction of the time.
 We used computer graphics techniques to build a collection of dynamic eye-region models from head scan geometry.
 These were randomly posed to synthesize close-up eye images for a wide range of head poses, gaze directions, and illumination conditions.
-We demonstrate the benefits of our synthesized training data (\dataset) by out-performing state-of-the-art methods for eye-shape registration in the wild, and achieving competitive performance on appearance-based gaze estimation.
-Furthermore, we show that its important to include realistic illumination and shape variation in training data.
+%
+% We validated the usefulness of the dataset on two scenarios: an eye landmark detector and an appearance-based gaze estimator.
+% The model is able to simulate the large variability of real eyes, including pupil dilation, eyelid motion and corresponding changes in its shape, as well as iris colour variations.
+%dynamic changes in shape
+We used our model's controllability to verify the importance of realistic illumination and shape variations in eye-region training data.
+%
+Finally we demonstrate the benefits of our synthesized training data (\dataset) by out-performing state-of-the-art methods for eye-shape registration in the wild, and achieving competitive performance on appearance-based gaze estimation.
+% needs reword.
