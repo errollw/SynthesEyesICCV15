@@ -8,14 +8,14 @@ We developed a realistic dynamic eye-region model which can be randomly posed to
 Our goals were realism and controllability, so we combined 3D head scan geometry with our own posable eyeball model -- \autoref{fig:process} provides an overview of the model preparation process.
 % For a set of training images to be useful, it should be large, representitive of real-world variety, and cleanly labelled.
 For the resulting training data to be useful, it should be representative of real-world variety.
-Our aim therefore was to model the continuous changes in appearance that the face and eyes undergo during eye movement, so they are accurately represented in close-up synthetic eye images.
+We therefore aimed to model the continuous changes in appearance that the face and eyes undergo during eye movement, so they are accurately represented in close-up synthetic eye images.
 This is more challenging than simply rendering a collection of static models, as dynamic geometry must be correctly topologized and rigged to be able to deform continuously.
 % To achieve this, we combine scanned facial geometry with a separate controllable eye model.
 % These can together be posed to synthesize labelled training data.
 % Appearance-wise, the eye-region is one of the most complex areas of the whole body -- separate parts can all move independently, and feature a range of reflectance properties and small-scale details.
 % The eyelids, upper-cheek, and eye-ball can all move independently, and feature a range of reflectance properties and small-scale details.
 %
-In this section we first present our anatomically inspired computer graphics eyeball model, and then explain our procedure for converting a collection of static 3D head scans into dynamic eye-region models that can assume a range of realistic poses.
+We first present our anatomically inspired computer graphics eyeball model, and then explain our procedure for converting a collection of static 3D head scans into dynamic eye-region models that can assume a range of realistic poses.
 %\commentA{I think it would be good to first describe in 1-2 paragraphs what the particular challenges of modelling eye shape, dynamics etc. are. This gives better context for the method description that follows and hopefully also underlines that this is a non-trivial task and the work therefore a significant step forward.}
 
 %\todo{past tense}
@@ -39,8 +39,10 @@ The inner part (blue wireframe) is a flattened sphere  -- the planar end represe
 There is a $0.5\textrm{mm}$ gap between the two parts which accounts for the thickness of the cornea.
 % \commentE{compare with recent Disney work}
 
-Eyes exhibit variation in both shape (pupillary dilation) and texture (iris color and scleral veins).
-To model shape variation we use \emph{blend shapes} -- an animation technique where several different poses are created for the same topological mesh, and then interpolated between \cite{orvalho2012facial}. 
+Eyes vary in both shape (pupillary dilation) and texture (iris color and scleral veins).
+To model shape variation we use \emph{blend shapes}
+% -- an animation technique
+to interpolate between several different poses created for the same topological mesh~\cite{orvalho2012facial}. 
 We created blend shapes for dilated and constricted pupils, as well as large and small irises to account for a small amount ($10\%$) of variation in iris size.
 % Maybe try to explain blend shapes better
 % Blend shapes are localized so can be mixed, so we can easily model an eye with a small pupil, and a large iris.
@@ -66,7 +68,6 @@ While previous approaches used lifelike artist-created models \cite{swirski2014r
 %or use free or commercial photogrammetry software to generate facial geometry models in-house.
 Facial appearance around the eye varies dramatically between people as a result of different eye-shapes (e.g. round vs hooded), orbital bone structure (e.g. deep-set vs protruding), and skin detail (wrinkled vs smooth).
 Therefore our head models (see \autoref{fig:model_suite}) cover gender, ethnicity and age.
-
 As can be seen in \autoref{fig:process_original_scan}, the cornea of the original head scan has been incorrectly reconstructed by the optical scanning process.
 This is because transparent surfaces are not directly visible, so cannot be reconstructed in the same way as diffuse surfaces, such as skin.
 % Recent work used a hybrid reconstruction method to reconstruct the corneal surface separately, but requires additional hardware \cite{berard2014highquality} -- this level of detail was deemed unnecessary for our purposes.
