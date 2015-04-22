@@ -91,7 +91,7 @@ Our data synthesis pipeline also allowed us to examine what steps of the synthes
 \end{figure}
 
 While the 300-W images represent challenging conditions for eyelid registration they do not feature iris labels and are not representitive of conditions encountered during everyday human-computer interaction.
-We therefore annotated sub-pixel eyelid and iris boundaries onto a subset of MPIIGaze (188 images), a recent large-scale dataset of face images and corresponding on-screen gaze locations collected during everyday laptop use over several months \cite{zhang15_cvpr}.
+We therefore annotated sub-pixel eyelid and iris boundaries onto a subset of MPIIGaze \citet{zhang15_cvpr} (188 images), a recent large-scale dataset of face images and corresponding on-screen gaze locations collected during everyday laptop use over several months \cite{zhang15_cvpr}.
 Pupil accuracy was not evaluated as it was impossible to discern in in most images.
 
 We compared our eye-specific CLNF (CLNF Synth) with EyeTab \cite{wood2014eyetab}, a state-of-the-art shape-based approach for webcam gaze estimation that robustly fits ellipses to the iris boundary using image-aware RANSAC \cite{swirski2012robust}. Note we did not compare with other systems from the previous experiment as they do not detect irises.
@@ -173,7 +173,7 @@ If the target setting is known in advance, e.g. laptop gaze interaction, it is  
 To analyse the effect of different head pose ranges we rendered an additional targeted dataset (\dataset targetted) for a typical laptop setting ($10^{\circ}$ pose variation, $20^{\circ}$ gaze variation).
 %Notice that the head pose and gaze direction range can be estimated based on the task, so the required information is not sophisticated. 
 %This shows how we can target specific scenarios like laptop-based gaze estimation, and render a suitable dataset within a day rather than taking 3 months of data collection with 15 participants. 
-For comparison, we also re-sampled the entire UT dataset to create a subset that has the same gaze and head pose distribution as MPIIGaze (UT subset).
+For comparison, we also re-sampled the entire UT dataset to create a subset (UT subset) that has the same gaze and head pose distribution as MPIIGaze.
 % as described by~\citet{zhang15_cvpr}.
 %A second important difference between two datasets is the number of subjects in the dataset.
 %Since there are just have 10 subjects in our~\dataset,
@@ -185,7 +185,7 @@ As shown in the third and forth bars of~\autoref{fig:gazeResult}, having similar
 Trained on our \dataset dataset the CNN achieves a statistically significant performance improvement over the UT dataset of 0.74$^{\circ}$ (Wilcoxon signed-rank test  $p\!<\!0.0001$).
 % $\textrm{Mdn}\!=\!8.95^{\circ}$ and $\textrm{Mdn}\!=\!8.29^{\circ}$ for UT and \dataset respectively.
 
-As shown in \autoref{fig:gazeResult}, it is possible to achieve better performances (untargetted $\mu\!=\!11.12^{\circ}$, targetted $\mu\!=\!7.90^{\circ}$) when we train with both datasets (pre-train with \dataset, followed by UT), perhaps because they capture different degrees of variation.
+As shown in \autoref{fig:gazeResult}, it is possible to achieve better performances (untargetted $\mu\!=\!11.12^{\circ}$, targetted $\mu\!=\!7.90^{\circ}$) when we train with both datasets (pre-train with \dataset, and then fine tune with UT), perhaps because they capture different degrees of variation.
 %Interestingly pre-training using UT followed by \dataset led to worse performance. This indicates further need to investigate best strategies for dataset combination.
 
 % Erroll: not sure about the below paragraph
@@ -228,7 +228,7 @@ To examine the effects of this we conducted a second experiment where we trained
 The results can be seen in \autoref{fig:person_specific_training}.
 
 This plot illustrates which \dataset eye-region models were useful for training and which ones were not.
-As we can see, training with certain eye models leads to poor generalization, for example \texttt{f3}, \texttt{m2}, and \texttt{m4}, perhaps due to differences in skin-tone and eye shape
+As we can see, training with certain eye models leads to poor generalization, for example \texttt{f3}, \texttt{m2}, and \texttt{m4}, perhaps due to differences in skin-tone and eye shape.
 % Similarly, learning with an Asian-shaped eye-region model (m4) leads poor performance for non-Asian-shape eye-region test participants.
 Also, total errors for some target participants are lower than for others, perhaps because of simpler eye-region shape which is matched to the training images.
 %``easier'' eye-regions than others, e.g. ones with a plain appearance (p15).
