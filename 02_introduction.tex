@@ -3,7 +3,7 @@
 \section{Introduction}
 
 The eyes and their movements convey our attention and play a role in communicating social and emotional information \cite{Argyle1965}.
-Therefore they are important for a range of applications including gaze-based human-computer interaction~\cite{majaranta14_apc}, visual behaviour monitoring~\cite{bulling11_pami}, conversational agents~\cite{vertegaal2001eye}, and -- more recently -- collaborative human-computer vision systems~\cite{yun2013studying,papadopoulos2014training,sattar15_cvpr}. 
+Therefore they are important for a range of applications including gaze-based human-computer interaction~\cite{majaranta14_apc}, visual behavior monitoring~\cite{bulling11_pami}, conversational agents~\cite{vertegaal2001eye}, and -- more recently -- collaborative human-computer vision systems~\cite{yun2013studying,papadopoulos2014training,sattar15_cvpr}. 
 Typical computer vision tasks involving the eye include \emph{gaze estimation}: determining where someone is looking, and \emph{eye-shape registration}: detecting anatomical landmarks of the eye, often as part of the face (e.g. eyelids).
 
 Machine learning methods that leverage large amounts of training data currently perform best for many problems in computer vision, such as object detection~\cite{girshick2014rich}, scene recognition~\cite{zhou2014learning}, or gaze estimation~\cite{zhang15_cvpr}.
@@ -26,17 +26,17 @@ The advantages of this approach are that both data collection and annotation req
 % Can remove this if necessary
 % Perhaps the best known example is by \citet{shotton2013real}, who synthesized a large and varied depth-image dataset for training a real-time pose-estimator.
 
-% The eyes and their movements are important for a range of applications including gaze-based human-computer interaction~\cite{majaranta14_apc}, visual behaviour monitoring~\cite{bulling11_pami}, and -- more recently -- collaborative human-computer vision systems~\cite{yun2013studying,papadopoulos2014training,sattar15_cvpr}. 
+% The eyes and their movements are important for a range of applications including gaze-based human-computer interaction~\cite{majaranta14_apc}, visual behavior monitoring~\cite{bulling11_pami}, and -- more recently -- collaborative human-computer vision systems~\cite{yun2013studying,papadopoulos2014training,sattar15_cvpr}. 
 % Eyes also play a role in communicating social and emotional information \cite{Argyle1965}.
 
 The eye-region is particularly difficult to model accurately given the dynamic shape changes it undergoes with facial motion and eyeball rotation, and the complex material structure of the eyeball itself.
-For this reason, recent work on learning-by-synthesis for gaze estimation employed only fundamental computer graphics techniques -- rendering low-resolution meshes without modelling illumination changes or accounting for the varying material properties of the face \cite{sugano2014learning}.
+For this reason, recent work on learning-by-synthesis for gaze estimation employed only fundamental computer graphics techniques -- rendering low-resolution meshes without modeling illumination changes or accounting for the varying material properties of the face \cite{sugano2014learning}.
 %\cite{lu2012head}
 In addition, these models are not fully controllable and the synthesized datasets contain only gaze labels, limiting their usefulness for other computer vision problems, such as facial landmark registration.
 %\commentA{what about Leszeks work? should also fit in here, right?}
 
 % \commentA{we can also remove these last references if we have to save space}
-% Recent work by \citet{sugano2014learning} demonstrated the benefits of learning-by-synthesis for appearance-based gaze estimation, but employed only fundamental computer graphics techniques for synthesising low-resolution meshes that did not account for lighting variation.
+% Recent work by \citet{sugano2014learning} demonstrated the benefits of learning-by-synthesis for appearance-based gaze estimation, but employed only fundamental computer graphics techniques for synthesizing low-resolution meshes that did not account for lighting variation.
 
 % It is for this reason that previous work on rendering photorealistic images of the eye and eye-region is relatively sparse~\cite{ActiBlizEyes,berard2014highquality}.
 % \commentY{What does this "sparsity" mean? And again, I think having 10 different models is a little to weak to say that it can handle "significant variation in facial shape and texture across different people" in the context of face/eye research.}
@@ -46,7 +46,7 @@ In addition, these models are not fully controllable and the synthesized dataset
 % Andreas: we need some transition to eyeballs here, e.g. eyeball rendering is particularly challenging and interesting because of the many muscles involved, the large number of appearance details around and in the eye etc.
 % essentially motivate that this hasn't been done before and is a very interesting area of research
 
-%Synthesising training data is not novel in itself -- previous work has ... Our novel approach 
+%Synthesizing training data is not novel in itself -- previous work has ... Our novel approach 
 
 \input{figs/fig_process.tex}
 
