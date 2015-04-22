@@ -6,7 +6,7 @@
 
 We developed a realistic dynamic eye-region model which can be randomly posed to generate fully labeled training images.
 Our goals were realism and controllability, so we combined 3D head scan geometry with our own posable eyeball model -- \autoref{fig:process} provides an overview of the model preparation process.
-% For a set of training images to be useful, it should be large, representitive of real-world variety, and cleanly labelled.
+% For a set of training images to be useful, it should be large, representative of real-world variety, and cleanly labelled.
 For the resulting training data to be useful, it should be representative of real-world variety.
 We therefore aimed to model the continuous changes in appearance that the face and eyes undergo during eye movement, so they are accurately represented in close-up synthetic eye images.
 This is more challenging than simply rendering a collection of static models, as dynamic geometry must be correctly topologized and rigged to be able to deform continuously.
@@ -16,7 +16,7 @@ This is more challenging than simply rendering a collection of static models, as
 % The eyelids, upper-cheek, and eye-ball can all move independently, and feature a range of reflectance properties and small-scale details.
 %
 We first present our anatomically inspired computer graphics eyeball model, and then explain our procedure for converting a collection of static 3D head scans into dynamic eye-region models that can assume a range of realistic poses.
-%\commentA{I think it would be good to first describe in 1-2 paragraphs what the particular challenges of modelling eye shape, dynamics etc. are. This gives better context for the method description that follows and hopefully also underlines that this is a non-trivial task and the work therefore a significant step forward.}
+%\commentA{I think it would be good to first describe in 1-2 paragraphs what the particular challenges of modeling eye shape, dynamics etc. are. This gives better context for the method description that follows and hopefully also underlines that this is a non-trivial task and the work therefore a significant step forward.}
 
 %\todo{past tense}
 %\commentA{we have to explain what makes the model dynamic}
@@ -34,7 +34,7 @@ The outer part (red wireframe) approximates the eye's overall shape with two sph
 To avoid a discontinuous seam between spheres, their meshes were joined, and the vertices along the seam were smoothed to minimize differences in face-angle.
 % \commentA{how joined and smoothed?} Erroll - Maybe needs rewording. Perhaps i'll just put a citation for the smoothing operation? I don't particularly want to describe it
 This outer part is transparent, refractive ($n\!=\!1.376$), and partially reflective.
-The sclera's bumpy surface is modelled with smoothed solid noise functions, and applied using a \emph{displacement map} -- a 2D scalar function that shifts a surface in the direction of its normal \cite{lee2000displaced}.
+The sclera's bumpy surface is modeled with smoothed solid noise functions, and applied using a \emph{displacement map} -- a 2D scalar function that shifts a surface in the direction of its normal \cite{lee2000displaced}.
 The inner part (blue wireframe) is a flattened sphere  -- the planar end represents the iris and pupil, and the rest represents the sclera, the white of the eye.
 There is a $0.5\textrm{mm}$ gap between the two parts which accounts for the thickness of the cornea.
 % \commentE{compare with recent Disney work}
@@ -104,7 +104,7 @@ To compensate for this, the face mesh's eyelid vertices were automatically displ
 This prevented unwanted gaps between the models, even after changes in pose.
 The face geometry was then assigned physically-based materials, including subsurface scattering to approximate the penetrative light transfer properties of skin, and a glossy component to simulate its oily surface.
 
-\subsection{Modelling Eyelid Motion and Eyelashes}
+\subsection{Modeling Eyelid Motion and Eyelashes}
 
 We model eyelid motion using blend shapes for upwards-looking and downwards-looking eyelids, and interpolating between them based on the global pitch of the eyeball model.
 This makes our face-model dynamic, allowing it to continuously deform to match eyeball poses.
@@ -128,6 +128,6 @@ These blend shape and texture modifications were carried out using photos of the
 % \commentY{At least we should give a different subsection title covering both eyelid motion and eyelashes?}
 Eyelashes are short curved hairs that grow from the edges of the eyelids.
 These can occlude parts of the eye and affect eye tracking algorithms, so are simulated as part of our comprehensive model.
-We followed the approach of {\'S}wirski and Dodgson~\cite{swirski2014rendering}, and modelled eyelashes using directed hair particle effects.
+We followed the approach of {\'S}wirski and Dodgson~\cite{swirski2014rendering}, and modeled eyelashes using directed hair particle effects.
 Particles were generated from a control surface manually placed below the eyelids.
 To make them curl, eyelash particles experienced a slight amount of gravity during growth (negative gravity for the upper eyelash).
