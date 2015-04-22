@@ -194,8 +194,9 @@ These results suggest that neither \dataset~nor the UT dataset alone capture all
 %, while each dataset covers different aspect of the test data. 
 For example, while we cover more variations in lighting and facial appearance, the UT dataset contains real eye movements captured from more participants.
 %For example we do not model eye-glasses and the distortions caused by them; camera-related effects such over and under-exposure; and we do not capture all possible eye-shape variations. 
-\citet{fu2011neural}~proposed a method to use an unsupervised pre-training result on synthetic data for fine-tuning on real data, and \citet{peng2014exploring}~reported the invariance obtained from pre-training on synthetic data is beneficial for fine-tuning.
-We therefore finally evaluated the performance by training and fine-tuning using both datasets (see~\autoref{fig:gazeResult}).
+Recent works by \citet{fu2011neural} and \citet{peng2014exploring} demonstrated the importance of fine-tuning models initially trained on synthetic data on real data to increase performance.
+%proposed to use unsupervised pre-training on synthetic data and fine-tuning on real data, while ~reported the invariance obtained from pre-training on synthetic data is beneficial for fine-tuning.
+Finally, we therefore evaluated the performance by training and fine-tuning using both datasets (see~\autoref{fig:gazeResult}).
 %\commentY{Not sure this assumption is reasonable to justlfy this order of pre-training + fine tuning}
 % I don't think we need to provide an explanation for this
 %Assuming that the~\dataset~dataset has wider range of appearance variation,
