@@ -32,7 +32,7 @@ We then describe our landmark annotation process and finally discuss the details
 % not sure if its worthwhile trying to formally parameterize the rendering model in the paper
 % might be simpler to just use words?
 For a chosen eye-region model configuration, each rendered image is determined by parameters $(\mathbf{c}, \mathbf{g}, L)$: 3D camera position $\mathbf{c}$; 3D gaze vector $\mathbf{g}$; and lighting environment $L$.
-Camera positions $\mathbf{c}$ were chosen by iterating over spherical coordinates $(r, \theta, \phi)$, centered around the eyeball center (see~\autoref{fig:cam_pos}).
+Camera positions $\mathbf{c}$ were chosen by iterating over spherical coordinates $(\theta, \phi)$, centered around the eyeball center (see~\autoref{fig:cam_pos}).
 We used orthographic rendering, as this simulates an eye region-of-interest being cropped from a wide-angle camera image, so we set $r\!=\!1$ for convenience.
 At each camera position $\mathbf{c}$, we rendered multiple images with different 3D gaze vectors to simulate the eye looking in different directions.
 Examples with fixed $L$ are shown in \autoref{fig:cam_pos_example_renders}.

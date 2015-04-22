@@ -58,13 +58,14 @@ We vary the texture of the eye by compositing images in three separate layers:
 \subsection{3D Head Scan Acquisition}
 \label{sec:eye_region_geom_prep}
 
-For an eye-region rendering to be realistic, it must also feature realistic nearby face detail.
-While previous approaches used lifelike artist-created models, for example~\cite{swirski2014rendering}, we instead rely on high-quality head scans captured by a professional photogrammetry studio (10K diffuse color textures, 0.1mm resolution geometry)\footnote{Ten24 3D Scan Store -- \url{http://www.3dscanstore.com/}}.
+For an eye-region rendering to be realistic, it must also feature realistic nearby facial detail.
+While previous approaches used lifelike artist-created models \cite{swirski2014rendering}, we instead rely on high-quality head scans captured by a professional photogrammetry studio (10K diffuse color textures, 0.1mm resolution geometry)\footnote{Ten24 3D Scan Store -- \url{http://www.3dscanstore.com/}}.
 %\cite{Ten24}.
 %\commentA{link or even better reference if available}
 %Nowadays it is possible to purchase such scans online (from $\sim\!\$15$/scan)
 %or use free or commercial photogrammetry software to generate facial geometry models in-house.
-Facial appearance around the eye varies dramatically between people as a result of different eye-shapes (e.g. round vs hooded), orbital bone structure (e.g. deep-set vs protruding), and skin detail (wrinkled vs smooth). Therefore our head models (see \autoref{fig:model_suite}) cover both genders with a variety of ethnicities and ages.
+Facial appearance around the eye varies dramatically between people as a result of different eye-shapes (e.g. round vs hooded), orbital bone structure (e.g. deep-set vs protruding), and skin detail (wrinkled vs smooth).
+Therefore our head models (see \autoref{fig:model_suite}) cover gender, ethnicity and age.
 
 As can be seen in \autoref{fig:process_original_scan}, the cornea of the original head scan has been incorrectly reconstructed by the optical scanning process.
 This is because transparent surfaces are not directly visible, so cannot be reconstructed in the same way as diffuse surfaces, such as skin.
@@ -78,7 +79,7 @@ We therefore removed the scanned eyeball from the mesh, and placed our own eyeba
 
 \subsection{Eye-Region Geometry Preparation}
 
-While the original head scan geometry is suitable for being rendered as a static model, its high resolution topology cannot be easily controlled changes in eye-region shape.
+While the original head scan geometry is suitable for being rendered as a static model, its high resolution topology cannot be easily controlled for changes in eye-region shape.
 % \commentA{the following reference is not strictly needed and could be removed to make space for affective computing reference} \cite{liversedge2011oxford}
 Vertical saccades are always accompanied by eyelid motion, so we need to control eyelid positions according to the gaze vector.
 To do this, we need a more efficient (low-resolution) geometric representation of the eye-region, where edge loops flow around the natural contours of facial muscles.
@@ -117,7 +118,7 @@ These blend shape and texture modifications were carried out using photos of the
 \begin{figure}
     \includegraphics[width=\columnwidth]{eyelid_motion_1.png} \par \smallskip
     % \includegraphics[width=\columnwidth]{eyelid_motion_2.png}
-    \caption{Eyelids are posed by interpolating between blend shapes based on gaze direction. Note how we simulate the folding of the skin above and below the eye.}
+    \caption{Eyelids are posed by interpolating between blend shapes based on gaze direction (\texttt{m2} as example). Note how we simulate the folding of the skin above and below the eye.}
     \label{fig:eyelids}
 \end{figure}
 
