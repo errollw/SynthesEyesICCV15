@@ -19,13 +19,13 @@
 
 % \commentY{Maybe this should be presented earlier (in the related works section? we are currently missing references to other appearance-based gaze estimation methods), definition of the two tasks and why and how synthetic data is expected to be helpful. Especially eye-shape registration is not well defined during the previous section}
 We evaluated the usefulness of our synthetic data generation method on two sample problems, eye-shape registration and appearance-based gaze estimation.
-%
+
 Eye-shape registration attempts to detect anatomical landmarks of the eye -- eyelids, iris and the pupil. 
-Such approaches either attempt to model the shape of the eye directly by relying on edge information \cite{wood2014eyetab, swirski2012robust} or by using statistically learnt deformable models \cite{alabort2014statistically}. 
-As our method can reliably generate consistent landmark location training data, we use it for Constrained Local Neural Field (CLNF) \cite{baltrusaitis2013constrained} deformable model training.
+Such approaches either attempt to model the shape of the eye directly by relying on low-level image features, e.g. edges \cite{wood2014eyetab, swirski2012robust} or by using statistically learnt deformable models \cite{alabort2014statistically}. 
+Compared to \citet{alabort2014statistically}, our dataset has been automatically labelled. This guarantees consistent labels across viewpoints and people, avoiding human error.
 
 Appearance-based gaze estimation systems learn a mapping directly from eye image pixels to gaze direction.
-While most previous approaches focused on {\em person-dependent} training scenarios which require training data from the target user, recently more attention has been paid to {\em person-independent} training \cite{funes2013person,schneider2014manifold,sugano2014learning,zhang15_cvpr}. 
+While most previous approaches focused on {\em person-dependent} training scenarios which require training data from the target user, recently more attention has been paid to {\em person-independent} training \cite{zhang15_cvpr,sugano2014learning,funes2013person,schneider2014manifold}. 
 % This is in contrast to geometry-based approaches that rely on tracking features of 
 %This is a challenging task considering the changes in appearance, 
 %thus requiring large amounts of training data to perform well.
@@ -34,12 +34,11 @@ The training dataset is required to cover the potential changes in appearance wi
 %Since our method allows the synthesis of eye images with arbitrary head poses, gaze directions, and illumination conditions, we can generate a suitable training dataset rapidly, and even tailor it to the target domain.
 Compared to \citet{sugano2014learning}, our method can provide a wider range of illumination conditions which can be beneficial to handle the unknown illumination condition in the target domain.
 
-
 %\subsection{Eye-Shape Registration In the Wild}
 
 \subsection{Eye-Shape Registration}
 
-% \commentY{I feel this subsection + paragraph structure is better to summarize two shape registration experiments?}
+As our method can reliably generate consistent landmark location training data, we used it for training a Constrained Local Neural Field (CLNF) \cite{baltrusaitis2013constrained} deformable model. We conducted experiments to evlauate the generalizability of our approach on two different use cases: eyelid detection in-the-wild, and iris tracking from webcams.
 
 \paragraph{Eye-Shape Registration In the Wild}
 
