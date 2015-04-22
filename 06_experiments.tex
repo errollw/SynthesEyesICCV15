@@ -136,33 +136,43 @@ See \autoref{fig:fits_MPII} for example model fits.
 \end{figure}
 
 %\commentY{Edited this paragraph}
-To evaluate the usage of our method on appearance gaze estimation, we perform the cross-dataset validation as described in \citet{zhang15_cvpr}, where they train and test the model on different datasets. 
-We synthesized our dataset using the same camera setting as UT dataset~\cite{sugano2014learning}, and the same normalization scheme can be applied to the test data.
-The training data is fully compatible with UT dataset, and we can directly compare our~\dataset using the same Convolutional Neural Network (CNN) model~\cite{zhang15_cvpr}.
+To evaluate our method for appearance-based gaze estimation we performed the cross-dataset validation as described in~\citet{zhang15_cvpr}.
+%where they trained and tested the model on different datasets. 
+Specifically, we synthesized training images using the same camera settings as in the UT dataset~\cite{sugano2014learning} and used the same normalization scheme for the test data.
+The head pose and gaze distributions for the three datasets are shown in~\autoref{fig:head_gaze_distribution}.
+%The training data was fully compatible with UT dataset, and
+We then trained the same convolutional neural network (CNN) model as described in~\cite{zhang15_cvpr} on both synthetic datasets and evaluated their performance on MPIIGaze as the testing dataset.
+
+\commentA{do we compare to the real or synthesised UT images here?}
 
 %Following the same setting, we train the same Convolutional Neural Network (CNN) model on the generic~\dataset dataset, and test it on MPIIGaze evaluation subset proposed by~\cite{zhang15_cvpr}. 
-As shown with the two bars at the far left of~\autoref{fig:gazeResult}, compared to the median gaze direction prediction error 12.7 degrees that trained with UT dataset, the model trained with our generic~\dataset dataset can achieve similar performance performance. This confirms that our method can generate a equivalent data for the appearance-based gaze estimation training.
-The blue background line of~\autoref{fig:gazeResult} shows the leave-one-person-out cross validation score within the MPIIGaze dataset to show the lower bound of this scenario.
-These result indicates that both \dataset~and UT datasets still have their own error sources which is causing the performance gap.
+As shown
+%with the two bars at the far left o
+in~\autoref{fig:gazeResult}, the CNN model trained on our generic~\dataset dataset achieved the same performance of 12.66$^{\circ}$ as the model trained on the UT dataset (12.67$^{\circ}$).
+This confirms that our approach can synthesise data that is comparable to a real-world data collection as performed in~\cite{sugano2014learning} for the appearance-based gaze estimation task.
+The blue line in~\autoref{fig:gazeResult} shows the leave-one-person-out cross validation score within the MPIIGaze dataset and thus represents the lower bound in this evaluation scenario.
+These results suggest that both the \dataset~and UT datasets still have error sources that cause this performance gap.
+\commentA{are these values comparable in terms of training setting etc to fig 7 in the CVPR paper? I feel we need to link these results to that work here, either for the estimation accuracy or the lower bound.}
 
 %\paragraph{Head Pose and Gaze Ranges}
 One of the important factors related to the above gap is the head pose and gaze ranges.
 While it is important to cover a wide range of head poses to handle arbitrary camera settings, this can make the training task more difficult.
-If the target setting can be preliminary specified, as the laptop interaction case in \citet{zhang15_cvpr}, it is practically possible to limit the synthesis of training data with minimum required head pose and gaze ranges.
+If the target setting can be preliminary specified, as the laptop gaze interaction case in \citet{zhang15_cvpr}, it is  possible to target the synthesis of training data to the expected head pose and gaze ranges.
 %The head pose and gaze direction range are also quite important priors for appearance-based gaze estimation. 
 %Since the samples from the small range of head poses can be trained together, while extreme head poses wouldn't share eye appearance. Also the gaze direction space is arbitrary and difficult to be densely covered by collected dataset.
-In order to analyze the effect of different head pose ranges, we rendered an additional targetted dataset guided by typical laptop use ($10^{\circ}$ pose variation, $20^{\circ}$ gaze variation).
+To analyse the effect of different head pose ranges we rendered an additional targeted dataset for a typical laptop setting ($10^{\circ}$ pose variation, $20^{\circ}$ gaze variation).
 %Notice that the head pose and gaze direction range can be estimated based on the task, so the required information is not sophisticated. 
 %This shows how we can target specific scenarios like laptop-based gaze estimation, and render a suitable dataset within a day rather than taking 3 months of data collection with 15 participants. 
-For comparison, we also re-sample a subset of UT dataset as described in~\cite{zhang15_cvpr} that has the same gaze and head pose distribution as MPIIGaze.
-The head pose and gaze distributions are shown in~\autoref{fig:head_gaze_distribution}.
-
-Another important difference between two datasets is the number of subjects in the dataset.
+For comparison, we also re-sampled a subset of the UT dataset as described in~\cite{zhang15_cvpr} that has the same gaze and head pose distribution as MPIIGaze.
+%A second important difference between two datasets is the number of subjects in the dataset.
 %Since there are just have 10 subjects in our~\dataset, 
-In order to compare two approaches with the same number of subjects, we divide the UT Multiview subset into 5 groups with 10 subjects.
-Each group of this UT subset has 15,000 samples as with our~\dataset subset.
-We then average the performance of the 5 groups for the final result. 
-As shown in the third and forth bars of~\autoref{fig:gazeResult}, in general having the similar head pose and gaze direction ranges of target domain can significantly improve the performance: $\textrm{Mdn}\!=\!8.95^{\circ}$ and $\textrm{Mdn}\!=\!8.29^{\circ}$ for UT and \dataset respectively.
+To make both datasets more comparable, we further divided the UT subset into five groups with 10 subjects each.
+Each of these groups had 15,000 samples as with our~\dataset subset.
+We then averaged the performance of the five groups for the final result. 
+As shown in the third and forth bars of~\autoref{fig:gazeResult}, having the similar head pose and gaze direction ranges as the target domain significantly improves performance.
+%$\textrm{Mdn}\!=\!8.95^{\circ}$ and $\textrm{Mdn}\!=\!8.29^{\circ}$ for UT and \dataset respectively.
+Trained on our \dataset dataset the CNN even achieves a slight performance improvement over the UT dataset of 0.66$^{\circ}$
+% $\textrm{Mdn}\!=\!8.95^{\circ}$ and $\textrm{Mdn}\!=\!8.29^{\circ}$ for UT and \dataset respectively.
 
 % Erroll: not sure about the below paragraph
 % Since both UT subset and~\dataset subset have the similar head pose and gaze direction range, the performance gains should come from the realistic samples generate from precise 3D eye model and also simulated variant appearance caused by light conditions.
@@ -195,11 +205,20 @@ As shown in the third and forth bars of~\autoref{fig:gazeResult}, in general hav
 % \end{center}
 % \end{table}
 
-\paragraph{Person Specific Appearance}
+\paragraph{Person-Specific Appearance}
 
-Appearance-based gaze estimation performs best when trained and tested on the same person, as the training data includes the exact same eye-shape appearances that can be occur during testing. However, eye-region images from \dataset and MPIIGaze can appear very different due to eye-shape, skin-texture, and skin color. We explored what this meant for gaze estimation accuracy. We conducted an experiment where we trained 10 separate systems (one for each \dataset eye model) and tested them on MPIIGaze, recording average error for each MPIIGaze participant. The results can be seen in \autoref{fig:person_specific_training} where we plot errors along with representative images of eye-regions seen during training and testing.
+Appearance-based gaze estimation performs best when trained and tested on the same person, as the training data includes the exact same eye-shape appearances that can be occur during testing.
+However, eye-region images from \dataset and MPIIGaze can appear very different due to eye-shape, skin-texture, and skin color.
+We explored what this meant for gaze estimation accuracy.
+We conducted a second experiment where we trained 10 separate systems (one for each \dataset eye model) and tested them on each participant available in MPIIGaze.
+%, recording average error for each participant.
+The results can be seen in \autoref{fig:person_specific_training} where we plot errors along with representative images of eye-regions seen during training and testing.
 
-This plot reveals which \dataset eye-region models have been useful for training, and which ones have not. As we can see, the test set contains few dark-skinned participants, so training with dark-skinned eye models (f3,m2) leads to poor test results. Similarly, learning with an asian-shaped eye-region model (m4) leads poor performance for non-asian-shape eye-region test subjects. Also, it can be said that some test participants have ``easier'' eye-regions than others, e.g. ones with a plain appearance (p15). Though intuitive, our experiments further confirm the importance of correctly covering appearance variations with training data.
+This plot illustrates which \dataset eye-region models were useful for training and which ones were not.
+As we can see, the test set contains few dark-skinned participants, so training with dark-skinned eye models (f3,m2) leads to poor test results.
+Similarly, learning with an Asian-shaped eye-region model (m4) leads poor performance for non-Asian-shape eye-region test participants.
+Also, some test participants have ``easier'' eye-regions than others, e.g. ones with a plain appearance (p15).
+Although intuitive, our experiments further confirm the importance of correctly covering appearance variations in the training data.
 
 % Besides head pose and gaze direction ranges, it is well known that person-dependent is always the essayist scenario for gaze estimation, since the similar appearance would make the task much easier. To avoid the tedious personal calibration or long term personal data collection, one option is to use the most similar personal appearance from the training data for testing on target person. However, such training samples selection is limited inside the collected training data. Our method could generate any kind of personal appearance and do not have such limitation. As shown in~\autoref{fig:person_specific_training}, there are some subjects that suitable as training set for the MPIIGaze dataset, such as subject 1, 2, 6, 8 and 10. We use these subjects as the training set and can achieve X.X degrees on the MPIIGaze dataset.
 
