@@ -2,8 +2,9 @@
 
 \section{Introduction}
 
-% \commentA{would be nice to show the process figure as a teaser above abstract as in the disney paper}
-% Looks like the template doesn't allow us to do this easily unfortunately :(
+The eyes and their movements convey our attention and play a role in communicating social and emotional information \cite{Argyle1965}.
+Therefore they are important for a range of applications including gaze-based human-computer interaction~\cite{majaranta14_apc}, visual behaviour monitoring~\cite{bulling11_pami}, and -- more recently -- collaborative human-computer vision systems~\cite{yun2013studying,papadopoulos2014training,sattar15_cvpr}. 
+Typical computer vision tasks involving the eye include \emph{gaze estimation}: determining where someone is looking, and \emph{eye-shape registration}: detecting anatomical landmarks of the eye, often as part of the face (e.g. eyelids).
 
 Machine learning methods that leverage large amounts of training data currently perform best for many problems in computer vision, such as object detection, scene recognition, or gaze estimation~\cite{zhou2014learning,girshick2014rich,zhang15_cvpr}.
 However, capturing data for supervised learning can be time-consuming and require accurate ground truth annotation.
@@ -24,11 +25,6 @@ To address these problems, researchers have employed \emph{learning-by-synthesis
 The advantages of this approach are that both data collection and annotation require little human labour and image synthesis can be geared to specific application scenarios.
 % Can remove this if necessary
 % Perhaps the best known example is by \citet{shotton2013real}, who synthesized a large and varied depth-image dataset for training a real-time pose-estimator.
-
-% Redid this paragraph to introduce eyes more gently into the paper
-The eyes and their movements convey our attention and play a role in communicating social and emotional information \cite{Argyle1965}.
-Therefore they are important for a range of applications including gaze-based human-computer interaction~\cite{majaranta14_apc}, visual behaviour monitoring~\cite{bulling11_pami}, and -- more recently -- collaborative human-computer vision systems~\cite{yun2013studying,papadopoulos2014training,sattar15_cvpr}. 
-Typical computer vision tasks involving the eye include \emph{gaze estimation}: determining where someone is looking, and \emph{eye-shape registration}: detecting anatomical landmarks of the eye, often as part of the face (e.g. eyelids).
 
 % The eyes and their movements are important for a range of applications including gaze-based human-computer interaction~\cite{majaranta14_apc}, visual behaviour monitoring~\cite{bulling11_pami}, and -- more recently -- collaborative human-computer vision systems~\cite{yun2013studying,papadopoulos2014training,sattar15_cvpr}. 
 % Eyes also play a role in communicating social and emotional information \cite{Argyle1965}.
@@ -59,10 +55,7 @@ We then present and evaluate two separate systems trained on the resulting data 
 The controllability of our model allows us to quickly generate high-quality training data for these two disparate tasks.
 % These systems are case studies that show how we use the controllability made possible by our model to easily and quickly generate high-quality training datasets.
 %\commentE{I'm not sure about this sentence - gaze estimation and eye-registration are both valuable systems, ``illustration purposes only'' makes them sound like toy examples (but I get your idea)}
-Please note
-%that we picked these two examples as use cases only.
-% Think about rewording or explaining this better
-that our model is not only limited to these scenarios but can potentially be used for other tasks that require realistic images of eyes, e.g. evaluation of iris-biometrics or gaze correction.
+Please note that our model is not only limited to these scenarios but can potentially be used for other tasks that require realistic images of eyes, e.g. gaze correction or evaluation of iris-biometrics or geometry-based gaze estimation \cite{swirski2014rendering}.
 
 The specific contributions of this work are threefold.
 %First, we present our dynamic eye-region model that uses multiple parts and blend shapes to model the continuous degrees of shape change and deformation exhibited by the eye.

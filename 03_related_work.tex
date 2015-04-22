@@ -2,7 +2,7 @@
 
 \section{Related Work}
 
-Our work is related to previous works on 1) learning using synthetic data and 2) computational modelling of the eyes.
+Our work is related to previous work on 1) learning using synthetic data and 2) computational modelling of the eyes.
 
 \subsection{Learning Using Synthetic Data}
 
@@ -17,18 +17,18 @@ synthesized training data has been used instead.
 Previous work demonstrates that synthetic training data is beneficial for many tasks in computer vision including body pose estimation~\cite{okada2008relevant,shotton2013real}, object detection/recognition~\cite{yu2010improving,liebelt2010multiview}, and facial landmark localizaion \cite{kaneva2011evaluation,baltrusaitis20123d,zface}.
 % Erroll: removed jaderberg2014synthetic to make room in bib, it is 2d text recognition so maybe more removed from our scenario than object/bodies
 %
-Since faces exhibit a huge degree of color and texture variability, some previous approaches have side-stepped this by relying on depth images \cite{fanelli2011real,baltrusaitis20123d}, and synthesizing depth images of the head using existing datasets or a deformable head-shape model. Recent work has also synthesised combined color and geometry data by sampling labelled depth videos for training a dense 3D facial landmark detector \cite{zface}.
+Since faces exhibit a huge degree of color and texture variability, some previous approaches have side-stepped this by relying on depth images \cite{baltrusaitis20123d,fanelli2011real}, and synthesizing depth images of the head using existing datasets or a deformable head-shape model. Recent work has also synthesised combined color and geometry data by sampling labelled 3D-videos for training a dense 3D facial landmark detector \cite{zface}.
 % \commentY{CAD-based multi-view object recognition has a lot of works, though I don't think we need to cite them all}
 
 % \commentY{In some sense this is an important reference for our story}
 As discussed by \citet{kaneva2011evaluation}, one of the most important factors is the realism of synthesised training images.
 If the object of interest is highly complex, like the human eye, it is not clear whether we can rely on overly-simplistic object models.
-\citet{zhang15_cvpr} revealed that gaze estimation accuracy significantly drops if the test data is from a different environment.
+\citet{zhang15_cvpr} showed that gaze estimation accuracy significantly drops if the test data is from a different environment.
 Similarly to facial expression recognition~\cite{stratou2011effect}, illumination effects are a critical factor for computer vision, and the change of viewpoints is not enough to cover the test data variability.
 % \commentY{Is the following line correct? I thought they are just evaluating robustness of their approach against these factors}
 % \citet{zface} varied ambient and directional lighting conditions during synthesis to achieve illumination invariance.
 % \commentY{this line should be adjusted according to the result}
-In contrast, our model allows the synthesis of realistic lighting effects -- an important degree of variation for performance improvements in eye-shape registration.
+In contrast, our model allows synthesizing realistic lighting effects -- an important degree of variation for performance improvements in eye-shape registration.
 
 % \commentY{reality and controllability should be both important, while currently the story focuses on the reality side. but this point is rather related to the next section (Computer Generated Eyes) maybe?}
 Most similar to this work, \citet{sugano2014learning} used 3D reconstructions of eye regions to synthesise multi-view training data for appearance-based gaze estimation.
