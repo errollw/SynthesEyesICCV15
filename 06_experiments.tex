@@ -60,7 +60,6 @@ We performed an experiment to see how our system generalises on unseen and uncon
 We trained CLNF patch experts using the generic \dataset dataset and used the 3D landmark locations to construct a Point Distribution Model (PDM) using Principal Component Analysis. 
 As our rendered images did not contain closed eyes we generated extra closed eye landmark labels by moving the upper eyelid down to lower one or meeting both eyelids halfway.
 We initialised our approach by using the face-CLNF \cite{baltrusaitis2013constrained} facial landmark detector.
-
 To compare using synthetic or real training images, we trained an eyelid CLNF model on 300-W images, but used the same PDM used for synthetic data (CLNF 300-W).
 We also compared our approach with the following state-of-the-art facial landmark detectors trained on in-the-wild data: CLNF \cite{baltrusaitis2013constrained}, Supervised Descent Method (SDM) \cite{Xiong2013sdm}, Discriminative Response Map Fitting (DRMF) \cite{Asthana2013drmf}, and tree based face and landmark detector \cite{Zhu2012tree}. 
 
@@ -74,7 +73,7 @@ Second, the results show the eye-specific CLNF outperformed all other systems in
 %Furthermore, our approach managed to generalise without explicit modelling of eye-glasses or other partial occlusions.
 The frist result suggests the importance of high-quality consistent labels. In addition, we perform well despite the fact our models do not exhibit emotion-related shape deformation, such as brow-furrowing, squinting, and eye-widening.
 
-Our data synthesis pipeline also allowed us to examine what steps of the synthesis approach are important for generating good training data. We trained two further eye-specific CLNFs on different versions of \dataset, one without eyelid motion and one with only one fixed lighting condition. As can be seen in \autoref{fig:clnf_results_wild}, not using shape variation ($\mathrm{Mdn}=0.0129$) and using basic lighting ($\mathrm{Mdn}=0.0120$) lead to worse performance due to missing degrees of variability in training sets.
+Our approach also allow us to examine what steps of the synthesis are important for generating good training data. We trained two further eye-specific CLNFs on different versions of \dataset, one without eyelid motion and one with only one fixed lighting condition. As can be seen in \autoref{fig:clnf_results_wild}, not using shape variation ($\mathrm{Mdn}=0.0129$) and using basic lighting ($\mathrm{Mdn}=0.0120$) lead to worse performance due to missing degrees of variability in training sets.
 
 %\subsection{Eye-Shape Registration for Webcams}
 \paragraph{Eye-Shape Registration for Webcams}
@@ -90,8 +89,8 @@ Our data synthesis pipeline also allowed us to examine what steps of the synthes
     \label{fig:clnf_results_MPII}
 \end{figure}
 
-While the 300-W images represent challenging conditions for eyelid registration they do not feature iris labels and are not representitive of conditions encountered during everyday human-computer interaction.
-We therefore annotated sub-pixel eyelid and iris boundaries onto a subset of MPIIGaze \citet{zhang15_cvpr} (188 images), a recent large-scale dataset of face images and corresponding on-screen gaze locations collected during everyday laptop use over several months \cite{zhang15_cvpr}.
+While the 300-W images represent challenging conditions for eyelid registration they do not feature iris labels and are not representative of conditions encountered during everyday human-computer interaction.
+We therefore annotated sub-pixel eyelid and iris boundaries for a subset of MPIIGaze \cite{zhang15_cvpr} (188 images), a recent large-scale dataset of face images and corresponding on-screen gaze locations collected during everyday laptop use over several months \cite{zhang15_cvpr}.
 Pupil accuracy was not evaluated as it was impossible to discern in in most images.
 
 We compared our eye-specific CLNF (CLNF Synth) with EyeTab \cite{wood2014eyetab}, a state-of-the-art shape-based approach for webcam gaze estimation that robustly fits ellipses to the iris boundary using image-aware RANSAC \cite{swirski2012robust}. Note we did not compare with other systems from the previous experiment as they do not detect irises.
@@ -103,7 +102,8 @@ Iris errors were calculated by least-squares fitting an ellipse to the tracked i
 % This avoided calculating errors for parts of the iris which were occluded by the eyelid.
 Errors were normalized by the eye-width, and are reported using average eye-width ($44.4\textrm{px}$) as reference.
 
-As shown in \autoref{fig:clnf_results_MPII}, our approach ($\textrm{Mdn}\!=\!1.48\textrm{px}$) demonstrates comparable iris-fitting accuracy with EyeTab ($\textrm{Mdn}\!=\!1.44\textrm{px}$), a state-of-the-art algorithm for fitting ellipses to irises in low-quality images.
+As shown in \autoref{fig:clnf_results_MPII}, our approach ($\textrm{Mdn}\!=\!1.48\textrm{px}$) demonstrates comparable iris-fitting accuracy with EyeTab ($\textrm{Mdn}\!=\!1.44\textrm{px}$).
+%a state-of-the-art algorithm for fitting ellipses to irises in low-quality images.
 However, CLNF Synth is more robust, with EyeTab failing to terminate in $2\%$ of test cases.
 As also shown by the 300-W experiment, the eye-specific CLNF Synth localizes eyelids better than the face-CLNF.
 See \autoref{fig:fits_MPII} for example model fits.
@@ -128,15 +128,15 @@ See \autoref{fig:fits_MPII} for example model fits.
 
 \begin{figure}
     \centering
-    \includegraphics[width=\columnwidth]{head_gaze_distribution_v2.pdf}
-    \caption{The gaze direction (first row) and head pose (second row) distributions of different datasets: \dataset, MPIIGaze~\cite{zhang15_cvpr}, and UT Gaze \cite{sugano2014learning}.}
+    \includegraphics[width=0.9\columnwidth]{head_gaze_distribution_v2.pdf}
+    \caption{The gaze direction (first row) and head pose (second row) distributions of different datasets: \dataset, MPIIGaze~\cite{zhang15_cvpr}, and UT Multiview \cite{sugano2014learning}.}
     \label{fig:head_gaze_distribution}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=\columnwidth]{gazeResult_v2.pdf}
-    \caption{Gaze estimation performance on MPIIGaze using different training datasets. Red bar is median, and blue line represents a practical lower-bound (within-dataset cross-validation score).\commentE{Will redo this figure with bar showing median, and number and bar showing mean}}
+    \includegraphics[width=\columnwidth]{gazeResult_v3.pdf}
+    \caption{Gaze estimation performance on MPIIGaze using different datasets for training. Black dots are mean errors, and red line represents a practical lower-bound (within-dataset cross-validation score). Note how combining synthetic datasets for training leads to improved performance (blue plots).}
     \label{fig:gazeResult}
 \end{figure}
 
@@ -153,7 +153,8 @@ We then trained the same convolutional neural network (CNN) model as described b
 %Following the same setting, we train the same Convolutional Neural Network (CNN) model on the generic~\dataset dataset, and test it on MPIIGaze evaluation subset proposed by~\cite{zhang15_cvpr}. 
 As shown
 %with the two bars at the far left o
-in~\autoref{fig:gazeResult}, the CNN model trained on our generic~\dataset dataset achieved similar performance ($\mu\!=\!X^{\circ}$) as the model trained on the UT dataset ($\mu\!=\!X^{\circ}$). \commentE{I will prepare numbers here}
+in~\autoref{fig:gazeResult}, the CNN model trained on our generic~\dataset dataset achieved similar performance ($\mu\!=\!13.91^{\circ}$) as the model trained on the UT dataset \mbox{($\mu\!=\!13.55^{\circ}$)}.
+%\commentE{I will prepare numbers here}
 This confirms that our approach can synthesise data that leads to comparable results with previous synthesis procedures \cite{sugano2014learning}.
 % We're finding it hard to argue why SynthEyes is better than UT, but maybe thats OK
 Note from \autoref{fig:gazeResult} that there is still a performance gap between the within-dataset training (blue line) and training with an external dataset.
@@ -199,7 +200,9 @@ As shown in \autoref{fig:gazeResult}, it is possible to achieve better performan
 \begin{figure}
     \centering
     \includegraphics[width=\columnwidth]{Confusion_annotated_smallfile.pdf}
-    \caption{Per-eye-model gaze estimation performance on MPIIGaze. Red represents worst scores. Note how some eye-models have proved more useful than others. \commentT{Does it matter that it's left eye for some right eye for others in the small images?} }
+    \caption{Per-eye-model gaze estimation performance on MPIIGaze. Red represents worst scores. Note how some eye-models have proved more useful than others.
+    %\commentT{Does it matter that it's left eye for some right eye for others in the small images?}
+    }
     \label{fig:person_specific_training}
 \end{figure}
 
@@ -230,9 +233,10 @@ The results can be seen in \autoref{fig:person_specific_training}.
 This plot illustrates which \dataset eye-region models were useful for training and which ones were not.
 As we can see, training with certain eye models leads to poor generalization, for example \texttt{f3}, \texttt{m2}, and \texttt{m4}, perhaps due to differences in skin-tone and eye shape.
 % Similarly, learning with an Asian-shaped eye-region model (m4) leads poor performance for non-Asian-shape eye-region test participants.
-Also, total errors for some target participants are lower than for others, perhaps because of simpler eye-region shape which is matched to the training images.
+Also, total errors for some target participants are lower than for others, perhaps because of simpler eye-region shape that is matched to the training images.
 %``easier'' eye-regions than others, e.g. ones with a plain appearance (p15).
-Although intuitive, our experiments further confirm the importance of correctly covering appearance variations in the training data.
+Although intuitive, these experiments further confirm the importance of correctly covering appearance variations in the training data.
+They also open up potential directions for future work, including person-specific adaptation of the renderings as well as the gaze estimator.
 
 % Besides head pose and gaze direction ranges, it is well known that person-dependent is always the essayist scenario for gaze estimation, since the similar appearance would make the task much easier. To avoid the tedious personal calibration or long term personal data collection, one option is to use the most similar personal appearance from the training data for testing on target person. However, such training samples selection is limited inside the collected training data. Our method could generate any kind of personal appearance and do not have such limitation. As shown in~\autoref{fig:person_specific_training}, there are some subjects that suitable as training set for the MPIIGaze dataset, such as subject 1, 2, 6, 8 and 10. We use these subjects as the training set and can achieve X.X degrees on the MPIIGaze dataset.
 
