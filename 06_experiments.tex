@@ -131,7 +131,7 @@ See \autoref{fig:fits_MPII} for example model fits.
 \begin{figure}
     \centering
     \includegraphics[width=\columnwidth]{gazeResult_v2.pdf}
-    \caption{Gaze estimation performance on MPIIGaze using different training datasets. Red bar is median, and blue line represents a practical lower-bound (within-dataset cross-validation score).}
+    \caption{Gaze estimation performance on MPIIGaze using different training datasets. Red bar is median, and blue line represents a practical lower-bound (within-dataset cross-validation score).\commentT{Is the lower bound median as well?}}
     \label{fig:gazeResult}
 \end{figure}
 
@@ -150,7 +150,7 @@ As shown
 %with the two bars at the far left o
 in~\autoref{fig:gazeResult}, the CNN model trained on our generic~\dataset dataset achieved the same performance of 12.66$^{\circ}$ as the model trained on the UT dataset (12.67$^{\circ}$).
 This confirms that our approach can synthesise data that is comparable to a real-world data collection as performed in~\cite{sugano2014learning} for the appearance-based gaze estimation task.
-The blue line in~\autoref{fig:gazeResult} shows the leave-one-person-out cross validation score within the MPIIGaze dataset and thus represents the lower bound in this evaluation scenario.
+The blue line in~\autoref{fig:gazeResult} shows the leave-one-person-out cross validation score within the MPIIGaze dataset and thus represents the lower bound in this evaluation scenario. 
 These results suggest that both the \dataset~and UT datasets still have error sources that cause this performance gap.
 \commentA{are these values comparable in terms of training setting etc to fig 7 in the CVPR paper? I feel we need to link these results to that work here, either for the estimation accuracy or the lower bound.}
 
@@ -185,7 +185,7 @@ Trained on our \dataset dataset the CNN even achieves a slight performance impro
 \begin{figure}
     \centering
     \includegraphics[width=\columnwidth]{Confusion_annotated_smallfile.pdf}
-    \caption{Per-eye-model gaze estimation performance on MPIIGaze. Red represents worst scores. Note how some eye-models have proved more useful than others.}
+    \caption{Per-eye-model gaze estimation performance on MPIIGaze. Red represents worst scores. Note how some eye-models have proved more useful than others. \commentT{Does it matter that it's left eye for some right eye for others in the small images?} }
     \label{fig:person_specific_training}
 \end{figure}
 
