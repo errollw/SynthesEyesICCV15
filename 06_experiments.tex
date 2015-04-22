@@ -166,8 +166,9 @@ Note from \autoref{fig:gazeResult} that there is still a performance gap between
 %To better model the variations encountered for everyday laptop-use images, we 
 
 % One of the important factors related to the above gap is the head pose and gaze ranges.
-While it is important to cover a wide range of head poses to handle arbitrary camera settings, this can make training more difficult.
-If the target setting is known in advance, e.g. laptop gaze interaction as in case of MPIIGaze, it is possible to target data synthesis to the expected head pose and gaze ranges.
+While it is in general important to cover a wide range of head poses to handle arbitrary camera settings
+% this can make training more difficult.
+, if the target setting is known in advance, e.g. laptop gaze interaction as in case of MPIIGaze, it is possible to target data synthesis to the expected head pose and gaze ranges.
 %The head pose and gaze direction range are also quite important priors for appearance-based gaze estimation. 
 %Since the samples from the small range of head poses can be trained together, while extreme head poses wouldn't share eye appearance. Also the gaze direction space is arbitrary and difficult to be densely covered by collected dataset.
 % To analyze the effect of different head pose ranges
