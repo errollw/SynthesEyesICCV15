@@ -233,9 +233,10 @@ The results can be seen in \autoref{fig:person_specific_training}.
 This plot illustrates which \dataset eye-region models were useful for training and which ones were not.
 As we can see, training with certain eye models leads to poor generalization, for example \texttt{f3}, \texttt{m2}, and \texttt{m4}, perhaps due to differences in skin-tone and eye shape.
 % Similarly, learning with an Asian-shaped eye-region model (m4) leads poor performance for non-Asian-shape eye-region test participants.
-Also, total errors for some target participants are lower than for others, perhaps because of simpler eye-region shape which is matched to the training images.
+Also, total errors for some target participants are lower than for others, perhaps because of simpler eye-region shape that is matched to the training images.
 %``easier'' eye-regions than others, e.g. ones with a plain appearance (p15).
-Although intuitive, our experiments further confirm the importance of correctly covering appearance variations in the training data.
+Although intuitive, these experiments further confirm the importance of correctly covering appearance variations in the training data.
+They also open up potential directions for future work, including person-specific adaptation of the renderings as well as the gaze estimator.
 
 % Besides head pose and gaze direction ranges, it is well known that person-dependent is always the essayist scenario for gaze estimation, since the similar appearance would make the task much easier. To avoid the tedious personal calibration or long term personal data collection, one option is to use the most similar personal appearance from the training data for testing on target person. However, such training samples selection is limited inside the collected training data. Our method could generate any kind of personal appearance and do not have such limitation. As shown in~\autoref{fig:person_specific_training}, there are some subjects that suitable as training set for the MPIIGaze dataset, such as subject 1, 2, 6, 8 and 10. We use these subjects as the training set and can achieve X.X degrees on the MPIIGaze dataset.
 
