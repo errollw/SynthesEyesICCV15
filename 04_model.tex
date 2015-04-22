@@ -15,7 +15,8 @@ This is more challenging than simply rendering a collection of static models, as
 % Appearance-wise, the eye-region is one of the most complex areas of the whole body -- separate parts can all move independently, and feature a range of reflectance properties and small-scale details.
 % The eyelids, upper-cheek, and eye-ball can all move independently, and feature a range of reflectance properties and small-scale details.
 %
-We first present our anatomically inspired computer graphics eyeball model, and then explain our procedure for converting a collection of static 3D head scans into dynamic eye-region models that can assume a range of realistic poses.
+Next, we present our anatomically inspired eyeball model and the procedure for converting a collection of static 3D head scans into dynamic eye-region models.
+% that can assume a range of realistic poses.
 %\commentA{I think it would be good to first describe in 1-2 paragraphs what the particular challenges of modeling eye shape, dynamics etc. are. This gives better context for the method description that follows and hopefully also underlines that this is a non-trivial task and the work therefore a significant step forward.}
 
 %\todo{past tense}
@@ -61,7 +62,7 @@ We vary the texture of the eye by compositing images in three separate layers:
 \label{sec:eye_region_geom_prep}
 
 For an eye-region rendering to be realistic, it must also feature realistic nearby facial detail.
-While previous approaches used lifelike artist-created models \cite{swirski2014rendering}, we instead rely on high-quality head scans captured by a professional photogrammetry studio (10K diffuse color textures, 0.1mm resolution geometry)\footnote{Ten24 3D Scan Store -- \url{http://www.3dscanstore.com/}}.
+While previous approaches used lifelike artist-created models \cite{swirski2014rendering}, we rely on high-quality head scans captured by a professional photogrammetry studio (10K diffuse color textures, 0.1mm resolution geometry)\footnote{Ten24 3D Scan Store -- \url{http://www.3dscanstore.com/}}.
 %\cite{Ten24}.
 %\commentA{link or even better reference if available}
 %Nowadays it is possible to purchase such scans online (from $\sim\!\$15$/scan)
@@ -71,7 +72,7 @@ Therefore our head models (see \autoref{fig:model_suite}) cover gender, ethnicit
 As can be seen in \autoref{fig:process_original_scan}, the cornea of the original head scan has been incorrectly reconstructed by the optical scanning process.
 This is because transparent surfaces are not directly visible, so cannot be reconstructed in the same way as diffuse surfaces, such as skin.
 % Recent work used a hybrid reconstruction method to reconstruct the corneal surface separately, but requires additional hardware \cite{berard2014highquality} -- this level of detail was deemed unnecessary for our purposes.
-We also wanted images representing a wide range of eye-gaze directions, so we needed to be able to pose the eyeball separately from the face geometry.
+For images to represent a wide range of gaze directions, the eyeball needed to be posed separately from the face geometry.
 We therefore removed the scanned eyeball from the mesh, and placed our own eyeball approximation in its place.
 % \commentY{I feel this part should be explained beforehand,  i.e., we should first explain why take this approach combining eye model and face scan}
 % \commentY{Maybe we do not need to mention the quality of the cornea shape reconstruction, we anyway need to replace it to change gaze directions}
@@ -121,7 +122,7 @@ These blend shape and texture modifications were carried out using photos of the
 \begin{figure}
     \includegraphics[width=\columnwidth]{eyelid_motion_1.png} \par \smallskip
     % \includegraphics[width=\columnwidth]{eyelid_motion_2.png}
-    \caption{Eyelids are posed by interpolating between blend shapes based on gaze direction (\texttt{m2} as example). Note how we simulate the folding of the skin above and below the eye.}
+    \caption{Eyelids are posed by interpolating between blend shapes based on gaze direction (\texttt{m2} as example).}
     \label{fig:eyelids}
 \end{figure}
 
