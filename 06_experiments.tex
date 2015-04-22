@@ -38,7 +38,7 @@ Compared to \citet{sugano2014learning}, our method can provide a wider range of 
 
 \subsection{Eye-Shape Registration}
 
-As our method can reliably generate consistent landmark location training data, we used it for training a Constrained Local Neural Field (CLNF) \cite{baltrusaitis2013constrained} deformable model. We conducted experiments to evlauate the generalizability of our approach on two different use cases: eyelid registration in-the-wild, and iris tracking from webcams.
+As our method can reliably generate consistent landmark location training data, we used it for training a Constrained Local Neural Field (CLNF) \cite{baltrusaitis2013constrained} deformable model. We conducted experiments to evaluate the generalizability of our approach on two different use cases: eyelid registration in-the-wild, and iris tracking from webcams.
 
 \paragraph{Eyelid Registration In the Wild}
 
@@ -54,12 +54,12 @@ As our method can reliably generate consistent landmark location training data, 
 % \input{figs/fig_example_fits_wild.tex}
 
 % Erroll to Tadas: need to make sure these facts are straight...
-We performed an experiment to see how our system generalises on unseen and unconstrained images. We used the validation datasets from the 300 Faces In-the-Wild (300-W) challenge \cite{sagonas2013300} which contain labels for eyelid boundaries. We tested all of the approaches on the 830 (out of 1026) test images. We discarded images that did not contain visible eyes (occluded by hair or sunglasses) or where face detection failed for other comparison systems used in our experiment.
+We performed an experiment to see how our system generalizes on unseen and unconstrained images. We used the validation datasets from the 300 Faces In-the-Wild (300-W) challenge \cite{sagonas2013300} which contain labels for eyelid boundaries. We tested all of the approaches on the 830 (out of 1026) test images. We discarded images that did not contain visible eyes (occluded by hair or sunglasses) or where face detection failed for other comparison systems used in our experiment.
 % This lead to 1660 eye images for evaluation.
 
 We trained CLNF patch experts using the generic \dataset dataset and used the 3D landmark locations to construct a Point Distribution Model (PDM) using Principal Component Analysis. 
 As our rendered images did not contain closed eyes we generated extra closed eye landmark labels by moving the upper eyelid down to lower one or meeting both eyelids halfway.
-We initialised our approach by using the face-CLNF \cite{baltrusaitis2013constrained} facial landmark detector.
+We initialized our approach by using the face-CLNF \cite{baltrusaitis2013constrained} facial landmark detector.
 To compare using synthetic or real training images, we trained an eyelid CLNF model on 300-W images, but used the same PDM used for synthetic data (CLNF 300-W).
 We also compared our approach with the following state-of-the-art facial landmark detectors trained on in-the-wild data: CLNF \cite{baltrusaitis2013constrained}, Supervised Descent Method (SDM) \cite{Xiong2013sdm}, Discriminative Response Map Fitting (DRMF) \cite{Asthana2013drmf}, and tree based face and landmark detector \cite{Zhu2012tree}. 
 
@@ -70,15 +70,15 @@ First, our system CLNF Synth ($\mathrm{Mdn}=0.0110$) trained on only ten partici
 %
 Second, the results show the eye-specific CLNF outperformed all other systems in eye-lid localization: SDM ($\mathrm{Mdn}=0.0134$), face-CLNF ($\mathrm{Mdn}=0.0139$), DRMF ($\mathrm{Mdn}=0.0238$), and Tree based ($\mathrm{Mdn}=0.0217$). 
 % and that our system can be used to achieve state-of-the-art performance for eye shape registration. 
-%Furthermore, our approach managed to generalise without explicit modelling of eye-glasses or other partial occlusions.
-The frist result suggests the importance of high-quality consistent labels. In addition, we perform well despite the fact our models do not exhibit emotion-related shape deformation, such as brow-furrowing, squinting, and eye-widening.
+%Furthermore, our approach managed to generalize without explicit modeling of eye-glasses or other partial occlusions.
+The first result suggests the importance of high-quality consistent labels. In addition, we perform well despite the fact our models do not exhibit emotion-related shape deformation, such as brow-furrowing, squinting, and eye-widening.
 
 Our approach also allow us to examine what steps of the synthesis are important for generating good training data. We trained two further eye-specific CLNFs on different versions of \dataset, one without eyelid motion and one with only one fixed lighting condition. As can be seen in \autoref{fig:clnf_results_wild}, not using shape variation ($\mathrm{Mdn}=0.0129$) and using basic lighting ($\mathrm{Mdn}=0.0120$) lead to worse performance due to missing degrees of variability in training sets.
 
 %\subsection{Eye-Shape Registration for Webcams}
 \paragraph{Eye-Shape Registration for Webcams}
 
-% \commentA{``for laptops'' sounds very specific. Does this generalise, do we need this strong constraint?}
+% \commentA{``for laptops'' sounds very specific. Does this generalize, do we need this strong constraint?}
 
 \input{figs/fig_clnf_fits.tex}
 
@@ -96,7 +96,7 @@ Pupil accuracy was not evaluated as it was impossible to discern in in most imag
 We compared our eye-specific CLNF (CLNF Synth) with EyeTab \cite{wood2014eyetab}, a state-of-the-art shape-based approach for webcam gaze estimation that robustly fits ellipses to the iris boundary using image-aware RANSAC \cite{swirski2012robust}. Note we did not compare with other systems from the previous experiment as they do not detect irises.
 We used a modified version of the author's implementation with improved eyelid localization using CLNF \cite{baltrusaitis2013constrained}.
 As a baseline, we used the mean position of all 28 eye-landmarks following model initialization.
-Eyelid errors were calculated as RMS distances from predicted landmarks to the eyelid boudnary.
+Eyelid errors were calculated as RMS distances from predicted landmarks to the eyelid boundary.
 Iris errors were calculated by least-squares fitting an ellipse to the tracked iris landmarks, and measuring distances only to visible parts of the iris.
 %discretizing it, removing points outside ground truth and tracked eyelid boundaries, and then measuring RMS distances to the ground truth iris.
 % This avoided calculating errors for parts of the iris which were occluded by the eyelid.
@@ -121,10 +121,10 @@ See \autoref{fig:fits_MPII} for example model fits.
 
 % evaluate eye/gaze/eyelid shapes (fully synthetic) separately from full face appearance (which is a mixture of real and synthetic data)
 
-% person-adaptation, use pre-trained model from synthesised data, then personalise with small amount of user-specific data
+% person-adaptation, use pre-trained model from synthesized data, then personalize with small amount of user-specific data
 % ^ let's leave this as future work! Can put it in the discussion 
 
-% show that we can synthesise specific datasets for specific settings (specific head and gaze ranges, illumination conditions), show that we can competitive performance
+% show that we can synthesize specific datasets for specific settings (specific head and gaze ranges, illumination conditions), show that we can competitive performance
 
 \begin{figure}
     \centering
@@ -155,7 +155,7 @@ As shown
 %with the two bars at the far left o
 in~\autoref{fig:gazeResult}, the CNN model trained on our generic~\dataset dataset achieved similar performance ($\mu\!=\!13.91^{\circ}$) as the model trained on the UT dataset \mbox{($\mu\!=\!13.55^{\circ}$)}.
 %\commentE{I will prepare numbers here}
-This confirms that our approach can synthesise data that leads to comparable results with previous synthesis procedures \cite{sugano2014learning}.
+This confirms that our approach can synthesize data that leads to comparable results with previous synthesis procedures \cite{sugano2014learning}.
 % We're finding it hard to argue why SynthEyes is better than UT, but maybe thats OK
 Note from \autoref{fig:gazeResult} that there is still a performance gap between the within-dataset training (blue line) and training with an external dataset.
 % The blue line in~\autoref{fig:gazeResult} shows the leave-one-person-out cross validation score within the MPIIGaze dataset and thus represents the lower bound in this evaluation scenario.
@@ -170,7 +170,7 @@ While it is important to cover a wide range of head poses to handle arbitrary ca
 If the target setting is known in advance, e.g. laptop gaze interaction, it is  possible to target the synthesis of training data to the expected head pose and gaze ranges.
 %The head pose and gaze direction range are also quite important priors for appearance-based gaze estimation. 
 %Since the samples from the small range of head poses can be trained together, while extreme head poses wouldn't share eye appearance. Also the gaze direction space is arbitrary and difficult to be densely covered by collected dataset.
-To analyse the effect of different head pose ranges we rendered an additional targeted dataset (\dataset targetted) for a typical laptop setting ($10^{\circ}$ pose variation, $20^{\circ}$ gaze variation).
+To analyze the effect of different head pose ranges we rendered an additional targeted dataset (\dataset targeted) for a typical laptop setting ($10^{\circ}$ pose variation, $20^{\circ}$ gaze variation).
 %Notice that the head pose and gaze direction range can be estimated based on the task, so the required information is not sophisticated. 
 %This shows how we can target specific scenarios like laptop-based gaze estimation, and render a suitable dataset within a day rather than taking 3 months of data collection with 15 participants. 
 For comparison, we also re-sampled the entire UT dataset to create a subset (UT subset) that has the same gaze and head pose distribution as MPIIGaze.
@@ -192,11 +192,11 @@ These results suggest that both the \dataset~and UT datasets do not capture all 
 For example we capture more variations in lighting conditions and facial appearances, while the UT dataset contains real eye movements captured from more subjects.
 %For example we do not model eye-glasses and the distortions caused by them; camera-related effects such over and under-exposure; and we do not capture all possible eye-shape variations.
 In \autoref{fig:gazeResult}, we also evaluated the performance using both datasets.
-\commentY{Not sure this assumption is reasonable to justlfy this order of pre-training + fine tuning}
+\commentY{Not sure this assumption is reasonable to justify this order of pre-training + fine tuning}
 Assuming that the~\dataset~dataset has wider range of appearance variation, we first trained the same CNN model with the~\dataset~dataset, and further fine-tuned the model with the UT dataset.
-This fine-tuning model achieved better performances on both settings (untargetted $\mu\!=\!11.12^{\circ}$, targetted $\mu\!=\!7.90^{\circ}$).
-The performance of the untargetted case significantly outperformed the state-of-the-art result~\cite{zhang15_cvpr} (Wilcoxon signed-rank test  $p\!<\!0.0001$), and indicates a promising way for a future investigation to fill the performance gap.
-%As shown in \autoref{fig:gazeResult}, it is possible to achieve better performances (untargetted $\mu\!=\!11.12^{\circ}$, targetted $\mu\!=\!7.90^{\circ}$) when we train with both datasets (pre-train with \dataset, and then fine tune with UT), perhaps because they capture different degrees of variation.
+This fine-tuning model achieved better performances on both settings (untargeted $\mu\!=\!11.12^{\circ}$, targeted $\mu\!=\!7.90^{\circ}$).
+The performance of the untargeted case significantly outperformed the state-of-the-art result~\cite{zhang15_cvpr} (Wilcoxon signed-rank test  $p\!<\!0.0001$), and indicates a promising way for a future investigation to fill the performance gap.
+%As shown in \autoref{fig:gazeResult}, it is possible to achieve better performances (untargetted $\mu\!=\!11.12^{\circ}$, targeted $\mu\!=\!7.90^{\circ}$) when we train with both datasets (pre-train with \dataset, and then fine tune with UT), perhaps because they capture different degrees of variation.
 %Interestingly pre-training using UT followed by \dataset led to worse performance. This indicates further need to investigate best strategies for dataset combination.
 
 % Erroll: not sure about the below paragraph
