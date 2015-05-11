@@ -73,14 +73,14 @@ We also compared our approach with the following state-of-the-art facial landmar
 The results of our experiments can be seen in \autoref{fig:clnf_results_wild}, and example model fits are shown in \autoref{fig:fits_300W}.
 Errors were recorded as the RMS point-to-boundary distance from tracked eyelid landmarks to ground truth eyelid boundary, and were normalized by inter-ocular distance. 
 %
-First, our system CLNF Synth ($\mathrm{Mdn}=0.0110$) trained on only 10 participants in four lighting conditions results in very similar performance to a system trained on unconstrained in-the-wild images, CLNF 300-W ($\mathrm{Mdn}=0.0110$).
+First, our system CLNF Synth ($\textrm{Mdn}=0.0110\textrm{px}$) trained on only 10 participants in four lighting conditions results in very similar performance to a system trained on unconstrained in-the-wild images, CLNF 300-W ($\textrm{Mdn}=0.0110\textrm{px}$).
 %
-Second, the results show the eye-specific CLNF outperformed all other systems in eye-lid localization: SDM ($\mathrm{Mdn}=0.0134$), face-CLNF ($\mathrm{Mdn}=0.0139$), DRMF ($\mathrm{Mdn}=0.0238$), and Tree based ($\mathrm{Mdn}=0.0217$). 
+Second, the results show the eye-specific CLNF outperformed all other systems in eye-lid localization: SDM ($\textrm{Mdn}=0.0134\textrm{px}$), face-CLNF ($\textrm{Mdn}=0.0139\textrm{px}$), DRMF ($\textrm{Mdn}=0.0238\textrm{px}$), and Tree based ($\textrm{Mdn}=0.0217\textrm{px}$). 
 % and that our system can be used to achieve state-of-the-art performance for eye shape registration. 
 %Furthermore, our approach managed to generalize without explicit modeling of eye-glasses or other partial occlusions.
 The first result suggests the importance of high-quality consistent labels. In addition, we perform well despite the fact our models do not exhibit emotion-related shape deformation, such as brow-furrowing, squinting, and eye-widening.
 
-Our approach also allow us to examine what steps of the synthesis are important for generating good training data. We trained two further eye-specific CLNFs on different versions of \dataset, one without eyelid motion and one with only one fixed lighting condition. As can be seen in \autoref{fig:clnf_results_wild}, not using shape variation ($\mathrm{Mdn}=0.0129$) and using basic lighting ($\mathrm{Mdn}=0.0120$) lead to worse performance due to missing degrees of variability in training sets.
+Our approach also allow us to examine what steps of the synthesis are important for generating good training data. We trained two further eye-specific CLNFs on different versions of \dataset, one without eyelid motion and one with only one fixed lighting condition. As can be seen in \autoref{fig:clnf_results_wild}, not using shape variation ($\textrm{Mdn}=0.0129\textrm{px}$) and using basic lighting ($\textrm{Mdn}=0.0120\textrm{px}$) lead to worse performance due to missing degrees of variability in training sets.
 
 %\subsection{Eye-Shape Registration for Webcams}
 \paragraph{Eye-Shape Registration for Webcams}
