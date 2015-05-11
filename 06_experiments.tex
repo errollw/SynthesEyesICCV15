@@ -91,7 +91,7 @@ Our approach also allow us to examine what steps of the synthesis are important 
 
 While the 300-W images represent challenging conditions for eyelid registration they do not feature iris labels and are not representative of conditions encountered during everyday human-computer interaction.
 We therefore annotated sub-pixel eyelid and iris boundaries for a subset of MPIIGaze \cite{zhang15_cvpr} (188 images), a recent large-scale dataset of face images and corresponding on-screen gaze locations collected during everyday laptop use over several months \cite{zhang15_cvpr}.
-Pupil accuracy was not evaluated as it was impossible to discern in in most images.
+Pupil accuracy was not evaluated as it was impossible to discern in most images.
 
 We compared our eye-specific CLNF (CLNF Synth) with EyeTab \cite{wood2014eyetab}, a state-of-the-art shape-based approach for webcam gaze estimation that robustly fits ellipses to the iris boundary using image-aware RANSAC \cite{swirski2012robust}. Note we did not compare with other systems from the previous experiment as they do not detect irises.
 We used a modified version of the author's implementation with improved eyelid localization using CLNF \cite{baltrusaitis2013constrained}.
