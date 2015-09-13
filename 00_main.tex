@@ -66,9 +66,13 @@
 % create a command to set dataset name
 \newcommand{\dataset}{SynthesEyes\xspace}
 
+\usepackage{authblk}
+
 % Pages are numbered in submission mode, and unnumbered in camera-ready
 % \ificcvfinal\pagestyle{empty}\fi
 \begin{document}
+
+\setlength{\textfloatsep}{\baselineskip + 0.2\baselineskip - 0.2\baselineskip}
 
 %%%%%%%%% TITLE
 % \title{Photorealistic Rendering of Face and Eye Regions for Eyelid Detection and Gaze Estimation}
@@ -83,9 +87,11 @@
 % Andreas; learning-by-synthesis we could also use in the title
 % Andreas: what about "Photorealistic Rendering of Face and Eye Images for Large-Scale Eyelid Detection and Gaze Estimation" 
 
-\author{removed\\
-for\\
-{\tt\small blind review}
+\author{Erroll Wood\textsuperscript{1}, Tadas Baltru\v{s}aitis\textsuperscript{1}, Xucong Zhang\textsuperscript{2}, Yusuke Sugano\textsuperscript{2}, Peter Robinson\textsuperscript{1}, Andreas Bulling\textsuperscript{2}\\
+University of Cambridge, United Kingdom
+  \texttt{\small\{eww23,tb346,pr10\}@cam.ac.uk} \\
+Max Planck Institute for Informatics, Germany
+  \texttt{\small\{xczhang,sugano,bulling\}@mpi-inf.mpg.de}
 % For a paper whose authors are all at the same institution,
 % omit the following lines up until the closing ``}''.
 % Additional authors and addresses can be added with ``\and'',
