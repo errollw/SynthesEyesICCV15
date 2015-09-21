@@ -92,16 +92,17 @@ This leads to more realistic animation as mesh deformation matches that of actua
 % \commentY{I feel this paragraph requires knowledge on both computer graphics and eye movement researches, not easy for ordinary CV readers}
 We therefore \emph{retopologized} the face geometry
 %into a more optimal form 
-using a commercial semi-automatic system\footnote{ZBrush ZRemesher 2.0, Pixologic, 2015}.
+using a commercial semi-automatic system\footnote{ZBrush ZRemesher 2.0, Pixologic, 2015}, and transferred the original $10$K color textures.
 %\cite{ZRemesher}.
 % Erroll: changed just the sentence below to present tense. As the model still exists, perhaps the tense should be present? Not sure.
 % As can be seen in \autoref{fig:process_retopo}, edge loops now follow the \emph{Orbicularis Oculi} muscle, allowing for realistic eye-region deformations.
 As can be seen in \autoref{fig:process_retopo}, this way edge loops followed the exterior eye muscles, allowing for realistic eye-region deformations.
-This retopologized low-poly mesh lost the skin surface detail of the original scan, like wrinkles and creases (see \autoref{fig:process_displaced_subdiv}).
+This retopologized low-poly mesh ($\sim\!10$K polys) has lost the skin detail of the original scan, like wrinkles (see \autoref{fig:process_displaced_subdiv}).
 These were restored with a displacement map computed from the scanned geometry \cite{lee2000displaced}.
-Although they are two separate organs, there is normally no visible gap between eyeball and skin.
+%Although they are two separate organs
+There is normally no visible gap between eyeball and skin.
 However, as a consequence of removing the eyeball from the original scan, the retopologized mesh did not necessarily meet the eyeball geometry (see \autoref{fig:process_retopo}).
-To compensate for this, the face mesh's eyelid vertices were automatically displaced along their normals to their respective closest positions on the eyeball geometry (see \autoref{fig:process_displaced_subdiv}).
+To compensate for this, the mesh's eyelid vertices were automatically displaced along their normals to their respective closest positions on the eyeball geometry (see \autoref{fig:process_displaced_subdiv}).
 This prevented unwanted gaps between the models, even after changes in pose.
 The face geometry was then assigned physically-based materials, including subsurface scattering to approximate the penetrative light transfer properties of skin, and a glossy component to simulate its oily surface.
 
